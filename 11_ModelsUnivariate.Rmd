@@ -1,0 +1,13 @@
+# Construcción de modelos para series de tiempo univariadas {#modelacion-univariada}
+
+Para construir un modelo $ARIMA$ que ajuste a una serie tiempo dada, se debe seguir un proceso iterativo de tres etapas. Primero identificar un modelo $ARIMA(p,d,q)$ tentativo, segundo, estimarlos parámetros desconocidos del modelo. Tercero, mediante el análisis de residuales verificar si el modelo propuesto es el adecuado.
+
++ **Identificación**: Utilizando los datos ordenados cronológicamente haciendo uso de gráficos (correlograma, diagrama de dispersión, otros) se seleccionan los modelos $ARIMA(p,d,q)$ que valga la pena investigar. En esta etapa es posible identificar más de un modelo candidato que describa la serie.
+Observando las gráficas del ACF y PACF de la serie transformada podemos hacernos una idea del modelo que describe nuestra serie, o al menos de cuáles son los primeros candidatos que debemos probar.
++ **Estimación**: Considerando el modelo o modelos apropiados seleccionados en el paso anterior, se procede a realizar inferencia sobre los parámetros del modelo. Algunos paquetes permiten la selección del método de estimación (verosimilitud, momentos, mínimos cuadrados) que mejor se ajuste a las especificaciones del problema.
++ **Verificación**: Si el modelo es el adecuado, es decir los valores de $p$ y $q$ han sido correctamente especificados, entonces el modelo deberá ajustar bien a los datos y los residuales (la diferencia entre lo observado y lo estimado con el modelo) deberán comportarse como ruido blanco, esto se puede comprobar con la prueba de Ljung-Box. Si el modelo es adecuado, la función de autocorrelación de los residuales no debe de tener ninguna estructura. En caso de que el modelo no sea el adecuado, se escoge el siguiente candidato y se repiten los pasos anteriores. 
+
+Prueba de estacionariedad de los residuales Dickey-Fuller.
+Prueba de independencia Box-Pierce.
+
+Si se ajustan varios modelos candidatos $ARIMA(p,d,q)$, un buen modelo será aquel que tenga los residuales semejantes al de un ruido blanco, además que tenga los valores del AIC (Criterio de Información de Akaike) y BIC (Criterio de Información Bayesiana) menores con relación al resto de los modelos candidatos.

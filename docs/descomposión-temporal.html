@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 2 Descomposión temporal | Análisis de Series de Tiempo</title>
+  <meta name="description" content="Material para el curso Análisis de Supervivencia y Series de Tiempo en la Facultad de Ciencias, Universidad Nacional Autónoma de México" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 2 Descomposión temporal | Análisis de Series de Tiempo" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Material para el curso Análisis de Supervivencia y Series de Tiempo en la Facultad de Ciencias, Universidad Nacional Autónoma de México" />
+  <meta name="github-repo" content="svg18/Series-de-Tiempo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 2 Descomposión temporal | Análisis de Series de Tiempo" />
+  
+  <meta name="twitter:description" content="Material para el curso Análisis de Supervivencia y Series de Tiempo en la Facultad de Ciencias, Universidad Nacional Autónoma de México" />
+  
+
+<meta name="author" content="Sofía Villers Gómez" />
+<meta name="author" content="Carlos Fernando Vásquez Guerra" />
+<meta name="author" content="David Alberto Mateos Montes de Oca" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introducción.html"/>
+<link rel="next" href="procesos-estocásticos.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Análisis de Series de Tiempo</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#objetivos"><i class="fa fa-check"></i>Objetivos</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#estructura"><i class="fa fa-check"></i>Estructura</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#detalles-técnicos"><i class="fa fa-check"></i>Detalles técnicos</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#licencia"><i class="fa fa-check"></i>Licencia</a></li>
+</ul></li>
+<li class="part"><span><b>I Series de tiempo</b></span></li>
+<li class="chapter" data-level="1" data-path="introducción.html"><a href="introducción.html"><i class="fa fa-check"></i><b>1</b> Introducción</a></li>
+<li class="chapter" data-level="2" data-path="descomposión-temporal.html"><a href="descomposión-temporal.html"><i class="fa fa-check"></i><b>2</b> Descomposión temporal</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="descomposión-temporal.html"><a href="descomposión-temporal.html#ejercicios"><i class="fa fa-check"></i><b>2.1</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="procesos-estocásticos.html"><a href="procesos-estocásticos.html"><i class="fa fa-check"></i><b>3</b> Procesos estocásticos</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="procesos-estocásticos.html"><a href="procesos-estocásticos.html#proceso-estocástico-estacionario"><i class="fa fa-check"></i><b>3.1</b> Proceso estocástico estacionario</a></li>
+<li class="chapter" data-level="3.2" data-path="procesos-estocásticos.html"><a href="procesos-estocásticos.html#ruido-blanco-white-noise"><i class="fa fa-check"></i><b>3.2</b> Ruido blanco (“white noise”)</a></li>
+<li class="chapter" data-level="3.3" data-path="procesos-estocásticos.html"><a href="procesos-estocásticos.html#caminata-aleatoria"><i class="fa fa-check"></i><b>3.3</b> Caminata aleatoria</a></li>
+<li class="chapter" data-level="3.4" data-path="procesos-estocásticos.html"><a href="procesos-estocásticos.html#series-de-tiempo"><i class="fa fa-check"></i><b>3.4</b> Series de tiempo</a></li>
+<li class="chapter" data-level="3.5" data-path="procesos-estocásticos.html"><a href="procesos-estocásticos.html#ejercicios-1"><i class="fa fa-check"></i><b>3.5</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="funciones-de-autocovarianza-y-autocorrelación.html"><a href="funciones-de-autocovarianza-y-autocorrelación.html"><i class="fa fa-check"></i><b>4</b> Funciones de autocovarianza y autocorrelación</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="funciones-de-autocovarianza-y-autocorrelación.html"><a href="funciones-de-autocovarianza-y-autocorrelación.html#función-de-autocorrelación-parcial"><i class="fa fa-check"></i><b>4.1</b> Función de autocorrelación parcial</a></li>
+<li class="chapter" data-level="4.2" data-path="funciones-de-autocovarianza-y-autocorrelación.html"><a href="funciones-de-autocovarianza-y-autocorrelación.html#correlograma"><i class="fa fa-check"></i><b>4.2</b> Correlograma</a></li>
+<li class="chapter" data-level="4.3" data-path="funciones-de-autocovarianza-y-autocorrelación.html"><a href="funciones-de-autocovarianza-y-autocorrelación.html#prueba-de-ljung-box"><i class="fa fa-check"></i><b>4.3</b> Prueba de Ljung-Box</a></li>
+<li class="chapter" data-level="4.4" data-path="funciones-de-autocovarianza-y-autocorrelación.html"><a href="funciones-de-autocovarianza-y-autocorrelación.html#ejercicios-2"><i class="fa fa-check"></i><b>4.4</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="transformaciones.html"><a href="transformaciones.html"><i class="fa fa-check"></i><b>5</b> Transformaciones</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="transformaciones.html"><a href="transformaciones.html#suavizamiento-por-medias-móviles"><i class="fa fa-check"></i><b>5.1</b> Suavizamiento por medias móviles</a></li>
+<li class="chapter" data-level="5.2" data-path="transformaciones.html"><a href="transformaciones.html#suavizamiento-por-polinomios-ajustados"><i class="fa fa-check"></i><b>5.2</b> Suavizamiento por polinomios ajustados</a></li>
+<li class="chapter" data-level="5.3" data-path="transformaciones.html"><a href="transformaciones.html#diferencias-de-box-jenkins"><i class="fa fa-check"></i><b>5.3</b> Diferencias de Box-Jenkins</a></li>
+<li class="chapter" data-level="5.4" data-path="transformaciones.html"><a href="transformaciones.html#ejercicios-3"><i class="fa fa-check"></i><b>5.4</b> Ejercicios</a></li>
+</ul></li>
+<li class="part"><span><b>II Procesos lineales estacionarios</b></span></li>
+<li class="chapter" data-level="6" data-path="arp-proceso-autoregresivo.html"><a href="arp-proceso-autoregresivo.html"><i class="fa fa-check"></i><b>6</b> <span class="math inline">\(AR(p)\)</span>: Proceso Autoregresivo</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="arp-proceso-autoregresivo.html"><a href="arp-proceso-autoregresivo.html#proceso-autoregresivo-de-orden-1-ar1"><i class="fa fa-check"></i><b>6.1</b> Proceso Autoregresivo de orden 1: <span class="math inline">\(AR(1)\)</span></a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="arp-proceso-autoregresivo.html"><a href="arp-proceso-autoregresivo.html#estacionario-en-media"><i class="fa fa-check"></i><b>6.1.1</b> Estacionario en Media</a></li>
+<li class="chapter" data-level="6.1.2" data-path="arp-proceso-autoregresivo.html"><a href="arp-proceso-autoregresivo.html#estacionario-en-covarianza"><i class="fa fa-check"></i><b>6.1.2</b> Estacionario en Covarianza</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="arp-proceso-autoregresivo.html"><a href="arp-proceso-autoregresivo.html#proceso-autoregresivo-de-orden-2-ar2"><i class="fa fa-check"></i><b>6.2</b> Proceso Autoregresivo de orden 2: <span class="math inline">\(AR(2)\)</span></a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="arp-proceso-autoregresivo.html"><a href="arp-proceso-autoregresivo.html#estacionario-en-media-1"><i class="fa fa-check"></i><b>6.2.1</b> Estacionario en Media</a></li>
+<li class="chapter" data-level="6.2.2" data-path="arp-proceso-autoregresivo.html"><a href="arp-proceso-autoregresivo.html#estacionario-en-covarianza-1"><i class="fa fa-check"></i><b>6.2.2</b> Estacionario en Covarianza</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="maq-proceso-de-medias-móviles.html"><a href="maq-proceso-de-medias-móviles.html"><i class="fa fa-check"></i><b>7</b> <span class="math inline">\(MA(q)\)</span>: Proceso de Medias Móviles</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="maq-proceso-de-medias-móviles.html"><a href="maq-proceso-de-medias-móviles.html#proceso-de-medias-móviles-de-orden-1-ma1"><i class="fa fa-check"></i><b>7.1</b> Proceso de Medias Móviles de orden 1: <span class="math inline">\(MA(1)\)</span></a></li>
+<li class="chapter" data-level="7.2" data-path="maq-proceso-de-medias-móviles.html"><a href="maq-proceso-de-medias-móviles.html#proceso-de-medias-móviles-de-orden-2-ma2"><i class="fa fa-check"></i><b>7.2</b> Proceso de Medias Móviles de orden 2: <span class="math inline">\(MA(2)\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="armapq-proceso-autoregresivo-de-medias-móviles.html"><a href="armapq-proceso-autoregresivo-de-medias-móviles.html"><i class="fa fa-check"></i><b>8</b> <span class="math inline">\(ARMA(p,q)\)</span>: Proceso Autoregresivo de Medias Móviles</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="armapq-proceso-autoregresivo-de-medias-móviles.html"><a href="armapq-proceso-autoregresivo-de-medias-móviles.html#arma11"><i class="fa fa-check"></i><b>8.1</b> <span class="math inline">\(ARMA(1,1)\)</span></a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="armapq-proceso-autoregresivo-de-medias-móviles.html"><a href="armapq-proceso-autoregresivo-de-medias-móviles.html#media"><i class="fa fa-check"></i><b>8.1.1</b> Media</a></li>
+<li class="chapter" data-level="8.1.2" data-path="armapq-proceso-autoregresivo-de-medias-móviles.html"><a href="armapq-proceso-autoregresivo-de-medias-móviles.html#covarianzas"><i class="fa fa-check"></i><b>8.1.2</b> Covarianzas</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III Procesos lineales no estacionarios</b></span></li>
+<li class="chapter" data-level="9" data-path="arimapdq-proceso-autoregresivo-integrado-y-de-medias-móviles.html"><a href="arimapdq-proceso-autoregresivo-integrado-y-de-medias-móviles.html"><i class="fa fa-check"></i><b>9</b> <span class="math inline">\(ARIMA(p,d,q)\)</span>: Proceso Autoregresivo Integrado y de Medias Móviles</a></li>
+<li class="chapter" data-level="10" data-path="imadq-proceso-integrado-y-de-media-móvil.html"><a href="imadq-proceso-integrado-y-de-media-móvil.html"><i class="fa fa-check"></i><b>10</b> <span class="math inline">\(IMA(d,q)\)</span>: Proceso Integrado y de Media Móvil</a></li>
+<li class="part"><span><b>IV Otras consideraciones</b></span></li>
+<li class="chapter" data-level="11" data-path="predictores-lineales.html"><a href="predictores-lineales.html"><i class="fa fa-check"></i><b>11</b> Predictores Lineales</a></li>
+<li class="chapter" data-level="12" data-path="modelacion-univariada.html"><a href="modelacion-univariada.html"><i class="fa fa-check"></i><b>12</b> Construcción de modelos para series de tiempo univariadas</a></li>
+<li class="part"><span><b>V Procesos no lineales</b></span></li>
+<li class="chapter" data-level="13" data-path="introducción-1.html"><a href="introducción-1.html"><i class="fa fa-check"></i><b>13</b> Introducción</a></li>
+<li class="chapter" data-level="14" data-path="archq-proceso-autoregresivo-con-heterocedasticidad-condicional.html"><a href="archq-proceso-autoregresivo-con-heterocedasticidad-condicional.html"><i class="fa fa-check"></i><b>14</b> <span class="math inline">\(ARCH(q)\)</span>: Proceso Autoregresivo con Heterocedasticidad Condicional</a></li>
+<li class="chapter" data-level="15" data-path="garchpq-proceso-autoregresivo-generalizado-con-heterocedasticidad-condicional.html"><a href="garchpq-proceso-autoregresivo-generalizado-con-heterocedasticidad-condicional.html"><i class="fa fa-check"></i><b>15</b> <span class="math inline">\(GARCH(p,q)\)</span>: Proceso Autoregresivo Generalizado con Heterocedasticidad Condicional</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Hecho con bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Análisis de Series de Tiempo</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="descomposión-temporal" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Capítulo 2</span> Descomposión temporal<a href="descomposión-temporal.html#descomposión-temporal" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>El análisis clásico de las series temporales se basa en la suposición de que los valores que toma la variable de observación es la consecuencia de tres componentes, cuya actuación conjunta da como resultado los valores medidos.</p>
+<p>Los componentes de una serie de tiempo son:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Tendencia</strong>: La tendencia o tendencia a largo plazo de una serie es por lo común el resultado de factores a largo plazo. En términos intuitivos, la tendencia de una serie de tiempo caracteriza el patrón gradual y consistente de las
+variaciones de la propia serie, que se consideran consecuencias de fuerzas persistentes que afectan el crecimiento o la reducción de la misma, tales como: cambios en la población, en las características demográficas de la misma, cambios en los ingresos, en la salud, en el nivel de educación y tecnología. Las tendencias a largo plazo se ajustan a diversos esquemas. Algunas se mueven continuamente hacía arriba, otras declinan, y otras más permanecen igual en un cierto período o intervalo de tiempo.<br />
+</li>
+<li><strong>Estacionalidad</strong>: El componente de la serie de tiempo que representa la variabilidad en los datos debida a influencias de las estaciones, se llama componente estacional. Esta variación corresponde a los movimientos de la serie que ocurren año tras año en los mismos meses (o en los mismos trimestres) del año poco más o menos con la misma intensidad. Por ejemplo: Un fabricante de albercas inflables espera poca actividad de ventas durante los meses de otoño e invierno y tiene ventas máximas en los de primavera y verano, mientras que los fabricantes de equipo para la nieve y ropa de abrigo esperan un comportamiento anual opuesto al del fabricante de albercas.<br />
+</li>
+<li><strong>Componente aleatoria</strong>: Esta se debe a factores a corto plazo, imprevisibles y no recurrentes que afectan a la serie de tiempo. Como este componente explica la variabilidad aleatoria de la serie, es impredecible, es decir, no se puede esperar predecir su impacto sobre la serie de tiempo. Existen dos tipos de variación irregular:
+<ol style="list-style-type: lower-alpha">
+<li>Las variaciones que son provocadas por acontecimientos especiales, fácilmente identificables, como las elecciones, inundaciones, huelgas, terremotos.</li>
+<li>Variaciones aleatorias o por casualidad, cuyas causas no se pueden señalar en forma exacta, pero que tienden a equilibrarse a la larga.</li>
+</ol></li>
+</ol>
+<p>Se puede observar que de los tres componentes, los dos primeros son determinísticos, mientras que la última es aleatoria.</p>
+<p>Adicionalemte, la asociación de estos componentes en una serie temporal puede ser de tipo aditivo, multiplicativo o combinación de los dos anteriores</p>
+<p>Entonces la serie se tiempo en un esquema aditivo se puede expresar como:</p>
+<p><span class="math display">\[X_{t}=T_{t}+E_{t}+I_{t}\]</span>
+Mientras que la serie se tiempo en un esquema multiplicativo se expresaría como:</p>
+<p><span class="math display">\[X_{t}=T_{t}*E_{t}*I_{t}\]</span>
+Y un ejemplo de combinación se expresaría como:</p>
+<p><span class="math display">\[X_{t}=(T_{t}+E_{t})*I_{t}\]</span>
+donde <span class="math inline">\(T_{t}\)</span> es el componente de <strong>tendencia</strong>, <span class="math inline">\(E_{t}\)</span> el componente de <strong>estacionalidad</strong> y <span class="math inline">\(I_{t}\)</span> la componente <strong>aleatoria</strong>.</p>
+<p>Las siguientes gráficas son sólo otro ejemplo basado en el conjunto de datos <code>nottem</code>, en el cual se tienen las temperaturas mensuales promedio en Nottingham entre 1920 y 1939. Esta serie de tiempo tiene el siguiente comportamiento a través de los años.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" />
+En la gráfica se puede observar que los datos parecen tener un comportamiento cíclico, lo cual es esperado ya que los datos corresponden a temperaturas mensuales. Así mismo el gráfico no muestra que exista una tendencia en los datos es decir no podemos decir que las temperaturas incrementan o decrementan al pasar del tiempo.</p>
+<p>La función R “decompose”, obtiene las componentes de tendencia, estacionalidad y aleatoria de una serie temporal a través de medias móviles, y además permite obtener los componentes en base a un esquema aditivo ó multiplicativo. Es una función generica de R, lo que significa que no requiere de la instalación de ninguna librería.</p>
+<p>La forma de utlizar esta función es la siguiente:</p>
+<p><strong>decompose(x, type = c(“additive”, “multiplicative”),filter = NULL)</strong></p>
+<p>La función calcula el componente de tendencia utilizando medias móviles, (si filter = NULL, se utilizan medias móviles simétricas), los índices de estacionalidad son promedios de los indices de estacionalidad que se obtienen al desestacionalizar la serie por el modelo elegido, por último, el componente irregular se obtiene eliminando la tendencia y estacionalidad de la serie temporal.</p>
+<p>Nota inportante es que la función requiere que los datos tengan forma de serie temporal.</p>
+<p>Ahora aplicaremos la función decompose a la serie de tiempo graficada anteriormente. Las siguientes gráficas representan las componentes antes mencionadas de la serie de tiempo correspondiente a las temperaturas mensuales promedio en Nottingham entre 1920 y 1939.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" />
+La descomposición nos corrobora la presencia de una estacionalidad en los datos y detecta una ligera tendencia a la alza, aunque la escala en el gráfico de la tendencia es muy pequeña muestra que al pasar el tiempo las temperaturas promedio parecen estarse incrementando. En cuanto al gráfico de aleatoriedad la descomposición efectivamente lo presenta como una serie de datos aleatorios.</p>
+<div id="ejercicios" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Ejercicios<a href="descomposión-temporal.html#ejercicios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>Una serie de tiempo se puede descomponer en: (Seleccione la opción correcta)</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Parte Multiplicativa, Parte Aditiva y Parte Aleatoria</li>
+<li>Tendencia, Estacionalidad y Parte Aleatoria</li>
+<li>Parte Univariante y Parte Multivariante</li>
+</ol>
+<ol start="2" style="list-style-type: decimal">
+<li>Utilizar los datos en el objeto “AirPassengers” que corresponden a 144 mediciones del número de pasajeros mensuales en líneas aereas y:</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Grafique la serie de tiempo y describa que patrón observa</li>
+<li>Aplique la función decompose a los datos y describa los hallazgos</li>
+<li>Grafique la serie de los logartimos de los datos y describa el cambio observado respecto a lo visto en el inciso a)</li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introducción.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="procesos-estocásticos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "github", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

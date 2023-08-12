@@ -1,0 +1,25 @@
+
+
+processing file: _main.Rmd
+Don't know how to automatically pick scale for object of type ts. Defaulting to continuous.
+output file: _main.knit.md
+
+[WARNING] Duplicate note reference '2.1' at line 369 column 1
+
+Output created: docs/_main.pdf
+Warning messages:
+1: In utils::citation(..., lib.loc = lib.loc) :
+  no date field in DESCRIPTION file of package 'bookdown'
+2: In utils::citation(..., lib.loc = lib.loc) :
+  no date field in DESCRIPTION file of package 'rmarkdown'
+3: Removed 9 row(s) containing missing values (geom_path). 
+4: In grep("^(LaTeX|Package [[:alnum:]]+) Warning:", x) :
+  input string 1458 is invalid in this locale
+5: In grep("^(LaTeX|Package [[:alnum:]]+) Warning:", x) :
+  input string 1460 is invalid in this locale
+6: In grep("^(LaTeX|Package [[:alnum:]]+) Warning:", x) :
+  input string 1487 is invalid in this locale
+7: In grep("^(LaTeX|Package [[:alnum:]]+) Warning:", x) :
+  input string 1489 is invalid in this locale
+8: In grep("^(LaTeX|Package [[:alnum:]]+) Warning:", x) :
+  input string 1575 is invalid in this locale

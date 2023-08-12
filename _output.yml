@@ -1,0 +1,25 @@
+bookdown::gitbook:
+  css: styles.css
+  split_by: chapter
+  config:
+    toc:
+      collapse: section
+      before: |
+        <li><a href="./">Análisis de Series de Tiempo</a></li>
+      after: |
+        <li><a href="https://bookdown.org" target="_blank">Hecho con bookdown</a></li>
+    sharing:
+      github: yes
+      all: ['facebook', 'twitter', 'github', 'linkedin', 'weibo', 'instapaper']
+    download: "pdf"
+bookdown::pdf_book:
+  includes:
+    in_header: preamble.tex
+  latex_engine: pdflatex
+  citation_package: natbib
+  dev: "cairo_pdf"
+  pandoc_args: --top-level-division=chapter
+  toc_depth: 4
+  toc_appendix: yes
+  toc_unnumbered: no
+  quote_footer: ["\\VA{", "}{}"]

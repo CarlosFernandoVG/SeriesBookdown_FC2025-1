@@ -1,0 +1,25 @@
+\usepackage[utf8]{inputenc}% Usa codificación 8-bit que tiene 256 glyphs
+\usepackage[T1]{fontenc}
+%Más información de babel : http://www.texnia.com/spanishopt.html
+%es-tabla: Traduce table como tabla en lugar de como cuadro.
+%es-nodecimaldot: No añade punto tras los números de sección, subsección
+\usepackage[spanish,es-nodecimaldot,es-tabla]{babel} 
+\usepackage{graphicx} %Manipulación de imágenes : https://es.overleaf.com/learn/latex/Inserting_Images
+\usepackage{tikz} % Requerido para dibujar formas personalizadas
+\usepackage{float} %Gráficas
+\usepackage{fancyhdr} %Para un mejor manejo de encabezados
+\usepackage{calc} %Para hacer cálculos matemáticos en Latex
+\usepackage{amsmath,amssymb,amsfonts} %Para tener mejores opciones en estructuras matemáticas.
+\usepackage{amsthm} %Ambientes matemáticos : http://www.ctex.org/documents/packages/math/amsthdoc.pdf
+%Vamos a colocar todo el formato que yihui colocó en su bookdown:https://github.com/rstudio/bookdown/blob/master/inst/examples/latex/preamble.tex
+\usepackage{mathrsfs}
+\usepackage{booktabs}
+\usepackage{longtable}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\topfraction}{0.8}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\floatpagefraction}{0.75}
+\usepackage{listings}
+\lstset{
+  breaklines=true
+}

@@ -1,0 +1,176 @@
+# Procesos estocásticos
+
+La palabra estocástico, que tiene origen Griego, era usada bajo el significado de *perteneciente al azar*. En ese sentido un proceso estocástico se define como un conjunto de variables aleatorias ordenadas según el tiempo (o el espacio que corresponda), el cual puede ser continuo o discreto.
+Se denota la variable aleatoria en el tiempo $t$ por $X(t)$ o $X_t$ con $-\infty < t < \infty$ en caso de ser continua o bien $t = (0, \pm1, \pm2, ... )$ en caso de ser discreta.
+
+Como un ejemplo de proceso estocástico tenemos, el número de personas que esperan en una fila en el instante $t$ del tiempo.
+
+## Proceso estocástico estacionario
+
+Al trabajar con series de tiempo el escenario ideal sería trabajar con series que posean la característica de tener la media y la autocovarianza constantes a lo largo del tiempo, es decir, que sus valores oscilen dentro de un rango de valores y no muestren tendencia clara, creciente o decreciente, teóricamente conocidos como procesos estacionarios. Para definir un proceso estocástico como un proceso estacionario es sumamente necesario conocer la función de densidad conjunta de las variables aleatorias que conforman el proceso, no obstante, en la práctica no es común que se logre. Es por esto por lo que los procesos estacionarios se pueden definir de la siguiente forma:
+
++ **Procesos estrictamente estacionarios:** Se dice que un proceso $X_t, t \in Z$ es estrictamente estacionario, si sus funciones de densidad para un conjunto arbitrario de variables $X_t,X_{t+1}, ... , X_{t+m}$ son invariantes respecto a desplazamientos en el tiempo, es decir, que cumplen:
+$$
+\begin{array}{cc}
+f(X_t,X_{t+1}, ... , X_{t+m}) = f(X_{t+k}, X_{t+k+1}, ... , X_{t+k+m}) & \forall t, m, k \in Z
+\end{array}
+$$
+
++ **Procesos débilmente estacionarios:** Un proceso $X_t,t\in Z$ se dice que es débilmente estacionario de orden $k$ si los primeros $k$ momentos son invariantes a través del tiempo. Podemos definir un proceso débilmente estacionario de segundo orden si cumple lo siguiente:
+  1. $E\left[|X_t|^2\right]< \infty \forall t \in Z$
+  2. $E[X_t] = \mu \ \ \forall t \in Z$, lo cual quiere decir que las esperanzas de las variables aleatorias son independientes del tiempo por lo cual permanecen constantes.
+  3. $Cov(X_t,X_s) = Cov (X_{t+m}, X_{s+m}) \forall t, s, m \in Z$, es decir las covarianzas de dos variables aleatorias del proceso que se encuentran en distintos puntos del tiempo dependen solamente del lapso transcurrido entre cada una de ellas.
+
+## Ruido blanco ("white noise")
+
+Un ruido blanco[^1.1] es un caso simple de los procesos estocásticos, donde los valores son independientes e idénticamente distribuidos a lo largo del tiempo con media cero e igual varianza, se denota por $\epsilon_t$.
+$$
+\begin{array}{c}
+\epsilon_t \sim N(0,\sigma^2)\\
+Cov(\epsilon_{t_i},\epsilon_{t_j})=0 \space \forall t_i \neq t_j
+\end{array}
+$$
+
+```{r}
+set.seed(10)
+whitenoise <- tibble(x = 1:100, y = rnorm(100, mean = 0, sd = 1))
+(whitenoise %>%
+  ggplot(aes(x = x, y = y)) +
+  geom_line(color = "darkslateblue") + 
+  lims(y = c(-4, 4)) + 
+  labs(x = "Tiempo") +
+  ggtitle(TeX("N(0,1)")) + 
+  geom_hline(yintercept = 0) +
+  general_theme) +
+(autoplot(acf(ts(whitenoise$y, start = 1, end = 100), plot = FALSE), colour = "darkslateblue") +
+  geom_hline(yintercept = 0) +
+  ggtitle("Autocorrelación") +
+  labs(x = "Rezago") + 
+  general_theme) 
+# plot(ts(whitenoise$y, start = 1, end = 100))
+```
+
+La segunda gráfica lleva el nombre de **correlograma**, la cual esta creada con los valores de autocorrelación, los cuales se ven en el siguiente capítulo.
+
+## Caminata aleatoria
+
+Es un proceso estocástico $X_t$ donde la primera diferencia de este proceso es un ruido blanco: $\nabla X_{t} = \epsilon_t$
+
+```{r}
+set.seed(123)
+walkRandom <- tibble(time = 1:100, random = rnorm(100), walk = cumsum(random))
+(walkRandom %>%
+  ggplot(aes(x = time, y = walk)) +
+  geom_line(color = "dodgerblue3") + 
+  labs(x = "Tiempo", y = NULL) +
+  ggtitle("Caminata Aleatoria") +
+  general_theme) + 
+(autoplot(acf(ts(walkRandom$walk), plot = FALSE), colour = "dodgerblue3") +
+  geom_hline(yintercept = 0) +
+  ggtitle("Autocorrelación") +
+  labs(x = "Rezago") + 
+  general_theme)
+```
+
+La anterior gráfica esta basada en 100 simulaciones de una normal estándar bajo con una semilla en 123.
+
+## Series de tiempo
+
+Según las características de las series de tiempo estas pueden clasificarse en:
+
+**Estacionarias**: Una serie de tiempo estacionaria es estable a lo largo del tiempo, es decir su media, varianza y **autocovarianza** (en diferentes rezagos o diferentes tiempos) son constantes en el tiempo.
+
+Es decir que sin importar el momento en que se midan (invariantes respecto al tiempo) se debe cumplir lo siguiente:
+
++ Media: $\mathbb{E}(X_t) = \mathbb{E}(X_{t+k}) = \mu$
++ Varianza: $Var(X_t) = Var(X_{t+k}) = \sigma^2$
++ Covarianza: $\mathbb{E}[(X_t-\mu)(X_{t+k}-\mu)] = \gamma_k$
+
+Aquí se muestra un ejemplo en el cual la varianza no cambia a lo largo del tiempo y la media permanece constante
+
+```{r}
+set.seed(24)
+whitenoise <- tibble(x = 1:100, y = rnorm(100, mean = 0, sd = 1))
+whitenoise %>% filter(y>-4) %>%
+  ggplot(aes(x = x, y = y)) +
+  geom_line(color = "darkslateblue") + 
+  lims(y = c(-4, 4)) + 
+  labs(x = NULL, y = NULL) + 
+  geom_hline(yintercept = 0, color = "navy") +
+  geom_hline(yintercept = c(max(whitenoise$y), min(whitenoise$y[whitenoise$y>=-4])), color = "firebrick4") +
+  general_theme +
+  theme(axis.text = element_blank(), axis.ticks = element_blank(),
+        axis.line= element_line(colour = "black"),
+        plot.caption  = element_text(hjust = 0.5)) + 
+  labs(caption = "Varianza cte. tendencia cte.") 
+```
+
+
+**No estacionaria**: Son series en las cuales la tendencia y/o variabilidad cambian en el tiempo. Los cambios en la media determinan una tendencia a crecer o decrecer a largo plazo, por lo que la serie no oscila alrededor de un valor constante. Existen muchos casos en este tipo de series, aquí se muestran algunos ejemplos.
+
+```{r}
+# births <- scan("http://robjhyndman.com/tsdldata/data/nybirths.dat")
+# births <- births[25:length(births)]
+births <- c(21.937, 20.035, 23.59, 21.672, 22.222, 22.123, 23.95, 23.504, 22.238, 23.142, 21.059, 21.573, 21.548, 20, 22.424, 20.615, 21.761, 22.874, 24.104, 23.748, 23.262, 22.907, 21.519, 22.025, 22.604, 20.894, 24.677, 23.673, 25.32, 23.583, 24.671, 24.454, 24.122, 24.252, 22.084, 22.991, 23.287, 23.049, 25.076, 24.037, 24.43, 24.667, 26.451, 25.618, 25.014, 25.11, 22.964, 23.981, 23.798, 22.27, 24.775, 22.646, 23.988, 24.737, 26.276, 25.816, 25.21, 25.199, 23.162, 24.707, 24.364, 22.644, 25.565, 24.062, 25.431, 24.635, 27.009, 26.606, 26.268, 26.462, 25.246, 25.18, 24.657, 23.304, 26.982, 26.199, 27.21, 26.122, 26.706, 26.878, 26.152, 26.379, 24.712, 25.688, 24.99, 24.239, 26.721, 23.475, 24.767, 26.219, 28.361, 28.599, 27.914, 27.784, 25.693, 26.881, 26.217, 24.218, 27.914, 26.975, 28.527, 27.139, 28.982, 28.169, 28.056, 29.136, 26.291, 26.987, 26.589, 24.848, 27.543, 26.896, 28.878, 27.39, 28.065, 28.141, 29.048, 28.484, 26.634, 27.735, 27.132, 24.924, 28.963, 26.589, 27.931, 28.009, 29.229, 28.759, 28.405, 27.945, 25.912, 26.619, 26.076, 25.286, 27.66, 25.951, 26.398, 25.565, 28.865, 30, 29.261, 29.012, 26.992, 27.897)
+# birthstimeseries <- ts(births, frequency=12, start=c(1948,1))
+# birthstimeseries
+# g <- birthstimeseries %>% autoplot()
+# ggplotly(g)
+vctnc <- tibble(x = 1:length(births), y = births) %>% 
+  ggplot(aes(x = x, y = y)) + 
+  geom_line(color = "darkslateblue") + 
+  geom_abline(slope = (28.599-26.451)/(92-43), intercept = 24.5, color = "firebrick4") +
+  geom_abline(slope = (28.599-26.451)/(92-43), intercept = 19.4, color = "firebrick4") +
+  geom_abline(slope = (28.599-26.451)/(92-43), intercept = 21.5, color = "navy") +
+  labs(caption = "Varianza cte. tendencia no cte.") +
+  general_theme +
+  theme(axis.text = element_blank(), axis.ticks = element_blank(),
+        axis.line= element_line(colour = "black"), 
+        plot.caption  = element_text(hjust = 0.5)) +
+  labs(x = NULL, y = NULL)
+
+vnttnc <- tibble(x = 1:length(AirPassengers),y = AirPassengers) %>% ggplot(aes(x = x, y = y)) + 
+  geom_line(color = "darkslateblue") + 
+  geom_abline(slope = (622-132)/(139-3), intercept = 122, color = "firebrick4") +
+  geom_abline(slope = (390-199)/(143-62), intercept = 30, color = "firebrick4") +
+  geom_abline(slope = (490.2871-275.6924)/(139-67), intercept = 76, color = "navy") +
+  labs(caption = "Varianza no cte. tendencia no cte.") +
+  general_theme +
+  theme(axis.text = element_blank(), axis.ticks = element_blank(),
+        axis.line= element_line(colour = "black"), 
+        plot.caption  = element_text(hjust = 0.5)) +
+  labs(x = NULL, y = NULL)
+
+set.seed(10)
+datos <- map_dbl(0:200, ~rnorm(1, mean = 0, sd = .x*0.01))
+
+vnctc <- tibble(x = 0:(length(datos)-1), y = datos) %>% 
+  ggplot(aes(x = x, y = y)) + 
+  geom_line(color = "darkslateblue") + 
+  geom_abline(slope = (1.95)/(88), intercept = 0, color = "firebrick4") +
+  geom_abline(slope = (-3.620786)/(156), intercept = 0, color = "firebrick4") +
+  geom_hline(yintercept = 0, color = "navy") +
+  labs(caption = "Varianza no cte. tendencia cte.") +
+  lims(x = c(9, 200)) +
+  general_theme +
+  theme(axis.text = element_blank(), axis.ticks = element_blank(),
+        axis.line= element_line(colour = "black"), 
+        plot.caption  = element_text(hjust = 0.5),
+        panel.grid = element_blank(),
+        panel.border = element_blank()) +
+  labs(x = NULL, y = NULL)
+
+vctnc + vnttnc + vnctc 
+```
+En resumen, si una serie es estacionaria, su media, su varianza y su autocovarianza (en diferentes rezagos) permanecen iguales sin importar el momento en el cual se midan; es decir, son invariantes respecto al tiempo.
+
+## Ejercicios
+1. Reproducir la caminata aleatoria con semilla (123) mostrada en la gráfica anterior. Ver ¿qué sucede al aumentar el número de simulaciones $(n=1000)$? ¿Por qué sucede este nuevo comportamiento?
+
+2. Un proceso es estacionario débil en orden 2 si tiene media y varianzas constantes (Seleccione la opción correcta)
+a) Cierto
+b) Falso
+
+3. Utilizar los datos en el objeto "AirPassengers" que corresponden a 144 mediciones del número de pasajeros mensuales en líneas aereas y grafique la serie de la diferencia de los logartimos de los datos.¿El gráfico sugiere que un modelo estacionario podría ser apropiada para las diferencias de los logarítmos? 
+
+[^1.1]: El nombre de ruido blanco puede explicarse fácilmente en el análisis espectral en series de tiempo, el cual hace un estudio sobre la frecuencia y no tanto sobre el tiempo. Este no se verá en este material pero se puede estudiar a detalle esto en el libro @cryer2008time. Bajo un análisis espectral, en un proceso de ruido, su función de densidad espectral (se puede pensar la densidad espectral como la cantidad de varianza en un intervalo $(\omega, \omega+d\omega)$ que aporta un modelo basado en una serie de Fourier) es constante, es decir que esto sucede para todas las frecuencias. Esto es análogo al espectro de luz blanca en el ámbito físico; ya que todos los colores se distribuyen uniformemente para formar la luz blanca.

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 6 \(AR(p)\): Proceso Autoregresivo | Análisis de Series de Tiempo</title>
+  <meta name="description" content="Material para el curso Análisis de Supervivencia y Series de Tiempo en la Facultad de Ciencias, Universidad Nacional Autónoma de México" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 6 \(AR(p)\): Proceso Autoregresivo | Análisis de Series de Tiempo" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Material para el curso Análisis de Supervivencia y Series de Tiempo en la Facultad de Ciencias, Universidad Nacional Autónoma de México" />
+  <meta name="github-repo" content="svg18/Series-de-Tiempo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 6 \(AR(p)\): Proceso Autoregresivo | Análisis de Series de Tiempo" />
+  
+  <meta name="twitter:description" content="Material para el curso Análisis de Supervivencia y Series de Tiempo en la Facultad de Ciencias, Universidad Nacional Autónoma de México" />
+  
+
+<meta name="author" content="Sofía Villers Gómez" />
+<meta name="author" content="Carlos Fernando Vásquez Guerra" />
+<meta name="author" content="David Alberto Mateos Montes de Oca" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="transformaciones.html"/>
+<link rel="next" href="maq-proceso-de-medias-móviles.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Análisis de Series de Tiempo</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#objetivos"><i class="fa fa-check"></i>Objetivos</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#estructura"><i class="fa fa-check"></i>Estructura</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#detalles-técnicos"><i class="fa fa-check"></i>Detalles técnicos</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#licencia"><i class="fa fa-check"></i>Licencia</a></li>
+</ul></li>
+<li class="part"><span><b>I Series de tiempo</b></span></li>
+<li class="chapter" data-level="1" data-path="introducción.html"><a href="introducción.html"><i class="fa fa-check"></i><b>1</b> Introducción</a></li>
+<li class="chapter" data-level="2" data-path="descomposión-temporal.html"><a href="descomposión-temporal.html"><i class="fa fa-check"></i><b>2</b> Descomposión temporal</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="descomposión-temporal.html"><a href="descomposión-temporal.html#ejercicios"><i class="fa fa-check"></i><b>2.1</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="procesos-estocásticos.html"><a href="procesos-estocásticos.html"><i class="fa fa-check"></i><b>3</b> Procesos estocásticos</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="procesos-estocásticos.html"><a href="procesos-estocásticos.html#proceso-estocástico-estacionario"><i class="fa fa-check"></i><b>3.1</b> Proceso estocástico estacionario</a></li>
+<li class="chapter" data-level="3.2" data-path="procesos-estocásticos.html"><a href="procesos-estocásticos.html#ruido-blanco-white-noise"><i class="fa fa-check"></i><b>3.2</b> Ruido blanco (“white noise”)</a></li>
+<li class="chapter" data-level="3.3" data-path="procesos-estocásticos.html"><a href="procesos-estocásticos.html#caminata-aleatoria"><i class="fa fa-check"></i><b>3.3</b> Caminata aleatoria</a></li>
+<li class="chapter" data-level="3.4" data-path="procesos-estocásticos.html"><a href="procesos-estocásticos.html#series-de-tiempo"><i class="fa fa-check"></i><b>3.4</b> Series de tiempo</a></li>
+<li class="chapter" data-level="3.5" data-path="procesos-estocásticos.html"><a href="procesos-estocásticos.html#ejercicios-1"><i class="fa fa-check"></i><b>3.5</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="funciones-de-autocovarianza-y-autocorrelación.html"><a href="funciones-de-autocovarianza-y-autocorrelación.html"><i class="fa fa-check"></i><b>4</b> Funciones de autocovarianza y autocorrelación</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="funciones-de-autocovarianza-y-autocorrelación.html"><a href="funciones-de-autocovarianza-y-autocorrelación.html#función-de-autocorrelación-parcial"><i class="fa fa-check"></i><b>4.1</b> Función de autocorrelación parcial</a></li>
+<li class="chapter" data-level="4.2" data-path="funciones-de-autocovarianza-y-autocorrelación.html"><a href="funciones-de-autocovarianza-y-autocorrelación.html#correlograma"><i class="fa fa-check"></i><b>4.2</b> Correlograma</a></li>
+<li class="chapter" data-level="4.3" data-path="funciones-de-autocovarianza-y-autocorrelación.html"><a href="funciones-de-autocovarianza-y-autocorrelación.html#prueba-de-ljung-box"><i class="fa fa-check"></i><b>4.3</b> Prueba de Ljung-Box</a></li>
+<li class="chapter" data-level="4.4" data-path="funciones-de-autocovarianza-y-autocorrelación.html"><a href="funciones-de-autocovarianza-y-autocorrelación.html#ejercicios-2"><i class="fa fa-check"></i><b>4.4</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="transformaciones.html"><a href="transformaciones.html"><i class="fa fa-check"></i><b>5</b> Transformaciones</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="transformaciones.html"><a href="transformaciones.html#suavizamiento-por-medias-móviles"><i class="fa fa-check"></i><b>5.1</b> Suavizamiento por medias móviles</a></li>
+<li class="chapter" data-level="5.2" data-path="transformaciones.html"><a href="transformaciones.html#suavizamiento-por-polinomios-ajustados"><i class="fa fa-check"></i><b>5.2</b> Suavizamiento por polinomios ajustados</a></li>
+<li class="chapter" data-level="5.3" data-path="transformaciones.html"><a href="transformaciones.html#diferencias-de-box-jenkins"><i class="fa fa-check"></i><b>5.3</b> Diferencias de Box-Jenkins</a></li>
+<li class="chapter" data-level="5.4" data-path="transformaciones.html"><a href="transformaciones.html#ejercicios-3"><i class="fa fa-check"></i><b>5.4</b> Ejercicios</a></li>
+</ul></li>
+<li class="part"><span><b>II Procesos lineales estacionarios</b></span></li>
+<li class="chapter" data-level="6" data-path="arp-proceso-autoregresivo.html"><a href="arp-proceso-autoregresivo.html"><i class="fa fa-check"></i><b>6</b> <span class="math inline">\(AR(p)\)</span>: Proceso Autoregresivo</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="arp-proceso-autoregresivo.html"><a href="arp-proceso-autoregresivo.html#proceso-autoregresivo-de-orden-1-ar1"><i class="fa fa-check"></i><b>6.1</b> Proceso Autoregresivo de orden 1: <span class="math inline">\(AR(1)\)</span></a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="arp-proceso-autoregresivo.html"><a href="arp-proceso-autoregresivo.html#estacionario-en-media"><i class="fa fa-check"></i><b>6.1.1</b> Estacionario en Media</a></li>
+<li class="chapter" data-level="6.1.2" data-path="arp-proceso-autoregresivo.html"><a href="arp-proceso-autoregresivo.html#estacionario-en-covarianza"><i class="fa fa-check"></i><b>6.1.2</b> Estacionario en Covarianza</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="arp-proceso-autoregresivo.html"><a href="arp-proceso-autoregresivo.html#proceso-autoregresivo-de-orden-2-ar2"><i class="fa fa-check"></i><b>6.2</b> Proceso Autoregresivo de orden 2: <span class="math inline">\(AR(2)\)</span></a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="arp-proceso-autoregresivo.html"><a href="arp-proceso-autoregresivo.html#estacionario-en-media-1"><i class="fa fa-check"></i><b>6.2.1</b> Estacionario en Media</a></li>
+<li class="chapter" data-level="6.2.2" data-path="arp-proceso-autoregresivo.html"><a href="arp-proceso-autoregresivo.html#estacionario-en-covarianza-1"><i class="fa fa-check"></i><b>6.2.2</b> Estacionario en Covarianza</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="maq-proceso-de-medias-móviles.html"><a href="maq-proceso-de-medias-móviles.html"><i class="fa fa-check"></i><b>7</b> <span class="math inline">\(MA(q)\)</span>: Proceso de Medias Móviles</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="maq-proceso-de-medias-móviles.html"><a href="maq-proceso-de-medias-móviles.html#proceso-de-medias-móviles-de-orden-1-ma1"><i class="fa fa-check"></i><b>7.1</b> Proceso de Medias Móviles de orden 1: <span class="math inline">\(MA(1)\)</span></a></li>
+<li class="chapter" data-level="7.2" data-path="maq-proceso-de-medias-móviles.html"><a href="maq-proceso-de-medias-móviles.html#proceso-de-medias-móviles-de-orden-2-ma2"><i class="fa fa-check"></i><b>7.2</b> Proceso de Medias Móviles de orden 2: <span class="math inline">\(MA(2)\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="armapq-proceso-autoregresivo-de-medias-móviles.html"><a href="armapq-proceso-autoregresivo-de-medias-móviles.html"><i class="fa fa-check"></i><b>8</b> <span class="math inline">\(ARMA(p,q)\)</span>: Proceso Autoregresivo de Medias Móviles</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="armapq-proceso-autoregresivo-de-medias-móviles.html"><a href="armapq-proceso-autoregresivo-de-medias-móviles.html#arma11"><i class="fa fa-check"></i><b>8.1</b> <span class="math inline">\(ARMA(1,1)\)</span></a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="armapq-proceso-autoregresivo-de-medias-móviles.html"><a href="armapq-proceso-autoregresivo-de-medias-móviles.html#media"><i class="fa fa-check"></i><b>8.1.1</b> Media</a></li>
+<li class="chapter" data-level="8.1.2" data-path="armapq-proceso-autoregresivo-de-medias-móviles.html"><a href="armapq-proceso-autoregresivo-de-medias-móviles.html#covarianzas"><i class="fa fa-check"></i><b>8.1.2</b> Covarianzas</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III Procesos lineales no estacionarios</b></span></li>
+<li class="chapter" data-level="9" data-path="arimapdq-proceso-autoregresivo-integrado-y-de-medias-móviles.html"><a href="arimapdq-proceso-autoregresivo-integrado-y-de-medias-móviles.html"><i class="fa fa-check"></i><b>9</b> <span class="math inline">\(ARIMA(p,d,q)\)</span>: Proceso Autoregresivo Integrado y de Medias Móviles</a></li>
+<li class="chapter" data-level="10" data-path="imadq-proceso-integrado-y-de-media-móvil.html"><a href="imadq-proceso-integrado-y-de-media-móvil.html"><i class="fa fa-check"></i><b>10</b> <span class="math inline">\(IMA(d,q)\)</span>: Proceso Integrado y de Media Móvil</a></li>
+<li class="part"><span><b>IV Otras consideraciones</b></span></li>
+<li class="chapter" data-level="11" data-path="predictores-lineales.html"><a href="predictores-lineales.html"><i class="fa fa-check"></i><b>11</b> Predictores Lineales</a></li>
+<li class="chapter" data-level="12" data-path="modelacion-univariada.html"><a href="modelacion-univariada.html"><i class="fa fa-check"></i><b>12</b> Construcción de modelos para series de tiempo univariadas</a></li>
+<li class="part"><span><b>V Procesos no lineales</b></span></li>
+<li class="chapter" data-level="13" data-path="introducción-1.html"><a href="introducción-1.html"><i class="fa fa-check"></i><b>13</b> Introducción</a></li>
+<li class="chapter" data-level="14" data-path="archq-proceso-autoregresivo-con-heterocedasticidad-condicional.html"><a href="archq-proceso-autoregresivo-con-heterocedasticidad-condicional.html"><i class="fa fa-check"></i><b>14</b> <span class="math inline">\(ARCH(q)\)</span>: Proceso Autoregresivo con Heterocedasticidad Condicional</a></li>
+<li class="chapter" data-level="15" data-path="garchpq-proceso-autoregresivo-generalizado-con-heterocedasticidad-condicional.html"><a href="garchpq-proceso-autoregresivo-generalizado-con-heterocedasticidad-condicional.html"><i class="fa fa-check"></i><b>15</b> <span class="math inline">\(GARCH(p,q)\)</span>: Proceso Autoregresivo Generalizado con Heterocedasticidad Condicional</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Hecho con bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Análisis de Series de Tiempo</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="arp-proceso-autoregresivo" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Capítulo 6</span> <span class="math inline">\(AR(p)\)</span>: Proceso Autoregresivo<a href="arp-proceso-autoregresivo.html#arp-proceso-autoregresivo" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Los modelos autoregresivos se basan en la idea de que el valor actual de la serie <span class="math inline">\(X_t\)</span>, puede explicarse en función de <span class="math inline">\(p\)</span> valores pasados <span class="math inline">\(X_{t-1},X_{t-2},...X_{t-p}\)</span>, donde <span class="math inline">\(p\)</span> determina el número de rezagos necesarios para pronosticar un valor actual.</p>
+<p>El modelo autoregresivo de orden <span class="math inline">\(p\)</span> está dado por:</p>
+<p><span class="math display">\[
+X_t=\phi_0+\phi_1X_{t-1}+\phi_2X_{t-2}+...+\phi_pX_{t-p}+\epsilon_t
+\]</span></p>
+<p>Expresado en términos del operador de retardos</p>
+<p><span class="math display">\[
+X_t-\phi_0-\phi_1X_{t-1}-\phi_2X_{t-2}-...-\phi_pX_{t-p}=\epsilon_t
+\\-\phi_0+(1-\phi_1B-\phi_2B^2-\phi_3B^3-...-\phi_pB^p)X_t=\epsilon_t
+\\\phi_p(B)X_t=\epsilon_t+\phi_0
+\]</span></p>
+<p>donde <span class="math inline">\(\epsilon_t\)</span> es un proceso de ruido blanco y <span class="math inline">\(\phi_0,\phi_1,\phi_2,...\phi_p\)</span> son parámetros del modelo.</p>
+<div id="proceso-autoregresivo-de-orden-1-ar1" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Proceso Autoregresivo de orden 1: <span class="math inline">\(AR(1)\)</span><a href="arp-proceso-autoregresivo.html#proceso-autoregresivo-de-orden-1-ar1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En los procesos <span class="math inline">\(AR(1)\)</span> la variable <span class="math inline">\(X_t\)</span> está determinada únicamente por el valor pasado, esto es <span class="math inline">\(X_{t-1}\)</span>.</p>
+<p><span class="math display">\[
+X_t=\phi_0+\phi_1X_{t-1}+\epsilon_t
+\]</span></p>
+<p>Donde <span class="math inline">\(\epsilon_t\)</span> es un ruido blanco con media <span class="math inline">\(0\)</span> y con varianza <span class="math inline">\(\sigma^2\)</span> e independiente de <span class="math inline">\(X_t\)</span>. Para verificar que sea estacionario (débilmente) se debe verificar la estacionalidad en media y covarianza.</p>
+<div id="estacionario-en-media" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Estacionario en Media<a href="arp-proceso-autoregresivo.html#estacionario-en-media" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[
+\begin{split}
+\mathbb{E}(X_t) &amp;= \mathbb{E}(\phi_0+\phi_1X_{t-1}+ \epsilon_t)= \phi_0 + \phi_1 \mathbb{E}(X_{t-1}) + \mathbb{E}(\epsilon_t)\\
+&amp; = \phi_0 + \phi_1\mathbb{E}(X_{t-1})\\
+\end{split}
+\]</span>
+Para que <span class="math inline">\(X_t\)</span> sea estacionario en la media se debe cumplir que <span class="math inline">\(E(X_t)=E(X_{t-1})\)</span></p>
+<p>Entonces:</p>
+<p><span class="math display">\[
+(1-\phi_1)\mathbb{E}(X_t)=\phi_0   \       \       \Longrightarrow \  \ E(X_t)= \frac {\phi_0}{1-\phi_1}
+\]</span>
+por lo tanto <span class="math inline">\(E(X_t)=\frac {\phi_0}{1-\phi_1}\)</span> y <span class="math inline">\(\phi_1\neq1\)</span>.</p>
+</div>
+<div id="estacionario-en-covarianza" class="section level3 hasAnchor" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> Estacionario en Covarianza<a href="arp-proceso-autoregresivo.html#estacionario-en-covarianza" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para que <span class="math inline">\(AR(1)\)</span> sea estacionario, la varianza tiene que ser constante y finita en el tiempo.</p>
+<p><span class="math display">\[
+\begin{split}
+\gamma_0 &amp;= Var(X_t)=\mathbb{E} \left[(X_t -\mathbb{E}(X_t))^{2}\right]\\
+&amp;= \mathbb{E}\left[(\phi_0+\phi_1X_{t-1}+\epsilon_t-\phi_0-\phi_1\mathbb{E}(X_{t-1}))^2\right]\\
+&amp; = \mathbb{E}\left[(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\epsilon_t)^2\right]\\
+&amp; = \mathbb{E}\left[\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))^2+2\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))\epsilon_t+\epsilon_t^2\right]\\
+&amp; = \phi^2 \mathbb{E}\left[(X_{t-1}-\mathbb{E}(X_{t-1}))^2\right] +2\phi_1\mathbb{E}\left[X_{t-1}-\mathbb{E}(X_{t-1})\right]\mathbb{E}(\epsilon_t)+\mathbb{E}[\epsilon_t^2]\\
+&amp;= \phi_1^2 Var(X_{t-1})+ \sigma^2
+\end{split}
+\]</span></p>
+<p>Buscamos que <span class="math inline">\(X_t\)</span> sea estacionario en la varianza, por lo que bajo el supuesto de proceso estacionario:</p>
+<p><span class="math display">\[
+\begin{split}
+&amp;\Longrightarrow  Var(X_t)=Var(X_{t-1})\\
+&amp;\Longrightarrow  Var(X_t)= \gamma_0= \phi_1^2 Var(X_{t-1})+\sigma^2\\
+&amp;\Longrightarrow \gamma_0=\phi_1^2 \gamma_0+ \sigma^2 \Longrightarrow (1-\phi_1^2) \gamma_0=\sigma^2\\
+&amp;\Longrightarrow \gamma_0 = \frac{\sigma^2}{1-\phi_1^2}
+\end{split}
+\]</span></p>
+<p>Véase que para que sea estacionario, con varianza constante y finita es necesario que <span class="math inline">\(| \phi_1|&lt; 1\)</span>. En resumen</p>
+<p><span class="math display">\[Var(X_t)= \gamma_0 = \frac{\sigma^2}{1-\phi^2}\]</span></p>
+<p>Respecto a la covarianza <span class="math inline">\(Cov(X_t,X_{t-k})\)</span> para <span class="math inline">\(K=1,...\)</span>, se tiene lo siguiente</p>
+<p><span class="math display">\[
+\begin{split}
+Cov(X_t,X_{t-k})&amp;=\gamma_k = \mathbb{E}\left[(X_t-\mathbb{E}(X_t))(X_{t-k}-\mathbb{E}(X_{t-k}))\right]\\
+&amp; = \mathbb{E}\left[(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\epsilon_t)(X_{t-k}-\mathbb{E}(X_{t-k}))\right]\\
+&amp; = \mathbb{E}\left[\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))(X_{t-k}-\mathbb{E}(X_{t-k}))\right] + \mathbb{E}\left[\epsilon_t(X_{t-k}-\mathbb{E}(X_{t-k}))\right]\\
+&amp; = \phi_1\mathbb{E}\left[(X_{t-1}-\mathbb{E}(X_{t-1}))(X_{t-k}-\mathbb{E}(X_{t-k}))\right] = \phi_1\gamma_{k-1}
+\end{split}
+\]</span></p>
+<p><span class="math display">\[
+\begin{array}{lc}
+\mbox{Entonces: } &amp;
+\begin{array}{c}
+\gamma_1= \gamma_0 \phi\\
+\gamma_2 =\gamma_1\phi\\
+\vdots
+\end{array}
+\end{array}
+\]</span></p>
+<p><span class="math inline">\(\therefore AR(1)\)</span> es estacionario en covarianza si <span class="math inline">\(|\phi_1|&lt;1\)</span> y la <strong>función de covarianza</strong> será:</p>
+<p><span class="math display">\[
+\gamma_k=
+\left\{
+\begin{aligned}
+\frac{\sigma^2}{1-\phi_1^2} \ \ \   \  k=0\\
+\phi_1 \gamma_{k-1} \ \ \ \ k&gt;0
+\end{aligned}
+\right.
+\]</span></p>
+<p>Los <strong>coeficientes de correlación</strong> quedan determinados por la siguiente expresión:</p>
+<p><span class="math display">\[
+\rho_k = \frac{Cov(X_t, X_{t-k})}{\sqrt{Var(X_t)}\sqrt{Var(X_{t-k})}} = \frac{\gamma_k}{\gamma_0} = \frac{\phi_1\gamma_{k-1}}{\gamma_0} = \phi_1\frac{\gamma_{k-1}}{\gamma_0} = \phi_1\rho_{k-1}
+\]</span></p>
+<p>Por lo que la <strong>función de autocorrelación</strong> para <span class="math inline">\(AR(1)\)</span> es :</p>
+<p><span class="math display">\[
+\rho_k=
+\left\{
+\begin{aligned}
+1  \ \ \ \ \ \ k=0\\
+\phi \rho_{k-1} \ \ \ \ k\geq 1
+\end{aligned}
+\right.
+=
+\left\{
+\begin{array}{lr}
+1 &amp;  k=0\\
+\phi_1\frac{\gamma_{k-1}}{\gamma_o} &amp; k\geq 1
+\end{array}
+\right.
+\]</span></p>
+<p>Observemos que para el modelo <span class="math inline">\(AR(1)\)</span>, la función de autocorrelación es exponencial</p>
+<p><span class="math display">\[
+\begin{split}
+\rho_0 &amp;= 1\\
+\rho_1&amp;=\phi_1\rho_o=\phi_1\\
+\rho_2&amp;=\phi_1\rho_1=\phi_1^2\\
+&amp;\ \ \vdots\\
+\rho_k&amp;=\phi_1^k
+\end{split}
+\implies
+\rho_k=
+\left\{
+\begin{array}{lr}
+1  &amp; k=0\\
+\phi_1^2 &amp; k\geq 1
+\end{array}
+\right.
+\]</span></p>
+<ul>
+<li>Caso particular: <span class="math inline">\(AR(1): X_t = \phi_1X_{t-1}+\epsilon_t\)</span>, es decir que <span class="math inline">\(\phi_0 = 0\)</span>. Para este caso se tiene <span class="math inline">\(\mathbb{E}(X_t) = \phi_1\mathbb{E}(X_{t-1})\implies(1-\phi_1)\mathbb{E}(X_t) = 0\implies\mathbb{E}(X_t) = \frac{0}{(1-\phi_1)} = 0\)</span>.</li>
+</ul>
+<p>A continuación se muestran los resultados para un modelo <span class="math inline">\(AR(1)\)</span> de la siguiente forma <span class="math inline">\(X_t=0.35X_{t-1}+\epsilon_t\)</span></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Además de las gráficas de Autocorrelación simple y parcial.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="proceso-autoregresivo-de-orden-2-ar2" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Proceso Autoregresivo de orden 2: <span class="math inline">\(AR(2)\)</span><a href="arp-proceso-autoregresivo.html#proceso-autoregresivo-de-orden-2-ar2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En los procesos <span class="math inline">\(AR(2)\)</span> la variable <span class="math inline">\(X_t\)</span> está determinada por el valor pasado y el anterior a este.</p>
+<p><span class="math display">\[
+X_t=\phi_0 + \phi_1 X_{t-1}+\phi_2 X_{t-2}+\epsilon_t
+\]</span></p>
+<p>Donde <span class="math inline">\(\epsilon_t\)</span> es un ruido blanco (media cero y varianza <span class="math inline">\(\sigma^2\)</span>). Asumiendo estacionariedad débil, se tiene que la media y la varianza del proceso serán las siguientes.</p>
+<div id="estacionario-en-media-1" class="section level3 hasAnchor" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Estacionario en Media<a href="arp-proceso-autoregresivo.html#estacionario-en-media-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Bajo el supuesto de estacionalidad:</p>
+<p><span class="math display">\[
+\begin{split}
+&amp; \mathbb{E}(X_t) = \mathbb{E}(X_{t-1}) = \mathbb{E}(X_{t-2})\\
+\implies &amp;(1-\phi_1-\phi_2)\mathbb{E}(X_t) = \phi_0\\
+\implies &amp;\mathbb{E}(X_t) = \frac{\phi_0}{1-\phi_1-\phi_2}
+\end{split}
+\]</span></p>
+<p><span class="math inline">\(\therefore\)</span> Para que sea estacionario, se tiene que cumplir que <span class="math inline">\(1-\phi_1-\phi_2 \neq 0\)</span>.</p>
+</div>
+<div id="estacionario-en-covarianza-1" class="section level3 hasAnchor" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> Estacionario en Covarianza<a href="arp-proceso-autoregresivo.html#estacionario-en-covarianza-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[
+\begin{split}
+\gamma_0 &amp;= \mathbb{E}\left[(X_t-\mathbb{E}(X_t))^2\right]\\
+&amp; = \mathbb{E}\left[(\phi_0+\phi_1 X_{t-1}+\phi_2 X_{t-2}+\epsilon_t-\phi_0 -\phi_1\mathbb{E}(X_{t-1})-\phi_2 \mathbb{E}(X_{t-2}))^2\right]\\
+&amp; = \mathbb{E}\left[(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\phi_2(X_{t-2}-\mathbb{E}(X_{t-2}))+\epsilon_0)^2\right]\\
+&amp; = \mathbb{E}[\phi_1^2(X_{t-1}-\mathbb{E}(X_{t-1}))^2 + 2\phi_1\phi_2(X_{t-1}-\mathbb{E}(X_{t-1}))(X_{t-2}-\mathbb{E}(X_{t-2}))\\
+&amp; \ \ \ \ \ \ \ \ + \phi_2^2(X_{t-2}-\mathbb{E}(X_{t-2}))^2+\epsilon_0^2+\cdots]\\
+&amp; = \phi_1^2\gamma_0+2\phi_1\phi_2\gamma_1+\phi_2^2\gamma_0+\sigma^2
+\end{split}
+\]</span></p>
+<p>Pero, véase lo siguiente</p>
+<p><span class="math display">\[
+\begin{split}
+\gamma_1 &amp;= \mathbb{E}\left[(X_{t}-\mathbb{E}(X_{t}))(X_{t-1}-\mathbb{E}(X_{t-1}))\right]\\
+&amp;=\mathbb{E}\left[(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\phi_2(X_{t-2}-\mathbb{E}(X_{t-2}))+\epsilon_t)(X_{t-1}-\mathbb{E}(X_{t-1}))\right]\\
+&amp;= \mathbb{E}\left[\phi_1(X_{t-1}-\mathbb{E}(X_{t-2}))^2+\phi_2(X_{t-1}-\mathbb{E}(X_{t-1}))(X_{t-2}-\mathbb{E}(X_{t-2}))+\epsilon_t(X_{t-1}-\mathbb{E}(X_{t-1}))\right]\\
+&amp;=\phi_1\gamma_0+\phi_2\gamma_1\\
+\implies &amp;\gamma_1 = \frac{\phi_1}{(1-\phi_2)}\gamma_0 = \phi_1\gamma_0+\phi_2\gamma_1
+\end{split}
+\]</span></p>
+<p>En general la autocovarianza de orden <span class="math inline">\(k\)</span>, para <span class="math inline">\(k&gt;1\)</span> será:</p>
+<p><span class="math display">\[
+\begin{split}
+\gamma_k &amp;= \mathbb{E}\left[(X_{t}-\mathbb{E}(X_{t})(X_{t-k}-\mathbb{E}(X_{t-k})\right]\\
+&amp; = \mathbb{E}\left[(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\phi_2(X_{t-2}-\mathbb{E}(X_{t-2}))+\epsilon_t)(X_{t-k}-\mathbb{E}(X_{t-k})\right]\\
+&amp;=\mathbb{E}\left\{[\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))][(X_{t-k}-\mathbb{E}(X_{t-k}))]\right\} + \mathbb{E}\left\{[\phi_2(X_{t-2}-\mathbb{E}(X_{t-2}))][(X_{t-k}-\mathbb{E}(X_{t-k}))]\right\} \\
+&amp; = \phi_1\gamma_{k-1}+\phi_2\gamma_{k-2}
+\end{split}
+\]</span></p>
+<p>Entonces la <strong>función de autocovarianza</strong> de un modelo <span class="math inline">\(AR(2)\)</span> es la siguiente</p>
+<p><span class="math display">\[
+\gamma_k = \left\{
+\begin{array}{ccc}
+\gamma_0 &amp; \mbox{   si }&amp; k=0\\
+\gamma_1 &amp; \mbox{   si }&amp; k=1\\
+\phi_1\gamma_{k-1}+\phi_2\gamma_{k-2}&amp; \mbox{si} &amp; k&gt;1\\
+\end{array}
+\right.
+\]</span>
+Y la correspondiente <strong>función de autocorrelación</strong> de un modelo <span class="math inline">\(AR(2)\)</span> es:</p>
+<p><span class="math display">\[
+\rho_k = \left\{
+\begin{array}{ccc}
+1 &amp; \mbox{   si }&amp; k=0\\
+\frac{\gamma_1}{\gamma_0} = \frac{\phi_1}{1-\phi_2} &amp; \mbox{   si }&amp; k=1\\
+\phi_1\rho_{k-1}+\phi_2\rho_{k-2}&amp; \mbox{si}&amp; k&gt;1\\
+\end{array}
+\right.
+\]</span></p>
+<p>A continuación se da un ejemplo de un modelo <span class="math inline">\(AR(2)\)</span> de la siguiente forma <span class="math inline">\(X_t=0.8X_{t-1}-0.4X_{t-2}+\epsilon_t\)</span></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Y al igual que para el ejemplo del modelo <span class="math inline">\(AR(1)\)</span>, se agregan las gráficas de autocorrelación simple y parcial.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Algo interesante de tener los procesos en términos de operadores de retardos es que podemos obtener las condiciones de estacionariedad en <span class="math inline">\(AR\)</span> por las raíces del polinomio que se deriva de esta notación:</p>
+<p><span class="math display">\[
+\begin{split}
+AR(1):&amp; X_t = \phi_1 X_{t-1}+\epsilon_t\\
+\implies &amp; (1-\phi_1 B)X_t = \epsilon_t\\
+\implies &amp;B = \frac{1}{\phi_1}\implies |\phi_1|&lt;1
+\end{split}
+\]</span>
+<span class="math display">\[
+\begin{split}
+AR(2):&amp; X_t = \phi_1X_{t-1}+\phi_2X_{t-2}+\epsilon_t\\
+\implies &amp; (1-\phi_1B-\phi_2B^2)X_t = \epsilon_t
+\end{split}
+\]</span></p>
+<p>Por lo que las raíces del polinomio <span class="math inline">\((1-\phi_1B-\phi_2B^2)\)</span> serán <span class="math inline">\(B^1, B^2 = \frac{\theta_1\pm\sqrt{\theta_1^2+4\theta_2}}{-2\theta_2}\)</span>.</p>
+<p>Y gracias a todo esto, podemos interpretar que para que los procesos sean estacionarios, se solicita que las raíces estén fuera del círculo unitario, es decir: <span class="math inline">\(|B^1|&gt;1\)</span> y <span class="math inline">\(|B^2|&gt;1\)</span>.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="transformaciones.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="maq-proceso-de-medias-móviles.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "github", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

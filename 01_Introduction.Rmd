@@ -1,0 +1,107 @@
+# (PART) Series de tiempo  {-}
+
+# Introducción
+
+El objetivo en esta parte será responder preguntas como: *¿Cuál será el precio de las acciones de Facebook para el último bimestre del 2023?, ¿Cuál será el nivel de partículas contaminantes en la CDMX para septiembre de 2023?, ¿Cuál será la capacidad de un procesador intel para el año 2024?*, puede parecer, en primera instancia, una tarea complicada. Si bien no tenemos una "bola mágica" con la que podamos adivinar el futuro, disponemos de ciertos procesos estocásticos llamados *Series de Tiempo*, cuyo objetivo principal es el *pronóstico*.
+
+Una serie tiempo es una secuencia de observaciones, medidos en determinados momentos del tiempo, ordenados cronológicamente y espaciados entre sí de manera uniforme (diario, semanal, semestral, anual, entre otros). Por esta razón, los datos usualmente son dependientes entre sí.  El principal objetivo de una serie de tiempo (denotada por $X_{t}$, donde $t=1,2,...,n$) es realizar un análisis de los datos para conocer su comportamiento a través del tiempo  y, a partir de dicho conocimiento, y asumiendo que mantendrá un comportamiento similar al observado, poder realizar predicciones en uno o más períodos de tiempo situados en el futuro. 
+
+Se pueden encontrar series de tiempo en diferentes campos de estudio, por ejemplo:
+
++ Economía: Indices de precios mensuales, exportaciones totales mes a mes, tasa de interés semanal.
++ Física: Nivel de precipitación diaria, temperatura diaria o mensual.
++ Demografía: Tasa de natalidad, tasa de mortalidad, número de habitantes en cierta región.
++ Marketing: Ventas diarias o mensuales de la compañía. 
+
+En el análisis de las series de tiempo es necesario señalar que, para llevarlo a cabo, hay que tener en cuenta los siguientes supuestos:
+
++ Se considera que existe una cierta estabilidad en la estructura del fenómeno estudiado. Para que se cumpla este supuesto será necesario estudiar períodos lo más homogéneos posibles.
+
++ Los datos deben ser homogéneos en el tiempo, es decir, se debe mantener la definición y la medición de la magnitud objeto de estudio. Este supuesto no se da en muchas de las series económicas, ya que es frecuente que las estadísticas se perfeccionen con el paso del tiempo, produciéndose saltos en la serie debidos a un cambio en la medición de la magnitud estudiada. Un caso particularmente frecuente es el cambio de base en los índices de precios, de producción, etc. Tales cambios de base implican cambios en los productos y las ponderaciones que entran en la elaboración del índice que repercuten considerablemente en la comparabilidad de la serie en el tiempo.
+
+Como se mencionó previamente el objetivo es realizar un análisis de la serie de tiempo y construir un modelo matemático que refleje el comportamiento de los datos a través del tiempo. Dicho modelo servirá para proyectar los valores de la serie en el futuro, por lo tanto la calidad de las predicciones dependerán, en buena medida, del proceso generador de la serie: así, si la variable observada sigue algún tipo de esquema o patrón de comportamiento más o menos fijo (serie determinista) seguramente obtengamos predicciones más o menos fiables, con un grado de error bajo. Por el contrario, si la serie no sigue ningún patrón de comportamiento específico (serie aleatoria), seguramente nuestras predicciones carecerán de validez por completo.
+
+Dentro de los métodos de predicción cuantitativos, se pueden distinguir dos grandes enfoques alternativos:
+
+1) Por un lado, el análisis univariante de series temporales mediante el cual se intenta realizar previsiones de valores futuros de una variable, utilizando como información la contenida en los valores pasados de la propia serie temporal. Dentro de esta metodología se incluyen los métodos de descomposición y la familia de modelos ARIMA univariantes que veremos más adelante.
+
+2) El otro gran bloque dentro de los métodos cuantitativos estaría integrado por el análisis multivariante o de tipo causal, denominado así porque en la explicación de la variable o variables objeto de estudio intervienen otras adicionales a ella o ellas mismas.
+
+En este curso nos centraremos en el análisis univariante de las series de tiempo.
+
+# Descomposión temporal
+
+El análisis clásico de las series temporales se basa en la suposición de que los valores que toma la variable de observación es la consecuencia de tres componentes, cuya actuación conjunta da como resultado los valores medidos.
+
+Los componentes de una serie de tiempo son:
+
+1. **Tendencia**: La tendencia o tendencia a largo plazo de una serie es por lo común el resultado de factores a largo plazo. En términos intuitivos, la tendencia de una serie de tiempo caracteriza el patrón gradual y consistente de las 
+variaciones de la propia serie, que se consideran consecuencias de fuerzas persistentes que afectan el crecimiento o la reducción de la misma, tales como: cambios en la población, en las características demográficas de la misma, cambios en los ingresos, en la salud, en el nivel de educación y  tecnología. Las tendencias a largo plazo se ajustan a diversos esquemas. Algunas se mueven continuamente hacía arriba, otras declinan, y otras más permanecen igual en un cierto período o intervalo de tiempo.  
+2. **Estacionalidad**: El componente de la serie de tiempo que representa la variabilidad en los datos debida a influencias de las estaciones, se llama componente estacional. Esta variación corresponde a los movimientos de la serie que ocurren año tras año en los mismos meses (o en los mismos trimestres) del año poco más o menos con la misma intensidad.  Por ejemplo: Un fabricante de albercas inflables espera poca actividad de ventas durante los meses de otoño e invierno y tiene ventas máximas en los de primavera y verano, mientras que los fabricantes de equipo para la nieve y ropa de abrigo esperan un comportamiento anual opuesto al del fabricante de albercas.    
+3. **Componente aleatoria**: Esta se debe a factores a corto plazo, imprevisibles y no recurrentes que afectan a la serie de tiempo. Como este componente explica la variabilidad aleatoria de la serie, es impredecible, es decir, no se puede esperar predecir su impacto sobre la serie de tiempo. Existen dos tipos de variación irregular: 
+    a) Las variaciones que son provocadas por acontecimientos especiales, fácilmente identificables, como las elecciones, inundaciones, huelgas, terremotos. 
+    b) Variaciones aleatorias o por casualidad, cuyas causas no se pueden señalar en forma exacta, pero que tienden a equilibrarse a la larga. 
+
+Se puede observar que de los tres componentes, los dos primeros son determinísticos, mientras que la última es aleatoria. 
+
+Adicionalemte, la asociación de estos componentes en una serie temporal puede ser de tipo aditivo, multiplicativo o combinación de los dos anteriores
+
+Entonces la serie se tiempo en un esquema aditivo se puede expresar como:
+
+$$X_{t}=T_{t}+E_{t}+I_{t}$$
+Mientras que la serie se tiempo en un esquema multiplicativo se expresaría como:
+
+$$X_{t}=T_{t}*E_{t}*I_{t}$$
+Y un ejemplo de combinación se expresaría como:
+
+$$X_{t}=(T_{t}+E_{t})*I_{t}$$
+donde $T_{t}$ es el componente de **tendencia**, $E_{t}$ el componente de **estacionalidad** y $I_{t}$ la componente **aleatoria**.
+
+Las siguientes gráficas son sólo otro ejemplo basado en el conjunto de datos `nottem`, en el cual se tienen las temperaturas mensuales promedio en Nottingham entre 1920 y 1939. Esta serie de tiempo tiene el siguiente comportamiento a través de los años.
+
+```{r}
+autoplot(nottem, colour = "#0A63E9") +
+  general_theme + 
+  labs(x = "Tiempo", y = "Temperatura promedio")
+```
+En la gráfica se puede observar que los datos parecen tener un comportamiento cíclico, lo cual es esperado ya que los datos corresponden a temperaturas mensuales. Así mismo el gráfico no muestra que exista una tendencia en los datos es decir no podemos decir que las temperaturas incrementan o decrementan al pasar del tiempo.  
+
+La función R “decompose”, obtiene las componentes de tendencia, estacionalidad y aleatoria de una serie temporal a través de medias móviles, y además permite obtener los componentes en base a un esquema aditivo ó multiplicativo. Es una función generica de R, lo que significa que no requiere de la instalación de ninguna librería. 
+
+La forma de utlizar esta función es la siguiente:
+
+**decompose(x, type = c(“additive”, “multiplicative”),filter = NULL)**
+
+
+La función calcula el componente de tendencia utilizando medias móviles, (si filter = NULL, se utilizan medias móviles simétricas), los índices de estacionalidad son promedios de los indices de estacionalidad que se obtienen al desestacionalizar la serie por el modelo elegido, por último, el componente irregular se obtiene eliminando la tendencia y estacionalidad de la serie temporal.
+
+Nota inportante es que la función requiere que los datos tengan forma de serie temporal.
+
+Ahora aplicaremos la función decompose a la serie de tiempo graficada anteriormente. Las siguientes gráficas representan las componentes antes mencionadas de la serie de tiempo correspondiente a las temperaturas mensuales promedio en Nottingham entre 1920 y 1939.
+
+```{r}
+j <- stl(nottem, s.window = 7, t.window = 50, t.jump = 1)
+colnames(j$time.series) <- c("Estacionalidad", "Tendencia", "Aleatoriedad")
+j$time.series %>% 
+  ggplot2::autoplot(facets = TRUE) +
+  labs(x = "Tiempo") +
+  general_theme
+```
+La descomposición nos corrobora la presencia de una estacionalidad en los datos y detecta una ligera tendencia a la alza, aunque la escala en el gráfico de la tendencia es muy pequeña muestra que al pasar el tiempo las temperaturas promedio parecen estarse incrementando. En cuanto al gráfico de aleatoriedad la descomposición efectivamente lo presenta como una serie de datos aleatorios. 
+
+## Ejercicios
+1. Una serie de tiempo se puede descomponer en: (Seleccione la opción correcta)
+a) Parte Multiplicativa, Parte Aditiva y Parte Aleatoria
+b) Tendencia, Estacionalidad y Parte Aleatoria
+c) Parte Univariante y Parte Multivariante
+
+2. Utilizar los datos en el objeto "AirPassengers" que corresponden a 144 mediciones del número de pasajeros mensuales en líneas aereas y:
+a) Grafique la serie de tiempo y describa que patrón observa
+b) Aplique la función decompose a los datos y describa los hallazgos
+c) Grafique la serie de los logartimos de los datos y describa el cambio observado respecto a lo visto en el inciso a)
+
+
+
+
+
+
