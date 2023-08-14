@@ -6,10 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 10 \(IMA(d,q)\): Proceso Integrado y de Media Móvil | Análisis de Series de Tiempo</title>
   <meta name="description" content="Material para el curso Análisis de Supervivencia y Series de Tiempo en la Facultad de Ciencias, Universidad Nacional Autónoma de México" />
-  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21.6 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 10 \(IMA(d,q)\): Proceso Integrado y de Media Móvil | Análisis de Series de Tiempo" />
   <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://github.com/svg18/Libro-Series-de-Tiempo" />
   
   <meta property="og:description" content="Material para el curso Análisis de Supervivencia y Series de Tiempo en la Facultad de Ciencias, Universidad Nacional Autónoma de México" />
   <meta name="github-repo" content="svg18/Series-de-Tiempo" />
@@ -33,8 +34,8 @@
   
 <link rel="prev" href="arimapdq-proceso-autoregresivo-integrado-y-de-medias-móviles.html"/>
 <link rel="next" href="predictores-lineales.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<script src="libs/header-attrs-2.7.3/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,18 +51,14 @@
 
 
 
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <link href="libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 
 
-<style type="text/css">
-  
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -101,78 +98,78 @@ div.csl-indent {
 <li><a href="./">Análisis de Series de Tiempo</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a>
+<li><a href="index.html#prefacio" id="toc-prefacio">Prefacio</a>
 <ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#objetivos"><i class="fa fa-check"></i>Objetivos</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#estructura"><i class="fa fa-check"></i>Estructura</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#detalles-técnicos"><i class="fa fa-check"></i>Detalles técnicos</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#licencia"><i class="fa fa-check"></i>Licencia</a></li>
+<li><a href="index.html#objetivos" id="toc-objetivos">Objetivos</a></li>
+<li><a href="index.html#estructura" id="toc-estructura">Estructura</a></li>
+<li><a href="index.html#detalles-técnicos" id="toc-detalles-técnicos">Detalles técnicos</a></li>
+<li><a href="index.html#licencia" id="toc-licencia">Licencia</a></li>
 </ul></li>
-<li class="part"><span><b>I Series de tiempo</b></span></li>
-<li class="chapter" data-level="1" data-path="introducción.html"><a href="introducción.html"><i class="fa fa-check"></i><b>1</b> Introducción</a></li>
-<li class="chapter" data-level="2" data-path="descomposión-temporal.html"><a href="descomposión-temporal.html"><i class="fa fa-check"></i><b>2</b> Descomposión temporal</a>
+<li><a href="#part-series-de-tiempo" id="toc-part-series-de-tiempo">(PART) Series de tiempo</a></li>
+<li><a href="introducción.html#introducción" id="toc-introducción"><span class="toc-section-number">1</span> Introducción</a></li>
+<li><a href="descomposión-temporal.html#descomposión-temporal" id="toc-descomposión-temporal"><span class="toc-section-number">2</span> Descomposión temporal</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="descomposión-temporal.html"><a href="descomposión-temporal.html#ejercicios"><i class="fa fa-check"></i><b>2.1</b> Ejercicios</a></li>
+<li><a href="descomposión-temporal.html#ejercicios" id="toc-ejercicios"><span class="toc-section-number">2.1</span> Ejercicios</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="procesos-estocásticos.html"><a href="procesos-estocásticos.html"><i class="fa fa-check"></i><b>3</b> Procesos estocásticos</a>
+<li><a href="procesos-estocásticos.html#procesos-estocásticos" id="toc-procesos-estocásticos"><span class="toc-section-number">3</span> Procesos estocásticos</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="procesos-estocásticos.html"><a href="procesos-estocásticos.html#proceso-estocástico-estacionario"><i class="fa fa-check"></i><b>3.1</b> Proceso estocástico estacionario</a></li>
-<li class="chapter" data-level="3.2" data-path="procesos-estocásticos.html"><a href="procesos-estocásticos.html#ruido-blanco-white-noise"><i class="fa fa-check"></i><b>3.2</b> Ruido blanco (“white noise”)</a></li>
-<li class="chapter" data-level="3.3" data-path="procesos-estocásticos.html"><a href="procesos-estocásticos.html#caminata-aleatoria"><i class="fa fa-check"></i><b>3.3</b> Caminata aleatoria</a></li>
-<li class="chapter" data-level="3.4" data-path="procesos-estocásticos.html"><a href="procesos-estocásticos.html#series-de-tiempo"><i class="fa fa-check"></i><b>3.4</b> Series de tiempo</a></li>
-<li class="chapter" data-level="3.5" data-path="procesos-estocásticos.html"><a href="procesos-estocásticos.html#ejercicios-1"><i class="fa fa-check"></i><b>3.5</b> Ejercicios</a></li>
+<li><a href="procesos-estocásticos.html#proceso-estocástico-estacionario" id="toc-proceso-estocástico-estacionario"><span class="toc-section-number">3.1</span> Proceso estocástico estacionario</a></li>
+<li><a href="procesos-estocásticos.html#ruido-blanco-white-noise" id="toc-ruido-blanco-white-noise"><span class="toc-section-number">3.2</span> Ruido blanco (“white noise”)</a></li>
+<li><a href="procesos-estocásticos.html#caminata-aleatoria" id="toc-caminata-aleatoria"><span class="toc-section-number">3.3</span> Caminata aleatoria</a></li>
+<li><a href="procesos-estocásticos.html#series-de-tiempo" id="toc-series-de-tiempo"><span class="toc-section-number">3.4</span> Series de tiempo</a></li>
+<li><a href="procesos-estocásticos.html#ejercicios-1" id="toc-ejercicios-1"><span class="toc-section-number">3.5</span> Ejercicios</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="funciones-de-autocovarianza-y-autocorrelación.html"><a href="funciones-de-autocovarianza-y-autocorrelación.html"><i class="fa fa-check"></i><b>4</b> Funciones de autocovarianza y autocorrelación</a>
+<li><a href="funciones-de-autocovarianza-y-autocorrelación.html#funciones-de-autocovarianza-y-autocorrelación" id="toc-funciones-de-autocovarianza-y-autocorrelación"><span class="toc-section-number">4</span> Funciones de autocovarianza y autocorrelación</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="funciones-de-autocovarianza-y-autocorrelación.html"><a href="funciones-de-autocovarianza-y-autocorrelación.html#función-de-autocorrelación-parcial"><i class="fa fa-check"></i><b>4.1</b> Función de autocorrelación parcial</a></li>
-<li class="chapter" data-level="4.2" data-path="funciones-de-autocovarianza-y-autocorrelación.html"><a href="funciones-de-autocovarianza-y-autocorrelación.html#correlograma"><i class="fa fa-check"></i><b>4.2</b> Correlograma</a></li>
-<li class="chapter" data-level="4.3" data-path="funciones-de-autocovarianza-y-autocorrelación.html"><a href="funciones-de-autocovarianza-y-autocorrelación.html#prueba-de-ljung-box"><i class="fa fa-check"></i><b>4.3</b> Prueba de Ljung-Box</a></li>
-<li class="chapter" data-level="4.4" data-path="funciones-de-autocovarianza-y-autocorrelación.html"><a href="funciones-de-autocovarianza-y-autocorrelación.html#ejercicios-2"><i class="fa fa-check"></i><b>4.4</b> Ejercicios</a></li>
+<li><a href="funciones-de-autocovarianza-y-autocorrelación.html#función-de-autocorrelación-parcial" id="toc-función-de-autocorrelación-parcial"><span class="toc-section-number">4.1</span> Función de autocorrelación parcial</a></li>
+<li><a href="funciones-de-autocovarianza-y-autocorrelación.html#correlograma" id="toc-correlograma"><span class="toc-section-number">4.2</span> Correlograma</a></li>
+<li><a href="funciones-de-autocovarianza-y-autocorrelación.html#prueba-de-ljung-box" id="toc-prueba-de-ljung-box"><span class="toc-section-number">4.3</span> Prueba de Ljung-Box</a></li>
+<li><a href="funciones-de-autocovarianza-y-autocorrelación.html#ejercicios-2" id="toc-ejercicios-2"><span class="toc-section-number">4.4</span> Ejercicios</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="transformaciones.html"><a href="transformaciones.html"><i class="fa fa-check"></i><b>5</b> Transformaciones</a>
+<li><a href="transformaciones.html#transformaciones" id="toc-transformaciones"><span class="toc-section-number">5</span> Transformaciones</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="transformaciones.html"><a href="transformaciones.html#suavizamiento-por-medias-móviles"><i class="fa fa-check"></i><b>5.1</b> Suavizamiento por medias móviles</a></li>
-<li class="chapter" data-level="5.2" data-path="transformaciones.html"><a href="transformaciones.html#suavizamiento-por-polinomios-ajustados"><i class="fa fa-check"></i><b>5.2</b> Suavizamiento por polinomios ajustados</a></li>
-<li class="chapter" data-level="5.3" data-path="transformaciones.html"><a href="transformaciones.html#diferencias-de-box-jenkins"><i class="fa fa-check"></i><b>5.3</b> Diferencias de Box-Jenkins</a></li>
-<li class="chapter" data-level="5.4" data-path="transformaciones.html"><a href="transformaciones.html#ejercicios-3"><i class="fa fa-check"></i><b>5.4</b> Ejercicios</a></li>
+<li><a href="transformaciones.html#suavizamiento-por-medias-móviles" id="toc-suavizamiento-por-medias-móviles"><span class="toc-section-number">5.1</span> Suavizamiento por medias móviles</a></li>
+<li><a href="transformaciones.html#suavizamiento-por-polinomios-ajustados" id="toc-suavizamiento-por-polinomios-ajustados"><span class="toc-section-number">5.2</span> Suavizamiento por polinomios ajustados</a></li>
+<li><a href="transformaciones.html#diferencias-de-box-jenkins" id="toc-diferencias-de-box-jenkins"><span class="toc-section-number">5.3</span> Diferencias de Box-Jenkins</a></li>
+<li><a href="transformaciones.html#ejercicios-3" id="toc-ejercicios-3"><span class="toc-section-number">5.4</span> Ejercicios</a></li>
 </ul></li>
-<li class="part"><span><b>II Procesos lineales estacionarios</b></span></li>
-<li class="chapter" data-level="6" data-path="arp-proceso-autoregresivo.html"><a href="arp-proceso-autoregresivo.html"><i class="fa fa-check"></i><b>6</b> <span class="math inline">\(AR(p)\)</span>: Proceso Autoregresivo</a>
+<li><a href="#part-procesos-lineales-estacionarios" id="toc-part-procesos-lineales-estacionarios">(PART) Procesos lineales estacionarios</a></li>
+<li><a href="arp-proceso-autoregresivo.html#arp-proceso-autoregresivo" id="toc-arp-proceso-autoregresivo"><span class="toc-section-number">6</span> <span class="math inline">\(AR(p)\)</span>: Proceso Autoregresivo</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="arp-proceso-autoregresivo.html"><a href="arp-proceso-autoregresivo.html#proceso-autoregresivo-de-orden-1-ar1"><i class="fa fa-check"></i><b>6.1</b> Proceso Autoregresivo de orden 1: <span class="math inline">\(AR(1)\)</span></a>
+<li><a href="arp-proceso-autoregresivo.html#proceso-autoregresivo-de-orden-1-ar1" id="toc-proceso-autoregresivo-de-orden-1-ar1"><span class="toc-section-number">6.1</span> Proceso Autoregresivo de orden 1: <span class="math inline">\(AR(1)\)</span></a>
 <ul>
-<li class="chapter" data-level="6.1.1" data-path="arp-proceso-autoregresivo.html"><a href="arp-proceso-autoregresivo.html#estacionario-en-media"><i class="fa fa-check"></i><b>6.1.1</b> Estacionario en Media</a></li>
-<li class="chapter" data-level="6.1.2" data-path="arp-proceso-autoregresivo.html"><a href="arp-proceso-autoregresivo.html#estacionario-en-covarianza"><i class="fa fa-check"></i><b>6.1.2</b> Estacionario en Covarianza</a></li>
+<li><a href="arp-proceso-autoregresivo.html#estacionario-en-media" id="toc-estacionario-en-media"><span class="toc-section-number">6.1.1</span> Estacionario en Media</a></li>
+<li><a href="arp-proceso-autoregresivo.html#estacionario-en-covarianza" id="toc-estacionario-en-covarianza"><span class="toc-section-number">6.1.2</span> Estacionario en Covarianza</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="arp-proceso-autoregresivo.html"><a href="arp-proceso-autoregresivo.html#proceso-autoregresivo-de-orden-2-ar2"><i class="fa fa-check"></i><b>6.2</b> Proceso Autoregresivo de orden 2: <span class="math inline">\(AR(2)\)</span></a>
+<li><a href="arp-proceso-autoregresivo.html#proceso-autoregresivo-de-orden-2-ar2" id="toc-proceso-autoregresivo-de-orden-2-ar2"><span class="toc-section-number">6.2</span> Proceso Autoregresivo de orden 2: <span class="math inline">\(AR(2)\)</span></a>
 <ul>
-<li class="chapter" data-level="6.2.1" data-path="arp-proceso-autoregresivo.html"><a href="arp-proceso-autoregresivo.html#estacionario-en-media-1"><i class="fa fa-check"></i><b>6.2.1</b> Estacionario en Media</a></li>
-<li class="chapter" data-level="6.2.2" data-path="arp-proceso-autoregresivo.html"><a href="arp-proceso-autoregresivo.html#estacionario-en-covarianza-1"><i class="fa fa-check"></i><b>6.2.2</b> Estacionario en Covarianza</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="maq-proceso-de-medias-móviles.html"><a href="maq-proceso-de-medias-móviles.html"><i class="fa fa-check"></i><b>7</b> <span class="math inline">\(MA(q)\)</span>: Proceso de Medias Móviles</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="maq-proceso-de-medias-móviles.html"><a href="maq-proceso-de-medias-móviles.html#proceso-de-medias-móviles-de-orden-1-ma1"><i class="fa fa-check"></i><b>7.1</b> Proceso de Medias Móviles de orden 1: <span class="math inline">\(MA(1)\)</span></a></li>
-<li class="chapter" data-level="7.2" data-path="maq-proceso-de-medias-móviles.html"><a href="maq-proceso-de-medias-móviles.html#proceso-de-medias-móviles-de-orden-2-ma2"><i class="fa fa-check"></i><b>7.2</b> Proceso de Medias Móviles de orden 2: <span class="math inline">\(MA(2)\)</span></a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="armapq-proceso-autoregresivo-de-medias-móviles.html"><a href="armapq-proceso-autoregresivo-de-medias-móviles.html"><i class="fa fa-check"></i><b>8</b> <span class="math inline">\(ARMA(p,q)\)</span>: Proceso Autoregresivo de Medias Móviles</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="armapq-proceso-autoregresivo-de-medias-móviles.html"><a href="armapq-proceso-autoregresivo-de-medias-móviles.html#arma11"><i class="fa fa-check"></i><b>8.1</b> <span class="math inline">\(ARMA(1,1)\)</span></a>
-<ul>
-<li class="chapter" data-level="8.1.1" data-path="armapq-proceso-autoregresivo-de-medias-móviles.html"><a href="armapq-proceso-autoregresivo-de-medias-móviles.html#media"><i class="fa fa-check"></i><b>8.1.1</b> Media</a></li>
-<li class="chapter" data-level="8.1.2" data-path="armapq-proceso-autoregresivo-de-medias-móviles.html"><a href="armapq-proceso-autoregresivo-de-medias-móviles.html#covarianzas"><i class="fa fa-check"></i><b>8.1.2</b> Covarianzas</a></li>
+<li><a href="arp-proceso-autoregresivo.html#estacionario-en-media-1" id="toc-estacionario-en-media-1"><span class="toc-section-number">6.2.1</span> Estacionario en Media</a></li>
+<li><a href="arp-proceso-autoregresivo.html#estacionario-en-covarianza-1" id="toc-estacionario-en-covarianza-1"><span class="toc-section-number">6.2.2</span> Estacionario en Covarianza</a></li>
 </ul></li>
 </ul></li>
-<li class="part"><span><b>III Procesos lineales no estacionarios</b></span></li>
-<li class="chapter" data-level="9" data-path="arimapdq-proceso-autoregresivo-integrado-y-de-medias-móviles.html"><a href="arimapdq-proceso-autoregresivo-integrado-y-de-medias-móviles.html"><i class="fa fa-check"></i><b>9</b> <span class="math inline">\(ARIMA(p,d,q)\)</span>: Proceso Autoregresivo Integrado y de Medias Móviles</a></li>
-<li class="chapter" data-level="10" data-path="imadq-proceso-integrado-y-de-media-móvil.html"><a href="imadq-proceso-integrado-y-de-media-móvil.html"><i class="fa fa-check"></i><b>10</b> <span class="math inline">\(IMA(d,q)\)</span>: Proceso Integrado y de Media Móvil</a></li>
-<li class="part"><span><b>IV Otras consideraciones</b></span></li>
-<li class="chapter" data-level="11" data-path="predictores-lineales.html"><a href="predictores-lineales.html"><i class="fa fa-check"></i><b>11</b> Predictores Lineales</a></li>
-<li class="chapter" data-level="12" data-path="modelacion-univariada.html"><a href="modelacion-univariada.html"><i class="fa fa-check"></i><b>12</b> Construcción de modelos para series de tiempo univariadas</a></li>
-<li class="part"><span><b>V Procesos no lineales</b></span></li>
-<li class="chapter" data-level="13" data-path="introducción-1.html"><a href="introducción-1.html"><i class="fa fa-check"></i><b>13</b> Introducción</a></li>
-<li class="chapter" data-level="14" data-path="archq-proceso-autoregresivo-con-heterocedasticidad-condicional.html"><a href="archq-proceso-autoregresivo-con-heterocedasticidad-condicional.html"><i class="fa fa-check"></i><b>14</b> <span class="math inline">\(ARCH(q)\)</span>: Proceso Autoregresivo con Heterocedasticidad Condicional</a></li>
-<li class="chapter" data-level="15" data-path="garchpq-proceso-autoregresivo-generalizado-con-heterocedasticidad-condicional.html"><a href="garchpq-proceso-autoregresivo-generalizado-con-heterocedasticidad-condicional.html"><i class="fa fa-check"></i><b>15</b> <span class="math inline">\(GARCH(p,q)\)</span>: Proceso Autoregresivo Generalizado con Heterocedasticidad Condicional</a></li>
+<li><a href="maq-proceso-de-medias-móviles.html#maq-proceso-de-medias-móviles" id="toc-maq-proceso-de-medias-móviles"><span class="toc-section-number">7</span> <span class="math inline">\(MA(q)\)</span>: Proceso de Medias Móviles</a>
+<ul>
+<li><a href="maq-proceso-de-medias-móviles.html#proceso-de-medias-móviles-de-orden-1-ma1" id="toc-proceso-de-medias-móviles-de-orden-1-ma1"><span class="toc-section-number">7.1</span> Proceso de Medias Móviles de orden 1: <span class="math inline">\(MA(1)\)</span></a></li>
+<li><a href="maq-proceso-de-medias-móviles.html#proceso-de-medias-móviles-de-orden-2-ma2" id="toc-proceso-de-medias-móviles-de-orden-2-ma2"><span class="toc-section-number">7.2</span> Proceso de Medias Móviles de orden 2: <span class="math inline">\(MA(2)\)</span></a></li>
+</ul></li>
+<li><a href="armapq-proceso-autoregresivo-de-medias-móviles.html#armapq-proceso-autoregresivo-de-medias-móviles" id="toc-armapq-proceso-autoregresivo-de-medias-móviles"><span class="toc-section-number">8</span> <span class="math inline">\(ARMA(p,q)\)</span>: Proceso Autoregresivo de Medias Móviles</a>
+<ul>
+<li><a href="armapq-proceso-autoregresivo-de-medias-móviles.html#arma11" id="toc-arma11"><span class="toc-section-number">8.1</span> <span class="math inline">\(ARMA(1,1)\)</span></a>
+<ul>
+<li><a href="armapq-proceso-autoregresivo-de-medias-móviles.html#media" id="toc-media"><span class="toc-section-number">8.1.1</span> Media</a></li>
+<li><a href="armapq-proceso-autoregresivo-de-medias-móviles.html#covarianzas" id="toc-covarianzas"><span class="toc-section-number">8.1.2</span> Covarianzas</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#part-procesos-lineales-no-estacionarios" id="toc-part-procesos-lineales-no-estacionarios">(PART) Procesos lineales no estacionarios</a></li>
+<li><a href="arimapdq-proceso-autoregresivo-integrado-y-de-medias-móviles.html#arimapdq-proceso-autoregresivo-integrado-y-de-medias-móviles" id="toc-arimapdq-proceso-autoregresivo-integrado-y-de-medias-móviles"><span class="toc-section-number">9</span> <span class="math inline">\(ARIMA(p,d,q)\)</span>: Proceso Autoregresivo Integrado y de Medias Móviles</a></li>
+<li><a href="imadq-proceso-integrado-y-de-media-móvil.html#imadq-proceso-integrado-y-de-media-móvil" id="toc-imadq-proceso-integrado-y-de-media-móvil"><span class="toc-section-number">10</span> <span class="math inline">\(IMA(d,q)\)</span>: Proceso Integrado y de Media Móvil</a></li>
+<li><a href="#part-otras-consideraciones" id="toc-part-otras-consideraciones">(PART) Otras consideraciones</a></li>
+<li><a href="predictores-lineales.html#predictores-lineales" id="toc-predictores-lineales"><span class="toc-section-number">11</span> Predictores Lineales</a></li>
+<li><a href="modelacion-univariada.html#modelacion-univariada" id="toc-modelacion-univariada"><span class="toc-section-number">12</span> Construcción de modelos para series de tiempo univariadas</a></li>
+<li><a href="#part-procesos-no-lineales" id="toc-part-procesos-no-lineales">(PART) Procesos no lineales</a></li>
+<li><a href="introducción-1.html#introducción-1" id="toc-introducción-1"><span class="toc-section-number">13</span> Introducción</a></li>
+<li><a href="archq-proceso-autoregresivo-con-heterocedasticidad-condicional.html#archq-proceso-autoregresivo-con-heterocedasticidad-condicional" id="toc-archq-proceso-autoregresivo-con-heterocedasticidad-condicional"><span class="toc-section-number">14</span> <span class="math inline">\(ARCH(q)\)</span>: Proceso Autoregresivo con Heterocedasticidad Condicional</a></li>
+<li><a href="garchpq-proceso-autoregresivo-generalizado-con-heterocedasticidad-condicional.html#garchpq-proceso-autoregresivo-generalizado-con-heterocedasticidad-condicional" id="toc-garchpq-proceso-autoregresivo-generalizado-con-heterocedasticidad-condicional"><span class="toc-section-number">15</span> <span class="math inline">\(GARCH(p,q)\)</span>: Proceso Autoregresivo Generalizado con Heterocedasticidad Condicional</a></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="_blank">Hecho con bookdown</a></li>
 
@@ -193,8 +190,8 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="imadq-proceso-integrado-y-de-media-móvil" class="section level1 hasAnchor" number="10">
-<h1><span class="header-section-number">Capítulo 10</span> <span class="math inline">\(IMA(d,q)\)</span>: Proceso Integrado y de Media Móvil<a href="imadq-proceso-integrado-y-de-media-móvil.html#imadq-proceso-integrado-y-de-media-móvil" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="imadq-proceso-integrado-y-de-media-móvil" class="section level1" number="10">
+<h1><span class="header-section-number">Capítulo 10</span> <span class="math inline">\(IMA(d,q)\)</span>: Proceso Integrado y de Media Móvil</h1>
 <p>Este proceso es un caso particular del proceso <span class="math inline">\(ARIMA(p,d,q)\)</span> cuando <span class="math inline">\(p=0\)</span>. Se calculan las diferencias de la serie de tiempo <span class="math inline">\(d\)</span> veces para convertir la serie en estacionaria y luego se aplica un modelo <span class="math inline">\(MA(q)\)</span>.</p>
 <p>Por ejemplo:</p>
 <p>Sea <span class="math inline">\(Z_1, Z_2, Z_3, Z_4, Z_5\)</span> la serie de tiempo original. Entonces la serie diferenciada de orden uno será:</p>
@@ -237,6 +234,7 @@ Por lo tanto al hacer diferencia de orden 2 a la serie de tiempo original <span 
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -255,7 +253,6 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"whatsapp": false,
 "all": ["facebook", "twitter", "github", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -276,10 +273,6 @@ gitbook.start({
 "text": null
 },
 "download": ["_main.pdf"],
-"search": {
-"engine": "fuse",
-"options": null
-},
 "toc": {
 "collapse": "section"
 }
@@ -293,7 +286,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
