@@ -15,7 +15,7 @@ biblio-style: apalike
 link-citations: yes
 css: styles.css
 github-repo: svg18/Series-de-Tiempo
-url: 'https\://github.com/svg18/Libro-Series-de-Tiempo'
+url: 'https://carlosfernandovg.github.io/SeriesBookdown_FC2024-1/'
 description: "Material para el curso Análisis de Supervivencia y Series de Tiempo en la Facultad de Ciencias, Universidad Nacional Autónoma de México"
 always_allow_html: true
 ---
