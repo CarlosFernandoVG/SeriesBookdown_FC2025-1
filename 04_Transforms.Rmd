@@ -66,3 +66,17 @@ $$
 ## Ejercicios
 
 1. ¿Cuáles son las razones por las que se sugiere aplicar transformaciones como  suavizamiento a través de medias móviles o diferenciación a las series de tiempo?
+
+2. Realiza los siguientes incisos:
+
+a) En el siguiente [enlace](https://a-little-book-of-r-for-time-series.readthedocs.io/en/latest/src/timeseries.html) podrás obtener datos con el número de nacimientos por mes en la ciudad de Nueva York, desde enero de 1946 hasta diciembre de 1959, así como el código para la creación de un objeto de serie de tiempo en R adecuado para estos datos.
+
+b) Compara la serie de tiempo de los nacimientos, gráficamente, con las diferencias de los valores de la serie en 1 rezago. Para esto se sugiere utilizar la función `diff()`. ¿Qué puedes decir de las series de tiempo? ¿Cuál de las series tiene un comportamiento más estacionario? ¿Qué harías para que la serie original aumentará su estacionariedad? ¿Qué pasa si aumentamos el número de rezagos en las diferencias?
+
+c) Utiliza la función `decompose()` en ambas series de tiempo y anota tus conclusiones (en el enlace de descarga de los datos vienen algunas conclusiones técnicas sobre la serie original, puedes tomarlas como referencia y dar otros puntos relevantes. Trata de dar conclusiones técnicas y no técnicas). ¿Existen periodos interesantes en los que se dan ciertos patrones?
+
+d) Muestra visualmente la autocorrelación y la autocorrelación parcial de ambas series de tiempo y determina otorga comentarios generales. ¿Las funciones de autocorrelación muestran que al utilizar diferencias obtenemos un comportamiento estacionario? ¿Tenemos en algún caso un comportamiento similar a una caminata aleatoria o al ruido blanco? ¿Existe alguna diferencia relevante si aumentamos el número de rezagos en las diferencias?
+
+e) Con al función `forecast::ma())` puedes suavizar la serie de tiempo con el método de medias móviles. Realiza el análisis que necesites y concluye si tiene un gran impacto a favor el suavizar la serie de tiempo original. ¿Es mejor suavizar que al utilizar la diferencia entre las observaciones?
+
++ Recomendaciones: Utiliza la función `autoplot()` del paquete `forecast` en objetos de series de tiempo y el resultado de la función `decompose()` como si fuera la función `plot()`. Obtendrás un objeto ggplot que tendrá mayor versatilidad para su edición. Además, te recomendamos utilizar las funciones `ggAcf()` y `ggPacf()` del mismo paquete para el análisis de autocorrelación. 

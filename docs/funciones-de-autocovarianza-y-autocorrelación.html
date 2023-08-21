@@ -222,7 +222,7 @@ r_k=\frac{\sum\limits_{t = k+1}^n (X_t-\bar{X})(X_{t-k}-\bar{X})}{\sum\limits_{t
 <p><span class="math display">\[
 \pi_j=corr(X_j,X_{j-k}|X_{j-1},X_{j-2},...X_{j-k-1})
 \]</span></p>
-<p>Para este caso, el estimador apropiado es la función de autocorrelación parcial muestral <span class="citation">Cryer and Chan (<a href="#ref-cryer2008time" role="doc-biblioref">2008</a>)</span>, el cual puede obtenerse utilizando <span class="math inline">\(r_k\)</span> para la siguiente expresión recursiva.</p>
+<p>Para este caso, el estimador apropiado es la función de autocorrelación parcial muestral <span class="citation">Cryer and Chan (<a href="#ref-cryer2008time">2008</a>)</span>, el cual puede obtenerse utilizando <span class="math inline">\(r_k\)</span> para la siguiente expresión recursiva.</p>
 <p><span class="math display">\[
 \pi_j=\frac{\rho_j-\sum\limits_{k = 1}^{j-1}\pi_{j-1, k}\rho_{j-k}}{1-\sum\limits_{k = 1}^{j-1}\pi_{j-1, k}\rho_k}
 \]</span>
@@ -230,7 +230,7 @@ donde <span class="math inline">\(\pi_{j, k} = \pi_{j-1, k}-\pi_{j}\pi_{j-1, j-k
 </div>
 <div id="correlograma" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> Correlograma<a href="funciones-de-autocovarianza-y-autocorrelación.html#correlograma" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Una vez calculadas las funciones de autocorrelación y autocorrelación parcial, se grafican contra los diferentes rezagos para obtener los correlogramas. Estos son serán de gran utilidad para la identificación del modelo, tal como se menciona en el capítulo <a href="modelacion-univariada.html#modelacion-univariada">12</a> y en el complemento a este material <a href="https://rpubs.com/CarlosFVG/SeriesTCodeCFVG">SeriesTCode</a>. Como ejemplo, se presentan los gráficos correspondientes a los datos de <code>nottem</code>.</p>
+<p>Una vez calculadas las funciones de autocorrelación y autocorrelación parcial, se grafican contra los diferentes rezagos para obtener los correlogramas. Estos son serán de gran utilidad para la identificación del modelo, tal como se menciona en el capítulo <a href="modelacion-univariada.html#modelacion-univariada">12</a> y en el complemento a este material <a href="https://rpubs.com/CarlosFVG/SeriesTCode2023">SeriesTCode</a>. Como ejemplo, se presentan los gráficos correspondientes a los datos de <code>nottem</code>.</p>
 <p><img src="_main_files/figure-html/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="prueba-de-ljung-box" class="section level2 hasAnchor" number="4.3">

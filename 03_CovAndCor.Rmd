@@ -46,7 +46,7 @@ donde $\pi_{j, k} = \pi_{j-1, k}-\pi_{j}\pi_{j-1, j-k}$ para $k = 1,2, \dots, j-
 
 ## Correlograma
 
-Una vez calculadas las funciones de autocorrelación y autocorrelación parcial, se grafican contra los diferentes rezagos para obtener los correlogramas. Estos son serán de gran utilidad para la identificación del modelo, tal como se menciona en el capítulo \@ref(modelacion-univariada) y en el complemento a este material [SeriesTCode](https://rpubs.com/CarlosFVG/SeriesTCodeCFVG). Como ejemplo, se presentan los gráficos correspondientes a los datos de `nottem`.
+Una vez calculadas las funciones de autocorrelación y autocorrelación parcial, se grafican contra los diferentes rezagos para obtener los correlogramas. Estos son serán de gran utilidad para la identificación del modelo, tal como se menciona en el capítulo \@ref(modelacion-univariada) y en el complemento a este material [SeriesTCode](https://rpubs.com/CarlosFVG/SeriesTCode2023). Como ejemplo, se presentan los gráficos correspondientes a los datos de `nottem`.
 
 ```{r}
 (autoplot(nottem, colour = "#0A63E9") +

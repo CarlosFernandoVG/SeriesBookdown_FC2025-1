@@ -240,8 +240,19 @@ Teniendo que <span class="math inline">\(\nabla=(1-B)\)</span></p>
 <div id="ejercicios-3" class="section level2 hasAnchor" number="5.4">
 <h2><span class="header-section-number">5.4</span> Ejercicios<a href="transformaciones.html#ejercicios-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
-<li>¿Cuáles son las razones por las que se sugiere aplicar transformaciones como suavizamiento a través de medias móviles o diferenciación a las series de tiempo?</li>
+<li><p>¿Cuáles son las razones por las que se sugiere aplicar transformaciones como suavizamiento a través de medias móviles o diferenciación a las series de tiempo?</p></li>
+<li><p>Realiza los siguientes incisos:</p></li>
 </ol>
+<ol style="list-style-type: lower-alpha">
+<li><p>En el siguiente <a href="https://a-little-book-of-r-for-time-series.readthedocs.io/en/latest/src/timeseries.html">enlace</a> podrás obtener datos con el número de nacimientos por mes en la ciudad de Nueva York, desde enero de 1946 hasta diciembre de 1959, así como el código para la creación de un objeto de serie de tiempo en R adecuado para estos datos.</p></li>
+<li><p>Compara la serie de tiempo de los nacimientos, gráficamente, con las diferencias de los valores de la serie en 1 rezago. Para esto se sugiere utilizar la función <code>diff()</code>. ¿Qué puedes decir de las series de tiempo? ¿Cuál de las series tiene un comportamiento más estacionario? ¿Qué harías para que la serie original aumentará su estacionariedad? ¿Qué pasa si aumentamos el número de rezagos en las diferencias?</p></li>
+<li><p>Utiliza la función <code>decompose()</code> en ambas series de tiempo y anota tus conclusiones (en el enlace de descarga de los datos vienen algunas conclusiones técnicas sobre la serie original, puedes tomarlas como referencia y dar otros puntos relevantes. Trata de dar conclusiones técnicas y no técnicas). ¿Existen periodos interesantes en los que se dan ciertos patrones?</p></li>
+<li><p>Muestra visualmente la autocorrelación y la autocorrelación parcial de ambas series de tiempo y determina otorga comentarios generales. ¿Las funciones de autocorrelación muestran que al utilizar diferencias obtenemos un comportamiento estacionario? ¿Tenemos en algún caso un comportamiento similar a una caminata aleatoria o al ruido blanco? ¿Existe alguna diferencia relevante si aumentamos el número de rezagos en las diferencias?</p></li>
+<li><p>Con al función <code>forecast::ma())</code> puedes suavizar la serie de tiempo con el método de medias móviles. Realiza el análisis que necesites y concluye si tiene un gran impacto a favor el suavizar la serie de tiempo original. ¿Es mejor suavizar que al utilizar la diferencia entre las observaciones?</p></li>
+</ol>
+<ul>
+<li>Recomendaciones: Utiliza la función <code>autoplot()</code> del paquete <code>forecast</code> en objetos de series de tiempo y el resultado de la función <code>decompose()</code> como si fuera la función <code>plot()</code>. Obtendrás un objeto ggplot que tendrá mayor versatilidad para su edición. Además, te recomendamos utilizar las funciones <code>ggAcf()</code> y <code>ggPacf()</code> del mismo paquete para el análisis de autocorrelación.</li>
+</ul>
 
 </div>
 </div>
