@@ -323,3 +323,10 @@ $$
 Por lo que las raíces del polinomio $(1-\phi_1B-\phi_2B^2)$ serán $B^1, B^2 = \frac{\theta_1\pm\sqrt{\theta_1^2+4\theta_2}}{-2\theta_2}$.
 
 Y gracias a todo esto, podemos interpretar que para que los procesos sean estacionarios, se solicita que las raíces estén fuera del círculo unitario, es decir: $|B^1|>1$ y $|B^2|>1$.
+
+## Ejercicios
+1) Encuentre la función de covarianza $\gamma_k$ para el modelo AR(1) en la sección 6.1, definido como $X_t=0.35X_{t-1}+\epsilon_t$ donde $\epsilon_t\sim N(0,1)$
+2) Los modelos AR(p) se pueden aplicar a procesos no estacionarios
+a. Cierto
+b. Falso
+3) En el modelo $Y_t=0.3-0.5Y_{t-1}+0.2\epsilon_t$ con $\epsilon_t\sim N(0,1)$ la $COV(Y_t,Y_{t-1})$ es cero, es decir $\gamma_2=0$ (el valor de la variable al tiempo $t$ no esta afectada por el valor que tomó la variable 2 tiempos atrás) 

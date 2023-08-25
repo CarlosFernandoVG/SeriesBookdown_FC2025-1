@@ -177,4 +177,12 @@ $$
 \right.
 $$
 
+## Ejericios
+1) Sea $Z_t\sim N(0,1)$. Calcular la función de autocovarianza $\gamma_k$ para el modelo $X_t=0.3+0.1Z_t-0.2Z_{t-1}$
+2) Muestre que los procesos MA(1) siguientes
+a. $Z_t=a_t+\theta a_{t-1}$
+b. $Y_t=a_t+\frac{1}{\theta} a_{t-1}$
+donde 0<|$\theta$|<1 y $a_t\sim N(0,1)$, tienen las mismas funciones de autocorrelación
+
+
 [^6.1]: Una pregunta interesante es: ¿Se puede escribir un proceso $MA$ como un proceso $AR$? La respuesta es sí. A esto se le conoce como **invertibilidad** y al igual que la estacionariedad, esta sucede bajo algunas condiciones. Para más información puede consultarse @cryer2008time.

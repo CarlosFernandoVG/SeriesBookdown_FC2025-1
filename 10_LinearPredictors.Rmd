@@ -124,9 +124,10 @@ a1\rho_1+a_2 = \rho_2
 $$
 Y en general: $\hat{X}_{n+h} = a_1X_n+a_2X_{n-1}+\cdots+a_nX_1$.
 
-**Ejercicios**
 
-+ Sean $X_1$, $X_2$, $X_4$, $X_5$ obs. de un modelo $MA(2)$ de la forma $X_t = Z_t+0.5Z_{t-1}+0.25Z_{t-2}$. $Encontrar el mejor estimador para $X_3$ en términos de $X_1$ y $X_2$. $Z_t\sim N(0,1)$.
-+ Sean $X_1$, $X_2$, $X_4$, $X_5$ obs. de un modelo $MA(2)$ de la forma $X_t = Z_t-0.25Z_{t-2}$. $Encontrar el mejor estimador para $X_3$ en términos de $X_2$ y $X_4$. $Z_t\sim N(0,1)$.
+## Ejercicios
+
+1) Sean $X_1$, $X_2$, $X_4$, $X_5$ obs. de un modelo $MA(2)$ de la forma $X_t = Z_t+0.5Z_{t-1}+0.25Z_{t-2}$. Encontrar el mejor estimador para $X_3$ en términos de $X_1$ y $X_2$. $Z_t\sim N(0,1)$.
+2) Sean $X_1$, $X_2$, $X_4$, $X_5$ obs. de un modelo $MA(2)$ de la forma $X_t = Z_t-0.25Z_{t-2}$. Encontrar el mejor estimador para $X_3$ en términos de $X_2$ y $X_4$. $Z_t\sim N(0,1)$.
 
 

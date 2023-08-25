@@ -105,4 +105,9 @@ Además de las gráficas de Autocorrelación simple y parcial.
   general_theme)
 ```
 
-¿Qué se puede decir del efecto que tiene el parámetro $d$ al comparar las gráficas de ambas series?  
+¿Qué se puede decir del efecto que tiene el parámetro $d$ al comparar las gráficas de ambas series? 
+
+## Ejercicios
+1) 57 mediciones consecutivas de una máquina están en el objeto $deere3$ del paquete TSA:
+a. Grafique la serie de tiempo. ¿Qué patrón observa?, ¿Un modelo estacionario podría ser adecuado a ese gráfico?
+b. Usando herramientas como ACF y PACF especifique el modelo tentativo (AR(p); MA(q); ARMA(p,q)).Justifique.
