@@ -11,3 +11,33 @@ Prueba de estacionariedad de los residuales Dickey-Fuller.
 Prueba de independencia Box-Pierce.
 
 Si se ajustan varios modelos candidatos $ARIMA(p,d,q)$, un buen modelo será aquel que tenga los residuales semejantes al de un ruido blanco, además que tenga los valores del AIC (Criterio de Información de Akaike) y BIC (Criterio de Información Bayesiana) menores con relación al resto de los modelos candidatos.
+
+## Ejercicios
+
+En este ejercicio pondrás en práctica todos tus conocimientos adquiridos además de tu creatividad para generar resultados interesantes.
+
+Para este ejercicio considera tres conjuntos de datos posibles:
+
+1. [WhatsApp Dataset](https://github.com/dhfbk/WhatsApp-Dataset/tree/master)
+2. [Elon Musk's 2021 Tweets and DOGEcoin Price Data](https://www.kaggle.com/datasets/johnsmith44/dogecoin-price-data-elon-musks-tweets-2021)
+3. Algún chat con el que desees trabajar, por ejemplo algún chat de WhatsApp que tenga suficiente tiempo de antigüedad.
+
+En los diferentes conjuntos de datos tendrás que trabajar con texto, por lo que te sugiero utilizar el paquete [stringr](https://stringr.tidyverse.org) con el cual puedes manipular y extraer información de caracteres. Tu tarea consiste en limpiar el conjunto de información, obtener estadísticas relevantes relacionadas al tema de series de tiempo, así como la creación de gráficos y resultados relevantes de tu estudio.
+
+Considera que deberás realizar al menos 2 propuestas de un análisis temporal. Por ejemplo, en cualquier de los conjuntos de datos puedes modelar y predecir el número de caracteres que se obtendrá en el siguiente mensaje o en el siguiente evento en tu escala de tiempo. Esto último lo menciono porque, a diferencia del conjunto de datos 1 y 3 tendrás explícitamente la variable de tiempo, la escala puede ser algo distinto a diferentes niveles de tiempo (como lo son horas, días, semanas, etc.); por ejemplo, cada mensaje completo puede representar tu escala de tiempo. También podrías explorar el número de emojis, el número de caracteres especiales, la cantidad de palabras en cada oración por mensaje, etc.
+
+Te recomiendo que, de acuerdo al conjunto de datos que elijas, sintetices y aglomeres la información a tu escala de tiempo. Por ejemplo, si tienes varios mensajes en un día, júntalos y saca las estadísticas considerando que es un solo mensaje.
+
+Para tu entrega necesitamos que en tus análisis expliques el porqué de tus transformaciones y decisiones, no tengas miedo de mostrar tus intentos y pruebas, siempre y cuando estos tengan orden, limpieza y estructura. No necesitamos los conjuntos de datos, aunque puedes enmascarar tus datos (en el caso de elegir un chat propio) de la manera que desees, siempre y cuando esto no afecte a tu proceso de extracción de información. [Aquí](https://github.com/CarlosFernandoVG/Ayudantias-EIII-2024-1/tree/main/Tarea1) encontrarás un script donde te dejo una función para enmascarar de manera sencilla cada string que prefieras.
+
+En tus análisis considera las siguientes preguntas:
+
++ ¿Cómo se ve la descomposición de mi serie?
++ ¿Tenemos tendencia, estacionalidad?
++ ¿Qué pasará al utilizar una transformación u otra?
++ ¿Qué modelo tiene mejor interpretabilidad?
++ ¿Qué tan buena es mi predicción? ¿Hasta qué tiempo mi predicción podría ser adecuada?
++ ¿Tenemos diferencias normales y estacionales?
++ ¿Nuestros correlogramas justifican nuestros modelos?
+
+Se creativo, podrías análizar y comparar distintas series de tiempo, por ejemplo en el caso del chat de WhastApp, podrías hacer modelos por cada persona y ver el comportamiento que se tiene entre los individuos.

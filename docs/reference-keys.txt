@@ -40,6 +40,7 @@ imadq-proceso-integrado-y-de-media-móvil
 predictores-lineales
 ejercicios-6
 modelacion-univariada
+ejercicios-7
 introducción-1
 archq-proceso-autoregresivo-con-heterocedasticidad-condicional
 garchpq-proceso-autoregresivo-generalizado-con-heterocedasticidad-condicional
