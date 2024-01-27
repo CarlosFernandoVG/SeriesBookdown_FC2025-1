@@ -2,7 +2,7 @@
 
 # Introducción
 
-El objetivo en esta parte será responder preguntas como: *¿Cuál será el precio de las acciones de Facebook para el último bimestre del 2023?, ¿Cuál será el nivel de partículas contaminantes en la CDMX para septiembre de 2023?, ¿Cuál será la capacidad de un procesador intel para el año 2024?*, puede parecer, en primera instancia, una tarea complicada. Si bien no tenemos una "bola mágica" con la que podamos adivinar el futuro, disponemos de ciertos procesos estocásticos llamados *Series de Tiempo*, cuyo objetivo principal es el *pronóstico*.
+El objetivo en esta parte será responder preguntas como: *¿Cuál será el precio de las acciones de Facebook para el último bimestre del 2024?, ¿Cuál será el nivel de partículas contaminantes en la CDMX para abril de 2024?, ¿Cuál será la capacidad de un procesador intel para el año 2025?*, puede parecer, en primera instancia, una tarea complicada. Si bien no tenemos una "bola mágica" con la que podamos adivinar el futuro, disponemos de ciertos procesos estocásticos llamados *Series de Tiempo*, cuyo objetivo principal es el *pronóstico*.
 
 Una serie tiempo es una secuencia de observaciones, medidos en determinados momentos del tiempo, ordenados cronológicamente y espaciados entre sí de manera uniforme (diario, semanal, semestral, anual, entre otros). Por esta razón, los datos usualmente son dependientes entre sí.  El principal objetivo de una serie de tiempo (denotada por $X_{t}$, donde $t=1,2,...,n$) es realizar un análisis de los datos para conocer su comportamiento a través del tiempo  y, a partir de dicho conocimiento, y asumiendo que mantendrá un comportamiento similar al observado, poder realizar predicciones en uno o más períodos de tiempo situados en el futuro. 
 
