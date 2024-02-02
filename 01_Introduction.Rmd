@@ -29,7 +29,7 @@ Dentro de los métodos de predicción cuantitativos, se pueden distinguir dos gr
 
 En este curso nos centraremos en el análisis univariante de las series de tiempo.
 
-# Descomposión temporal
+# Descomposición temporal
 
 El análisis clásico de las series temporales se basa en la suposición de que los valores que toma la variable de observación es la consecuencia de tres componentes, cuya actuación conjunta da como resultado los valores medidos.
 
