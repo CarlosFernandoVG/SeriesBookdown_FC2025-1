@@ -1,5 +1,5 @@
 introducción
-descomposión-temporal
+descomposición-temporal
 ejercicios
 procesos-estocásticos
 proceso-estocástico-estacionario

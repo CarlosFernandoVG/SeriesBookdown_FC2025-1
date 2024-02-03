@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Análisis de Series de Tiempo</title>
+  <title>Capítulo 2 Descomposición temporal | Análisis de Series de Tiempo</title>
   <meta name="description" content="Material para el curso Análisis de Supervivencia y Series de Tiempo en la Facultad de Ciencias, Universidad Nacional Autónoma de México" />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Análisis de Series de Tiempo" />
+  <meta property="og:title" content="Capítulo 2 Descomposición temporal | Análisis de Series de Tiempo" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Material para el curso Análisis de Supervivencia y Series de Tiempo en la Facultad de Ciencias, Universidad Nacional Autónoma de México" />
   <meta name="github-repo" content="svg18/Series-de-Tiempo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Análisis de Series de Tiempo" />
+  <meta name="twitter:title" content="Capítulo 2 Descomposición temporal | Análisis de Series de Tiempo" />
   
   <meta name="twitter:description" content="Material para el curso Análisis de Supervivencia y Series de Tiempo en la Facultad de Ciencias, Universidad Nacional Autónoma de México" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="introducción.html"/>
+<link rel="prev" href="introducción.html"/>
+<link rel="next" href="procesos-estocásticos.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -205,140 +205,70 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Análisis de Series de Tiempo</h1>
-<p class="author"><em>Sofía Villers Gómez</em></p>
-<p class="author"><em>Carlos Fernando Vásquez Guerra</em></p>
-<p class="author"><em>David Alberto Mateos Montes de Oca</em></p>
-</div>
-<div id="prefacio" class="section level1 unnumbered hasAnchor">
-<h1>Prefacio<a href="index.html#prefacio" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Primera edición del bookdown <em>Análisis de Series de Tiempo</em> para su uso en la materia Análisis de Supervivencia y Series de tiempo y sus relacionadas impartidas por los autores, así como para aquellos estudiantes que deseen adquirir el conocimiento pertinente de tal tópico.</p>
-<div id="objetivos" class="section level3 unnumbered hasAnchor">
-<h3>Objetivos<a href="index.html#objetivos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li><p>Otorgar un material electrónico de calidad con el contenido referente al Análisis de Series de Tiempo como un esfuerzo de los autores para lograr un proceso de aprendizaje autodidacta por parte del alumno y así optimizar el tiempo, tanto de los profesores, como el de los alumnos.</p></li>
-<li><p>Plasmar las bases teóricas de esta rama de la estadística con el uso de ejemplos y contenido visual para un mejor entendimiento de cada subtema que se trate.</p></li>
-<li><p>Dar continuidad al material para el curso <em>Análisis de Supervivencia y Series de Tiempo</em>.</p></li>
-</ul>
-</div>
-<div id="estructura" class="section level3 unnumbered hasAnchor">
-<h3>Estructura<a href="index.html#estructura" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Este libro se compone de 15 capítulos. Se recomienda que la consulta de los capítulos se realice de acuerdo al índice, ya que a medida que se avanza en índice, se asume el conocimiento de los capítulos previos.</p>
-</div>
-<div id="detalles-técnicos" class="section level3 unnumbered hasAnchor">
-<h3>Detalles técnicos<a href="index.html#detalles-técnicos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Para la creación de este material se hizo uso de varios sistemas de software como LaTeX y CSS para el diseño de ciertos elementos. Todos los cálculos y gráficas fue creado con el lenguaje de programación <code>R</code> ya sea con el uso del paquete <code>base</code> o algún otro de los paquetes que se mencionan a continuación.</p>
-<style type="text/css">
-.scroll-300 {
-  max-height: 300px;
-}
-</style>
-<pre class="scroll-300"><code>R version 4.3.2 (2023-10-31)
-Platform: x86_64-apple-darwin20 (64-bit)
-Running under: macOS Ventura 13.6.3
-
-Matrix products: default
-BLAS:   /Library/Frameworks/R.framework/Versions/4.3-x86_64/Resources/lib/libRblas.0.dylib 
-LAPACK: /Library/Frameworks/R.framework/Versions/4.3-x86_64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0
-
-locale:
-[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
-
-time zone: America/Mexico_City
-tzcode source: internal
-
-attached base packages:
-[1] stats     graphics  grDevices utils     datasets  methods   base     
-
-other attached packages:
- [1] TSA_1.3.1        forecast_8.21.1  kableExtra_1.4.0 knitr_1.45      
- [5] latex2exp_0.9.6  patchwork_1.2.0  lubridate_1.9.3  forcats_1.0.0   
- [9] stringr_1.5.1    dplyr_1.1.4      purrr_1.0.2      readr_2.1.5     
-[13] tidyr_1.3.1      tibble_3.2.1     ggplot2_3.4.4    tidyverse_2.0.0 
-
-loaded via a namespace (and not attached):
- [1] gtable_0.3.4      xfun_0.41         bslib_0.6.1       lattice_0.21-9   
- [5] tzdb_0.4.0        quadprog_1.5-8    vctrs_0.6.5       tools_4.3.2      
- [9] generics_0.1.3    curl_5.2.0        parallel_4.3.2    fansi_1.0.6      
-[13] xts_0.13.2        pkgconfig_2.0.3   Matrix_1.6-1.1    lifecycle_1.0.4  
-[17] compiler_4.3.2    munsell_0.5.0     fontawesome_0.5.2 leaps_3.1        
-[21] htmltools_0.5.7   sass_0.4.8        yaml_2.3.8        pillar_1.9.0     
-[25] jquerylib_0.1.4   cachem_1.0.8      nlme_3.1-163      fracdiff_1.5-3   
-[29] locfit_1.5-9.8    tidyselect_1.2.0  digest_0.6.34     stringi_1.8.3    
-[33] bookdown_0.37     splines_4.3.2     tseries_0.10-55   fastmap_1.1.1    
-[37] grid_4.3.2        colorspace_2.1-0  cli_3.6.2         magrittr_2.0.3   
-[41] utf8_1.2.4        withr_3.0.0       scales_1.3.0      timechange_0.3.0 
-[45] TTR_0.24.4        rmarkdown_2.25    quantmod_0.4.25   nnet_7.3-19      
-[49] timeDate_4032.109 zoo_1.8-12        hms_1.1.3         urca_1.3-3       
-[53] evaluate_0.23     lmtest_0.9-40     viridisLite_0.4.2 mgcv_1.9-0       
-[57] rlang_1.1.3       Rcpp_1.0.12       glue_1.7.0        xml2_1.3.6       
-[61] svglite_2.1.3     rstudioapi_0.15.0 jsonlite_1.8.8    R6_2.5.1         
-[65] systemfonts_1.0.5</code></pre>
-<p>Este libro fue escrito con <a href="http://bookdown.org/">bookdown</a> usando <a href="http://www.rstudio.com/ide/">RStudio</a>.</p>
-<p>Esta versión fue escrita con:</p>
-<pre><code>Finding R package dependencies ... Done!</code></pre>
-<pre><code> setting  value
- version  R version 4.3.2 (2023-10-31)
- os       macOS Ventura 13.6.3
- system   x86_64, darwin20
- ui       X11
- language (EN)
- collate  en_US.UTF-8
- ctype    en_US.UTF-8
- tz       America/Mexico_City
- date     2024-02-02
- pandoc   3.1.1 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/ (via rmarkdown)</code></pre>
-</div>
-<div id="licencia" class="section level3 unnumbered hasAnchor">
-<h3>Licencia<a href="index.html#licencia" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>This work is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
-<center>
-<i class="fab fa-creative-commons fa-2x"></i><i class="fab fa-creative-commons-by fa-2x"></i><i class="fab fa-creative-commons-sa fa-2x"></i>
-</center>
-<p><em>This is a human-readable summary of (and not a substitute for) the license.
-Please see <a href="https://creativecommons.org/licenses/by-sa/4.0/legalcode" class="uri">https://creativecommons.org/licenses/by-sa/4.0/legalcode</a> for the full legal text.</em></p>
-<p><strong>You are free to:</strong></p>
-<ul>
-<li><p><strong>Share</strong>—copy and redistribute the material in any medium or
-format</p></li>
-<li><p><strong>Remix</strong>—remix, transform, and build upon the material for any
-purpose, even commercially.</p></li>
-</ul>
-<p>The licensor cannot revoke these freedoms as long as you follow the
-license terms.</p>
-<p><strong>Under the following terms:</strong></p>
-<ul>
-<li><p><strong>Attribution</strong>—You must give appropriate credit, provide a link
-to the license, and indicate if changes were made. You may do so in
-any reasonable manner, but not in any way that suggests the licensor
-endorses you or your use.</p></li>
-<li><p><strong>ShareAlike</strong>—If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.</p></li>
-<li><p><strong>No additional restrictions</strong>—You may not apply legal terms or
-technological measures that legally restrict others from doing
-anything the license permits.</p></li>
-</ul>
-<p><strong>Notices:</strong></p>
-<p>You do not have to comply with the license for elements of the
-material in the public domain or where your use is permitted by an
-applicable exception or limitation.</p>
-<p>No warranties are given. The license may not give you all of the
-permissions necessary for your intended use. For example, other rights
-such as publicity, privacy, or moral rights may limit how you use the
-material.</p>
+<div id="descomposición-temporal" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Capítulo 2</span> Descomposición temporal<a href="descomposición-temporal.html#descomposición-temporal" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>El análisis clásico de las series temporales se basa en la suposición de que los valores que toma la variable de observación es la consecuencia de tres componentes, cuya actuación conjunta da como resultado los valores medidos.</p>
+<p>Los componentes de una serie de tiempo son:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Tendencia</strong>: La tendencia o tendencia a largo plazo de una serie es por lo común el resultado de factores a largo plazo. En términos intuitivos, la tendencia de una serie de tiempo caracteriza el patrón gradual y consistente de las
+variaciones de la propia serie, que se consideran consecuencias de fuerzas persistentes que afectan el crecimiento o la reducción de la misma, tales como: cambios en la población, en las características demográficas de la misma, cambios en los ingresos, en la salud, en el nivel de educación y tecnología. Las tendencias a largo plazo se ajustan a diversos esquemas. Algunas se mueven continuamente hacía arriba, otras declinan, y otras más permanecen igual en un cierto período o intervalo de tiempo.<br />
+</li>
+<li><strong>Estacionalidad</strong>: El componente de la serie de tiempo que representa la variabilidad en los datos debida a influencias de las estaciones, se llama componente estacional. Esta variación corresponde a los movimientos de la serie que ocurren año tras año en los mismos meses (o en los mismos trimestres) del año poco más o menos con la misma intensidad. Por ejemplo: Un fabricante de albercas inflables espera poca actividad de ventas durante los meses de otoño e invierno y tiene ventas máximas en los de primavera y verano, mientras que los fabricantes de equipo para la nieve y ropa de abrigo esperan un comportamiento anual opuesto al del fabricante de albercas.<br />
+</li>
+<li><strong>Componente aleatoria</strong>: Esta se debe a factores a corto plazo, imprevisibles y no recurrentes que afectan a la serie de tiempo. Como este componente explica la variabilidad aleatoria de la serie, es impredecible, es decir, no se puede esperar predecir su impacto sobre la serie de tiempo. Existen dos tipos de variación irregular:
+<ol style="list-style-type: lower-alpha">
+<li>Las variaciones que son provocadas por acontecimientos especiales, fácilmente identificables, como las elecciones, inundaciones, huelgas, terremotos.</li>
+<li>Variaciones aleatorias o por casualidad, cuyas causas no se pueden señalar en forma exacta, pero que tienden a equilibrarse a la larga.</li>
+</ol></li>
+</ol>
+<p>Se puede observar que de los tres componentes, los dos primeros son determinísticos, mientras que la última es aleatoria.</p>
+<p>Adicionalemte, la asociación de estos componentes en una serie temporal puede ser de tipo aditivo, multiplicativo o combinación de los dos anteriores</p>
+<p>Entonces la serie se tiempo en un esquema aditivo se puede expresar como:</p>
+<p><span class="math display">\[X_{t}=T_{t}+E_{t}+I_{t}\]</span>
+Mientras que la serie se tiempo en un esquema multiplicativo se expresaría como:</p>
+<p><span class="math display">\[X_{t}=T_{t}*E_{t}*I_{t}\]</span>
+Y un ejemplo de combinación se expresaría como:</p>
+<p><span class="math display">\[X_{t}=(T_{t}+E_{t})*I_{t}\]</span>
+donde <span class="math inline">\(T_{t}\)</span> es el componente de <strong>tendencia</strong>, <span class="math inline">\(E_{t}\)</span> el componente de <strong>estacionalidad</strong> y <span class="math inline">\(I_{t}\)</span> la componente <strong>aleatoria</strong>.</p>
+<p>Las siguientes gráficas son sólo otro ejemplo basado en el conjunto de datos <code>nottem</code>, en el cual se tienen las temperaturas mensuales promedio en Nottingham entre 1920 y 1939. Esta serie de tiempo tiene el siguiente comportamiento a través de los años.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" />
+En la gráfica se puede observar que los datos parecen tener un comportamiento cíclico, lo cual es esperado ya que los datos corresponden a temperaturas mensuales. Así mismo el gráfico no muestra que exista una tendencia en los datos es decir no podemos decir que las temperaturas incrementan o decrementan al pasar del tiempo.</p>
+<p>La función R “decompose”, obtiene las componentes de tendencia, estacionalidad y aleatoria de una serie temporal a través de medias móviles, y además permite obtener los componentes en base a un esquema aditivo ó multiplicativo. Es una función generica de R, lo que significa que no requiere de la instalación de ninguna librería.</p>
+<p>La forma de utlizar esta función es la siguiente:</p>
+<p><strong>decompose(x, type = c(“additive”, “multiplicative”),filter = NULL)</strong></p>
+<p>La función calcula el componente de tendencia utilizando medias móviles, (si filter = NULL, se utilizan medias móviles simétricas), los índices de estacionalidad son promedios de los indices de estacionalidad que se obtienen al desestacionalizar la serie por el modelo elegido, por último, el componente irregular se obtiene eliminando la tendencia y estacionalidad de la serie temporal.</p>
+<p>Nota inportante es que la función requiere que los datos tengan forma de serie temporal.</p>
+<p>Ahora aplicaremos la función decompose a la serie de tiempo graficada anteriormente. Las siguientes gráficas representan las componentes antes mencionadas de la serie de tiempo correspondiente a las temperaturas mensuales promedio en Nottingham entre 1920 y 1939.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" />
+La descomposición nos corrobora la presencia de una estacionalidad en los datos y detecta una ligera tendencia a la alza, aunque la escala en el gráfico de la tendencia es muy pequeña muestra que al pasar el tiempo las temperaturas promedio parecen estarse incrementando. En cuanto al gráfico de aleatoriedad la descomposición efectivamente lo presenta como una serie de datos aleatorios.</p>
+<div id="ejercicios" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Ejercicios<a href="descomposición-temporal.html#ejercicios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>Una serie de tiempo se puede descomponer en: (Seleccione la opción correcta)</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Parte Multiplicativa, Parte Aditiva y Parte Aleatoria</li>
+<li>Tendencia, Estacionalidad y Parte Aleatoria</li>
+<li>Parte Univariante y Parte Multivariante</li>
+</ol>
+<ol start="2" style="list-style-type: decimal">
+<li>Utilizar los datos en el objeto “AirPassengers” que corresponden a 144 mediciones del número de pasajeros mensuales en líneas aereas y:</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Grafique la serie de tiempo y describa que patrón observa. Comente su código.</li>
+<li>Aplique la función decompose a los datos y describa los hallazgos. ¿Qué puede concluír además de los hallazgos ténicos?</li>
+<li>Grafique la serie de los logartimos de los datos y describa el cambio observado respecto a lo visto en el inciso a)</li>
+</ol>
 
 </div>
 </div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="introducción.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="introducción.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="procesos-estocásticos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
