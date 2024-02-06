@@ -97,8 +97,8 @@ c) Parte Univariante y Parte Multivariante
 
 2. Utilizar los datos en el objeto "AirPassengers" que corresponden a 144 mediciones del número de pasajeros mensuales en líneas aereas y:
 a) Grafique la serie de tiempo y describa que patrón observa. Comente su código.
-b) Aplique la función decompose a los datos y describa los hallazgos. ¿Qué puede concluír además de los hallazgos ténicos?
-c) Grafique la serie de los logartimos de los datos y describa el cambio observado respecto a lo visto en el inciso a)
+b) Aplique la función decompose a los datos y describa los hallazgos. ¿Qué puede concluír además de los hallazgos técnicos?
+c) Grafique la serie de los logarítmos de los datos y describa el cambio observado respecto a lo visto en el inciso a)
 
 
 

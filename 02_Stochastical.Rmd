@@ -171,6 +171,6 @@ En resumen, si una serie es estacionaria, su media, su varianza y su autocovaria
 a) Cierto
 b) Falso
 
-3. Utilizar los datos en el objeto "AirPassengers" que corresponden a 144 mediciones del número de pasajeros mensuales en líneas aereas y grafique la serie de la diferencia de los logartimos de los datos.¿El gráfico sugiere que un modelo estacionario podría ser apropiada para las diferencias de los logarítmos? 
+3. Utilizar los datos en el objeto "AirPassengers" que corresponden a 144 mediciones del número de pasajeros mensuales en líneas aéreas y grafique la serie de la diferencia de los logaritmos de los datos.¿El gráfico sugiere que un modelo estacionario podría ser apropiada para las diferencias de los logaritmos? 
 
 [^1.1]: El nombre de ruido blanco puede explicarse fácilmente en el análisis espectral en series de tiempo, el cual hace un estudio sobre la frecuencia y no tanto sobre el tiempo. Este no se verá en este material pero se puede estudiar a detalle esto en el libro @cryer2008time. Bajo un análisis espectral, en un proceso de ruido, su función de densidad espectral (se puede pensar la densidad espectral como la cantidad de varianza en un intervalo $(\omega, \omega+d\omega)$ que aporta un modelo basado en una serie de Fourier) es constante, es decir que esto sucede para todas las frecuencias. Esto es análogo al espectro de luz blanca en el ámbito físico; ya que todos los colores se distribuyen uniformemente para formar la luz blanca.
