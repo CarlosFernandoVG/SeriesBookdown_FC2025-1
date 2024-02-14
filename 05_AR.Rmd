@@ -82,6 +82,8 @@ Respecto a la covarianza $Cov(X_t,X_{t-k})$ para $K=1,...$, se tiene lo siguient
 $$
 \begin{split}
 Cov(X_t,X_{t-k})&=\gamma_k = \mathbb{E}\left[(X_t-\mathbb{E}(X_t))(X_{t-k}-\mathbb{E}(X_{t-k}))\right]\\
+& = \mathbb{E}\left[(\phi_0 + \phi_1X_{t-1}+\epsilon_t- \mathbb{E}(X_{t}))(X_{t-k}-\mathbb{E}(X_{t-k}))\right]\\
+& = \mathbb{E}\left[(\phi_0 + \phi_1X_{t-1}+\epsilon_t-\phi_0-\phi_1\mathbb{E}(X_{t-1}))(X_{t-k}-\mathbb{E}(X_{t-k}))\right]\\
 & = \mathbb{E}\left[(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\epsilon_t)(X_{t-k}-\mathbb{E}(X_{t-k}))\right]\\
 & = \mathbb{E}\left[\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))(X_{t-k}-\mathbb{E}(X_{t-k}))\right] + \mathbb{E}\left[\epsilon_t(X_{t-k}-\mathbb{E}(X_{t-k}))\right]\\
 & = \phi_1\mathbb{E}\left[(X_{t-1}-\mathbb{E}(X_{t-1}))(X_{t-k}-\mathbb{E}(X_{t-k}))\right] = \phi_1\gamma_{k-1}
