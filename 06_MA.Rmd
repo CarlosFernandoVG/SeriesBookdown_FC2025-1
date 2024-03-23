@@ -170,7 +170,7 @@ $$
 \rho_k = \left\{
 \begin{array}{lr}
 1 &  \mbox{ si } k=0\\
-\frac{\theta_1+(1+\theta_2)}{1+\theta_1^2+\theta_2^2}&  \mbox{ si } k=1\\
+\frac{\theta_1(1+\theta_2)}{1+\theta_1^2+\theta_2^2}&  \mbox{ si } k=1\\
 \frac{\theta_2}{1+\theta_1^2+\theta_2^2}&  \mbox{ si } k=2\\
 0 &  \mbox{ si }  k>2\\
 \end{array}
