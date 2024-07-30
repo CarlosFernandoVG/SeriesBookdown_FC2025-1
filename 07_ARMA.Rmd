@@ -3,7 +3,7 @@
 Es muy probable que una serie de tiempo $X_t$, tenga características de un proceso $AR$ y de un proceso $MA$ al mismo tiempo, por lo que será un proceso $ARMA$. Así, $X_t$ sigue un proceso $ARMA(p,q)$, y en este proceso habrá $p$  términos autoregresivos y $q$   términos de media móvil. Este se verá de la siguiente forma: 
 
 $$
-X_t=c+ \phi_1X_{t-1}+...+\phi_pX_{t-p}+-\theta_1\epsilon_{t-1}-\theta_2\epsilon_{t-2}-...-\theta_q\epsilon_{t-q}+\epsilon_t
+X_t=c+ \phi_1X_{t-1}+...+\phi_pX_{t-p}-\theta_1\epsilon_{t-1}-\theta_2\epsilon_{t-2}-...-\theta_q\epsilon_{t-q}+\epsilon_t
 $$
   
 donde $\epsilon_t$ es un proceso de ruido blanco, y $\phi_1,...,\phi_p,\theta_1,...,\theta_q$ son los parámetros del modelo.
@@ -21,7 +21,8 @@ $$
 \end{array}
 $$
 
-Donde
+Donde:
+
 + $\phi_p(B)$ es el polinomio autoregresivo
 + $\theta_q(B)$ es el polinomio de medias móviles.
 
@@ -43,7 +44,7 @@ $$
 
 Sea $Y_t: ARMA(2,1)$ con $\epsilon_t\sim N(0,1)$ tal que $Y_t = 1.5Y_{t-1}-0.9Y_{t-2}-0.4\epsilon_{t-1}+\epsilon_t$.
 
-Sabemos que es invertible por que $|\theta| = |-0,4|<1$ y es estacionario por lo siguiente:
+Sabemos que es invertible por que $|\theta| = |-0.4|<1$ y es estacionario por lo siguiente:
 
 $$
 \begin{split}
@@ -72,18 +73,24 @@ $$
 \end{array}
 $$
 
-Por lo que Suponiendo estacionariedad $\mathbb{E}(X_t) = \frac{c}{1-\theta_1}$.
+Por lo que Suponiendo estacionariedad $\mathbb{E}(X_t) = \frac{c}{1-\phi_1}$.
 
 ### Covarianzas
 
+Recordando que $\mathbb{E}(X_t) = c+ \phi_1\mathbb{E}(X_{t-1}) \implies X_t-\mathbb{E}(X_t) = \phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\epsilon_t+\theta_1\epsilon_{t-1}$
+
 $$
 \begin{split}
-\gamma_0 &=\mathbb{E}\left[(X_t-\mathbb{E}(X_t))^2\right]=\phi_1^2Var(X_{t-1})+\theta_1^2\sigma^2+\sigma^2+\phi_1\theta_1Cov(X_{t-1}, \epsilon_{t-1})\\
-\Longleftrightarrow & (1-\phi_1^2)Var(X_t) = \sigma^2(1+\theta_1^2)+\phi_1\theta_1\sigma^2\\
+\gamma_0 &=\mathbb{E}\left[(X_t-\mathbb{E}(X_t))^2\right]\\
+&=\mathbb{E}\left[(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\epsilon_t+\theta_1\epsilon_{t-1})^2\right]\\
+&=\mathbb{E}\left[(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1})))^2+2(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1})))(\epsilon_t+\theta_1\epsilon_{t-1})+(\epsilon_t+\theta_1\epsilon_{t-1})^2\right]\\
+&=\phi_1^2\mathbb{E}\left[(X_{t-1}-\mathbb{E}(X_{t-1}))^2\right]+2\phi_1\theta_1\mathbb{E}\left[X_{t-1}\epsilon_{t-1}\right]+\mathbb{E}\left[(\epsilon_t+\theta_1\epsilon_{t-1})^2\right]\\
+&=\phi_1^2Var(X_{t-1})+2\phi_1\theta_1\mathbb{E}\left[X_{t-1}\epsilon_{t-1}\right]+\mathbb{E}[\epsilon_t^2]+2\theta_1\mathbb{E}[\epsilon_t\epsilon_{t-1}]+\mathbb{E}[\theta_1^2\epsilon_{t-1}^2]\\
+&=\phi_1^2Var(X_{t-1})+2\phi_1\theta_1\sigma^2+\sigma^2+\theta_1^2\sigma^2\\
+\Longleftrightarrow & (1-\phi_1^2)Var(X_t) = \sigma^2(1+\theta_1^2+2\phi_1\theta_1)\\
 \implies & Var(X_t) = \gamma_0 = \frac{\sigma^2(1+\theta_1^2+2\phi_1\theta_1)}{1-\phi_1^2}
 \end{split}
 $$
-Recordando que $\mathbb{E}(X_t) = c+ \phi_1\mathbb{E}(X_{t-1}) \implies X_t-\mathbb{E}(X_t) = \phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\epsilon_t+\theta\epsilon_{t-1}$
 
 $$
 \begin{split}
@@ -102,8 +109,8 @@ $$
 \gamma_2 & =\mathbb{E}[(X_t-\mathbb{E}(X_t))(X_{t-2}-\mathbb{E}(X_{t-2}))]\\
 & = \mathbb{E}\left[(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\epsilon_t+\theta_1\epsilon_{t-1})(X_{t-2}-\mathbb{E}(X_{t-2}))\right]\\
 & = \mathbb{E}\left[(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))(X_{t-2}-\mathbb{E}(X_{t-2}))+\epsilon_t(X_{t-2}-\mathbb{E}(X_{t-2}))+\theta_1\epsilon_{t-1}(X_{t-2}-\mathbb{E}(X_{t-2}))\right]\\
-&= \mathbb{E}[\phi_1(X_{t-1}X_{t-2}-X_{t-1}\mathbb{E}(X_{t-2})-X_{t-2}\mathbb{E}(X_{t-1})+\mathbb{E}(X_{t-1})\mathbb{E}(X_{t-2}))\\
-& \ \ \ \ \ + \epsilon_tX_{t-2}-\epsilon_t\mathbb{E}(X_{t-2})+\theta_1\epsilon_{t-1}X_{t-2}-\theta_1\epsilon_{t-1}\mathbb{E}(X_{t-2})]\\
+&= \mathbb{E}\left[(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))(X_{t-2}-\mathbb{E}(X_{t-2}))\right]\\
+& \ \ \ \ \ + \mathbb{E}[\epsilon_tX_{t-2}]-\mathbb{E}[\epsilon_t\mathbb{E}(X_{t-2})]+\theta_1\mathbb{E}[\epsilon_{t-1}X_{t-2}]-\theta_1\mathbb{E}[\epsilon_{t-1}\mathbb{E}(X_{t-2})]\\
 &= \phi_1\gamma_1
 \end{split}
 $$
@@ -167,5 +174,5 @@ b. Falso
 c. Sólo si p y q son mayores a cero
 d. Sólo si p y q son distintos de cero
 2) En un modelo definido por $X_t=0.65X_{t-1}+\epsilon_t+0.30\epsilon_{t-1}$ con $\epsilon_t\sim N(0,1)$, calcular $\rho_2$
-3. Suponga que el correlograma de una serie de tiempo con 100 observaciones tiene: $\hat\rho_1$ = 0.31, $\hat\rho_2$ = 0.07, $\hat\rho_3$ = −0.05, $\hat\rho_4$= 0.06, $\hat\rho_5$ = −0.03, $\hat\rho_6$ = 0.27, $\hat\rho_7$ = 0.08, $\hat\rho_8$= 0.05, $\hat\rho_9$ = 0.02, $\hat\rho_10$= −0.01.¿Qué modelo ARMA es
+3) Suponga que el correlograma de una serie de tiempo con 100 observaciones tiene: $\hat\rho_1$ = 0.31, $\hat\rho_2$ = 0.07, $\hat\rho_3$ = −0.05, $\hat\rho_4$= 0.06, $\hat\rho_5$ = −0.03, $\hat\rho_6$ = 0.27, $\hat\rho_7$ = 0.08, $\hat\rho_8$= 0.05, $\hat\rho_9$ = 0.02, $\hat\rho_10$= −0.01.¿Qué modelo ARMA es
 apropiado?

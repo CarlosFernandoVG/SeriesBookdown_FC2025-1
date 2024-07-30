@@ -1,43 +1,26 @@
 # Construcción de modelos para series de tiempo univariadas {#modelacion-univariada}
 
-Para construir un modelo $ARIMA$ que ajuste a una serie tiempo dada, se debe seguir un proceso iterativo de tres etapas. Primero identificar un modelo $ARIMA(p,d,q)$ tentativo, segundo, estimarlos parámetros desconocidos del modelo. Tercero, mediante el análisis de residuales verificar si el modelo propuesto es el adecuado.
+Para construir un modelo $ARIMA$ que ajuste a una serie tiempo dada, se debe seguir un proceso iterativo de tres etapas. Primero identificar un modelo $ARIMA(p,d,q)$ tentativo, segundo, estimar los parámetros desconocidos del modelo. Tercero, mediante el análisis de residuales verificar si el modelo propuesto es el adecuado.
 
 + **Identificación**: Utilizando los datos ordenados cronológicamente haciendo uso de gráficos (correlograma, diagrama de dispersión, otros) se seleccionan los modelos $ARIMA(p,d,q)$ que valga la pena investigar. En esta etapa es posible identificar más de un modelo candidato que describa la serie.
 Observando las gráficas del ACF y PACF de la serie transformada podemos hacernos una idea del modelo que describe nuestra serie, o al menos de cuáles son los primeros candidatos que debemos probar.
 + **Estimación**: Considerando el modelo o modelos apropiados seleccionados en el paso anterior, se procede a realizar inferencia sobre los parámetros del modelo. Algunos paquetes permiten la selección del método de estimación (verosimilitud, momentos, mínimos cuadrados) que mejor se ajuste a las especificaciones del problema.
-+ **Verificación**: Si el modelo es el adecuado, es decir los valores de $p$ y $q$ han sido correctamente especificados, entonces el modelo deberá ajustar bien a los datos y los residuales (la diferencia entre lo observado y lo estimado con el modelo) deberán comportarse como ruido blanco, esto se puede comprobar con la prueba de Ljung-Box. Si el modelo es adecuado, la función de autocorrelación de los residuales no debe de tener ninguna estructura. En caso de que el modelo no sea el adecuado, se escoge el siguiente candidato y se repiten los pasos anteriores. 
++ **Verificación**: Si el modelo es el adecuado, es decir los valores de $p$ y $q$ han sido correctamente especificados, entonces el modelo deberá ajustar bien a los datos y los residuales (la diferencia entre lo observado y lo estimado con el modelo) deberán comportarse como ruido blanco y no tener ninguna estructura. Esto significa que hay que probar que los residuales son estacionarios y no autocorrelacionados. 
 
-Prueba de estacionariedad de los residuales Dickey-Fuller.
-Prueba de independencia Box-Pierce.
+Para verificar la no autocorrelación se puede usar la prueba de Ljung-Box vista en el capítulo 4, pero también la prueba Box-Pierce que es una versión simplificada de la prueba Ljung-Box sirve para evaluar si la serie de tiempo está autocorrelacionada. 
+
+Sea n = longitud($X_t$), $\rho_i$ = autocorrelación de $X$ en el retraso $i$, entonces el estadístico de la prueba de Ljung-Box es $n*(n+2)*(\frac{\rho_1^2}{n-1} + \frac{\rho_2^2}{n-2} + ... + \frac{\rho_k^2}{n-k})$. Y el estadístico de la prueba Box-Pierce es $n*(\rho_1^2 + \rho_2^2 + ... + \rho_k^2)$. Bajo la hipótesis nula definida como que no existe autocorrelación, las estadísticas de prueba tienen una distribución Chi-cuadrado con grados de libertad los rezagos($k$).
+
+Asimismo, la prueba Durbin-Watson también puede utilizarse para probar autocorrelación en las series de tiempo.
+
+La prueba aumentada de Dickey Fuller (prueba ADF) es una prueba estadística comúnmente utilizada en series de tiempo para probar la estacionariedad de la serie. Recordemos que para el ajuste de modelos tipo ARIMA, el primer paso es determinar el número de diferenciaciones necesarias para que la serie sea estacionaria. Por lo tanto, pruebas como la Dickey Fuller Aumentada (ADF), la KPSS y la Phillips-Perron se utilizan para determinar la estacionariedad de una serie en los modelos autoregresivos. La prueba ADF es fundamentalmente una prueba de hipótesis en donde se plantea una hipótesis nula y una alternativa y a partir del estadístico de prueba y el valor p que se puede inferir si una serie de tiempo es estacionaria o no.
 
 Si se ajustan varios modelos candidatos $ARIMA(p,d,q)$, un buen modelo será aquel que tenga los residuales semejantes al de un ruido blanco, además que tenga los valores del AIC (Criterio de Información de Akaike) y BIC (Criterio de Información Bayesiana) menores con relación al resto de los modelos candidatos.
 
+
 ## Ejercicios
 
+1) Con los datos seleccionados para las prácticas
+h. Definir el modelo de serie de tiempo que mejor ajusta a los datos. ¿Tiene alguna limitación?
+i. Realizar las predicciones con base en el modelo propuesto. ¿Cuáles son las consideraciones que habría que tener?
 En este ejercicio pondrás en práctica todos tus conocimientos adquiridos además de tu creatividad para generar resultados interesantes.
-
-Para este ejercicio considera tres conjuntos de datos posibles:
-
-1. [WhatsApp Dataset](https://github.com/dhfbk/WhatsApp-Dataset/tree/master)
-2. [Elon Musk's 2021 Tweets and DOGEcoin Price Data](https://www.kaggle.com/datasets/johnsmith44/dogecoin-price-data-elon-musks-tweets-2021)
-3. Algún chat con el que desees trabajar, por ejemplo algún chat de WhatsApp que tenga suficiente tiempo de antigüedad.
-
-En los diferentes conjuntos de datos tendrás que trabajar con texto, por lo que te sugiero utilizar el paquete [stringr](https://stringr.tidyverse.org) con el cual puedes manipular y extraer información de caracteres. Tu tarea consiste en limpiar el conjunto de información, obtener estadísticas relevantes relacionadas al tema de series de tiempo, así como la creación de gráficos y resultados relevantes de tu estudio.
-
-Considera que deberás realizar al menos 2 propuestas de un análisis temporal. Por ejemplo, en cualquier de los conjuntos de datos puedes modelar y predecir el número de caracteres que se obtendrá en el siguiente mensaje o en el siguiente evento en tu escala de tiempo. Esto último lo menciono porque, a diferencia del conjunto de datos 1 y 3 tendrás explícitamente la variable de tiempo, la escala puede ser algo distinto a diferentes niveles de tiempo (como lo son horas, días, semanas, etc.); por ejemplo, cada mensaje completo puede representar tu escala de tiempo. También podrías explorar el número de emojis, el número de caracteres especiales, la cantidad de palabras en cada oración por mensaje, etc.
-
-Te recomiendo que, de acuerdo al conjunto de datos que elijas, sintetices y aglomeres la información a tu escala de tiempo. Por ejemplo, si tienes varios mensajes en un día, júntalos y saca las estadísticas considerando que es un solo mensaje.
-
-Para tu entrega necesitamos que en tus análisis expliques el porqué de tus transformaciones y decisiones, no tengas miedo de mostrar tus intentos y pruebas, siempre y cuando estos tengan orden, limpieza y estructura. No necesitamos los conjuntos de datos, aunque puedes enmascarar tus datos (en el caso de elegir un chat propio) de la manera que desees, siempre y cuando esto no afecte a tu proceso de extracción de información. [Aquí](https://github.com/CarlosFernandoVG/Ayudantias-EIII-2024-1/tree/main/Tarea1) encontrarás un script donde te dejo una función para enmascarar de manera sencilla cada string que prefieras.
-
-En tus análisis considera las siguientes preguntas:
-
-+ ¿Cómo se ve la descomposición de mi serie?
-+ ¿Tenemos tendencia, estacionalidad?
-+ ¿Qué pasará al utilizar una transformación u otra?
-+ ¿Qué modelo tiene mejor interpretabilidad?
-+ ¿Qué tan buena es mi predicción? ¿Hasta qué tiempo mi predicción podría ser adecuada?
-+ ¿Tenemos diferencias normales y estacionales?
-+ ¿Nuestros correlogramas justifican nuestros modelos?
-
-Se creativo, podrías análizar y comparar distintas series de tiempo, por ejemplo en el caso del chat de WhastApp, podrías hacer modelos por cada persona y ver el comportamiento que se tiene entre los individuos.

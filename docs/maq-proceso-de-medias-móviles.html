@@ -185,6 +185,11 @@ div.csl-indent {
 <li class="chapter" data-level="13" data-path="introducción-1.html"><a href="introducción-1.html"><i class="fa fa-check"></i><b>13</b> Introducción</a></li>
 <li class="chapter" data-level="14" data-path="archq-proceso-autoregresivo-con-heterocedasticidad-condicional.html"><a href="archq-proceso-autoregresivo-con-heterocedasticidad-condicional.html"><i class="fa fa-check"></i><b>14</b> <span class="math inline">\(ARCH(q)\)</span>: Proceso Autoregresivo con Heterocedasticidad Condicional</a></li>
 <li class="chapter" data-level="15" data-path="garchpq-proceso-autoregresivo-generalizado-con-heterocedasticidad-condicional.html"><a href="garchpq-proceso-autoregresivo-generalizado-con-heterocedasticidad-condicional.html"><i class="fa fa-check"></i><b>15</b> <span class="math inline">\(GARCH(p,q)\)</span>: Proceso Autoregresivo Generalizado con Heterocedasticidad Condicional</a></li>
+<li class="part"><span><b>VI Tareas</b></span></li>
+<li class="chapter" data-level="" data-path="tarea-1.html"><a href="tarea-1.html"><i class="fa fa-check"></i>Tarea 1</a></li>
+<li class="chapter" data-level="" data-path="tarea-2.html"><a href="tarea-2.html"><i class="fa fa-check"></i>Tarea 2</a></li>
+<li class="chapter" data-level="" data-path="tarea-3.html"><a href="tarea-3.html"><i class="fa fa-check"></i>Tarea 3</a></li>
+<li class="chapter" data-level="" data-path="bibliografía.html"><a href="bibliografía.html"><i class="fa fa-check"></i>Bibliografía</a></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="_blank">Hecho con bookdown</a></li>
 
@@ -228,7 +233,7 @@ AR(2): X_t = \phi_0+\phi_1X_{t-1}+\phi_2X_{t-2}+\epsilon_t\\
 \therefore X_t = \frac{\phi_0}{\phi(B)}+\frac{\epsilon_t}{\phi(B)} = \mu+(1-\psi_1B^1-\psi_2B^2-\cdots)\epsilon_t
 \end{array}
 \]</span></p>
-<p>Sin olvidar que las condiciones de estacionalidad para un proceso <span class="math inline">\(AR(1)\)</span> y <span class="math inline">\(AR(2)\)</span> son <span class="math inline">\(|\phi_1|&lt;1\)</span> y <span class="math inline">\(|1-\phi_1-\phi_2|&gt;0\)</span> respectivamente<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>.</p>
+<p>Sin olvidar que las condiciones de estacionariedad para un proceso <span class="math inline">\(AR(1)\)</span> y <span class="math inline">\(AR(2)\)</span> son <span class="math inline">\(|\phi_1|&lt;1\)</span> y <span class="math inline">\(|1-\phi_1-\phi_2|&gt;0\)</span> respectivamente<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>.</p>
 <div id="proceso-de-medias-móviles-de-orden-1-ma1" class="section level2 hasAnchor" number="7.1">
 <h2><span class="header-section-number">7.1</span> Proceso de Medias Móviles de orden 1: <span class="math inline">\(MA(1)\)</span><a href="maq-proceso-de-medias-móviles.html#proceso-de-medias-móviles-de-orden-1-ma1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Este modelo determina el valor de <span class="math inline">\(X_t\)</span> en función de la innovación actual y su primer retardo, es decir:</p>
@@ -247,6 +252,7 @@ donde <span class="math inline">\(\epsilon_t\)</span> es un proceso de ruido bla
 \begin{split}
 \gamma_0 &amp;= \mathbb{E}\left[(X_{t}-\mathbb{E}(X_{t}))^2\right]=\mathbb{E}\left[(\mu-\theta_1\epsilon_{t-1}-\epsilon_t-\mu)^2\right]\\
 &amp; = \mathbb{E}\left[\theta_1^2\epsilon_{t-1}^2+2\theta_1\epsilon_{t-1}\epsilon_{t}+\epsilon_t^2\right]\\
+&amp; = \mathbb{E}\left[\theta_1^2\epsilon_{t-1}^2\right]+2\theta_1\mathbb{E}\left[\epsilon_{t-1}\epsilon_{t}\right]+\mathbb{E}\left[\epsilon_t^2\right]\\
 &amp; = \theta_1^2\sigma^2+\sigma^2\\
 &amp; =(1+\theta_1^2)\sigma^2\\
 \\
@@ -264,7 +270,7 @@ donde <span class="math inline">\(\epsilon_t\)</span> es un proceso de ruido bla
 <p><span class="math display">\[
 \gamma_k = \left\{
 \begin{array}{lr}
-(1+\theta^2)\sigma^2 &amp;   \mbox{ si } k=0\\
+(1+\theta_1^2)\sigma^2 &amp;   \mbox{ si } k=0\\
 \theta_1 \sigma^2 &amp; \mbox{ si } k=1\\
 0 &amp;    \mbox{ si } k&gt;1\\
 \end{array}
@@ -281,9 +287,9 @@ donde <span class="math inline">\(\epsilon_t\)</span> es un proceso de ruido bla
 \right.
 \]</span>
 A continuación se muestran los resultados para un modelo <span class="math inline">\(AR(1)\)</span> de la siguiente forma <span class="math inline">\(X_t=0.45\epsilon_{t-1}\)</span></p>
-<p><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Además de las gráficas de Autocorrelación simple y parcial.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-18-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="proceso-de-medias-móviles-de-orden-2-ma2" class="section level2 hasAnchor" number="7.2">
 <h2><span class="header-section-number">7.2</span> Proceso de Medias Móviles de orden 2: <span class="math inline">\(MA(2)\)</span><a href="maq-proceso-de-medias-móviles.html#proceso-de-medias-móviles-de-orden-2-ma2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -303,7 +309,7 @@ X_t &amp; = \theta_0-(1+\theta_1 B+\theta_2B^2)\epsilon_{t}
 \\
 \gamma_1 &amp; = \mathbb{E}\left[(X_{t}-\mathbb{E}(X_{t}))(X_{t-1}-\mathbb{E}(X_{t-1}))\right]\\
 &amp; = \mathbb{E}\left[(-\epsilon_t-\theta_1\epsilon_{t-1}-\theta_2\epsilon_{t-2})(-\epsilon_{t-1}-\theta_1\epsilon_{t-2}-\theta_2\epsilon_{t-3})\right]\\
-&amp; = \mathbb{E}\left[\theta_1\epsilon_{t-1}^2+\theta_1\theta_2\epsilon_{t-2}^2\right]\\
+&amp; = \theta_1\mathbb{E}\left[\epsilon_{t-1}^2\right]+\theta_1\theta_2\mathbb{E}\left[\epsilon_{t-2}^2\right]\\
 &amp; = \theta_1\left(1+\theta_2\right)\sigma^2\\
 \\
 \gamma_2 &amp; = \mathbb{E}\left[(X_{t}-\mathbb{E}(X_{t}))(X_{t-2}-\mathbb{E}(X_{t-2}))\right]\\
@@ -349,7 +355,7 @@ donde 0&lt;|<span class="math inline">\(\theta\)</span>|&lt;1 y <span class="mat
 
 </div>
 </div>
-<h3>References</h3>
+<h3>Bibliografía<a href="bibliografía.html#bibliografía" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-cryer2008time" class="csl-entry">
 Cryer, Jonathan D, and Kung-Sik Chan. 2008. <em>Time Series Analysis: With Applications in r</em>. Springer Science &amp; Business Media.

@@ -185,6 +185,11 @@ div.csl-indent {
 <li class="chapter" data-level="13" data-path="introducción-1.html"><a href="introducción-1.html"><i class="fa fa-check"></i><b>13</b> Introducción</a></li>
 <li class="chapter" data-level="14" data-path="archq-proceso-autoregresivo-con-heterocedasticidad-condicional.html"><a href="archq-proceso-autoregresivo-con-heterocedasticidad-condicional.html"><i class="fa fa-check"></i><b>14</b> <span class="math inline">\(ARCH(q)\)</span>: Proceso Autoregresivo con Heterocedasticidad Condicional</a></li>
 <li class="chapter" data-level="15" data-path="garchpq-proceso-autoregresivo-generalizado-con-heterocedasticidad-condicional.html"><a href="garchpq-proceso-autoregresivo-generalizado-con-heterocedasticidad-condicional.html"><i class="fa fa-check"></i><b>15</b> <span class="math inline">\(GARCH(p,q)\)</span>: Proceso Autoregresivo Generalizado con Heterocedasticidad Condicional</a></li>
+<li class="part"><span><b>VI Tareas</b></span></li>
+<li class="chapter" data-level="" data-path="tarea-1.html"><a href="tarea-1.html"><i class="fa fa-check"></i>Tarea 1</a></li>
+<li class="chapter" data-level="" data-path="tarea-2.html"><a href="tarea-2.html"><i class="fa fa-check"></i>Tarea 2</a></li>
+<li class="chapter" data-level="" data-path="tarea-3.html"><a href="tarea-3.html"><i class="fa fa-check"></i>Tarea 3</a></li>
+<li class="chapter" data-level="" data-path="bibliografía.html"><a href="bibliografía.html"><i class="fa fa-check"></i>Bibliografía</a></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="_blank">Hecho con bookdown</a></li>
 
@@ -227,16 +232,20 @@ T_t = a_0 + a_1t +... + a_pt^p
 </div>
 <div id="diferencias-de-box-jenkins" class="section level2 hasAnchor" number="5.3">
 <h2><span class="header-section-number">5.3</span> Diferencias de Box-Jenkins<a href="transformaciones.html#diferencias-de-box-jenkins" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Consiste en aplicar diferencias a la serie de tiempo estudiada hasta que las observaciones se perciban como componentes de una serie débilmente estacionaria. Se debe comprender los siguientes operadores para el método:</p>
-<p>El <strong>operador de retraso</strong> se denota con una letra <span class="math inline">\(B\)</span> o <span class="math inline">\(\mathcal{L}\)</span> y se define como el valor retrasado de una serie de tiempo temporal indicado por el exponente del operador. De manera particular se tiene <span class="math inline">\(BX_t = X_{t-1}\)</span>, por lo que si se aplica varias veces el operador, la serie se retardaría <span class="math inline">\(k\)</span>-unidades temporales:</p>
+<p>Consiste en aplicar diferencias a la serie de tiempo estudiada hasta que las observaciones se perciban como componentes de una serie débilmente estacionaria. Se definen los siguientes operadores para este método:</p>
+<p>El <strong>operador de retraso</strong> se denota con una letra <span class="math inline">\(B\)</span> o <span class="math inline">\(\mathcal{L}\)</span> y se define como el valor retrasado de una serie de tiempo temporal, indicado con el exponente del operador la cantidad de retrasos. De manera particular se tiene <span class="math inline">\(BX_t = X_{t-1}\)</span>, por lo que si se aplica varias veces el operador, la serie se retardaría <span class="math inline">\(k\)</span>-unidades temporales:</p>
 <p><span class="math display">\[
 B^kX_t=X_{t-k}
 \]</span></p>
-<p>En particular <span class="math inline">\(B^0X_t=X_t\)</span>. Se puede utilizar con notación polinómica:</p>
+<p>En particular <span class="math inline">\(B^0X_t=X_t\)</span>. Por lo que se podría utilizar notación polinómica para expresar el operador de retraso:</p>
 <p><span class="math display">\[
 \phi(B)X_t = \left(\phi_0+\phi_1B+\phi_2B^2\right)X_t = \phi_0X_t+\phi_1X_{t-1}+\phi_2X_{t-2}
 \]</span></p>
-<p>El <strong>operador diferencia</strong> se expresa con <span class="math inline">\(\nabla\)</span> y se define como la diferencia entre el valor al periodo <span class="math inline">\(t\)</span> y valor rezagado <span class="math inline">\(k\)</span> periodos <span class="math inline">\(\nabla X_t=X_t-X_{t-1}\)</span>.</p>
+<p>El <strong>operador diferencia</strong> se expresa con <span class="math inline">\(\nabla\)</span> y se define como la diferencia entre el valor al periodo <span class="math inline">\(t\)</span> y valor rezagado <span class="math inline">\(k\)</span> periodos. Para <span class="math inline">\(k=1\)</span> se define como <span class="math inline">\(\nabla X_t=X_t-X_{t-1}\)</span>. Para <span class="math inline">\(k=2\)</span> se tendría la diferencia de las diferencias de un rezago.</p>
+<p><span class="math display">\[
+\nabla^2X_t=\nabla X_t-\nabla X_{t-1}=(X_t-X_{t-1})-(X_{t-1}-X_{t-2})
+\]</span>
+Y asi sucesivamente según vaya aumentando el valor de <span class="math inline">\(k\)</span>.</p>
 <p>Ambos operadores se relacionan de la siguiente manera:</p>
 <p><span class="math display">\[
 \nabla Z_t=Z_t-Z_{t-1}=Z_t-BZ_t=(1-B)Z_t
@@ -265,6 +274,13 @@ Teniendo que <span class="math inline">\(\nabla=(1-B)\)</span></p>
 <ul>
 <li>Recomendaciones: Utiliza la función <code>autoplot()</code> del paquete <code>forecast</code> en objetos de series de tiempo y el resultado de la función <code>decompose()</code> como si fuera la función <code>plot()</code>. Obtendrás un objeto ggplot que tendrá mayor versatilidad para su edición. Además, te recomendamos utilizar las funciones <code>ggAcf()</code> y <code>ggPacf()</code> del mismo paquete para el análisis de autocorrelación.</li>
 </ul>
+<ol start="3" style="list-style-type: decimal">
+<li>Con los datos seleccionados para las prácticas</li>
+</ol>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Aplique la función decompose a los datos y describa los hallazgos. ¿Qué puede concluir además de los hallazgos técnicos?</li>
+<li>Grafique la serie de los logaritmos de los datos y describa el cambio observado respecto a lo visto en el inciso b) de la práctica 1 ¿El gráfico sugiere que un modelo estacionario podría ser apropiado para los logaritmos?</li>
+</ol>
 
 </div>
 </div>

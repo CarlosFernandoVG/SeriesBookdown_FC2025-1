@@ -185,6 +185,11 @@ div.csl-indent {
 <li class="chapter" data-level="13" data-path="introducción-1.html"><a href="introducción-1.html"><i class="fa fa-check"></i><b>13</b> Introducción</a></li>
 <li class="chapter" data-level="14" data-path="archq-proceso-autoregresivo-con-heterocedasticidad-condicional.html"><a href="archq-proceso-autoregresivo-con-heterocedasticidad-condicional.html"><i class="fa fa-check"></i><b>14</b> <span class="math inline">\(ARCH(q)\)</span>: Proceso Autoregresivo con Heterocedasticidad Condicional</a></li>
 <li class="chapter" data-level="15" data-path="garchpq-proceso-autoregresivo-generalizado-con-heterocedasticidad-condicional.html"><a href="garchpq-proceso-autoregresivo-generalizado-con-heterocedasticidad-condicional.html"><i class="fa fa-check"></i><b>15</b> <span class="math inline">\(GARCH(p,q)\)</span>: Proceso Autoregresivo Generalizado con Heterocedasticidad Condicional</a></li>
+<li class="part"><span><b>VI Tareas</b></span></li>
+<li class="chapter" data-level="" data-path="tarea-1.html"><a href="tarea-1.html"><i class="fa fa-check"></i>Tarea 1</a></li>
+<li class="chapter" data-level="" data-path="tarea-2.html"><a href="tarea-2.html"><i class="fa fa-check"></i>Tarea 2</a></li>
+<li class="chapter" data-level="" data-path="tarea-3.html"><a href="tarea-3.html"><i class="fa fa-check"></i>Tarea 3</a></li>
+<li class="chapter" data-level="" data-path="bibliografía.html"><a href="bibliografía.html"><i class="fa fa-check"></i>Bibliografía</a></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="_blank">Hecho con bookdown</a></li>
 
@@ -207,7 +212,7 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="archq-proceso-autoregresivo-con-heterocedasticidad-condicional" class="section level1 hasAnchor" number="14">
 <h1><span class="header-section-number">Capítulo 14</span> <span class="math inline">\(ARCH(q)\)</span>: Proceso Autoregresivo con Heterocedasticidad Condicional<a href="archq-proceso-autoregresivo-con-heterocedasticidad-condicional.html#archq-proceso-autoregresivo-con-heterocedasticidad-condicional" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>El nombre proviene del inglés, “Autoregressive conditional heteroscedasticity” (ARCH). Métodp propuesto por Engels en 1982, que determina un patrón de comportamiento estadístico para la varianza. Considera que la información pasada de una variable y su volatilidad son factores que explican su comportamiento presente y, por tanto, podrá ser extrapolado a futuro.</p>
+<p>El nombre proviene del inglés, “Autoregressive conditional heteroscedasticity” (ARCH). Método propuesto por Engels en 1982, que determina un patrón de comportamiento estadístico para la varianza. Considera que la información pasada de una variable y su volatilidad son factores que explican su comportamiento presente y, por tanto, podrá ser extrapolado a futuro.</p>
 <p>La expresión algebráica básica del proceso <span class="math inline">\(ARCH(r)\)</span> es:</p>
 <p><span class="math display">\[
 X_t=\sigma_{t}\epsilon_{t}
@@ -241,9 +246,8 @@ donde <span class="math inline">\(\epsilon_t\)</span> es ruido blanco y</p>
 \sigma^2_{t} = \alpha_0+\alpha_1 X^2_{t-1}
 \]</span>
 Observemos que la varianza condicional (<span class="math inline">\(\sigma^2_t\)</span>) tiene una estructura similar a un AR(1), y por tanto solo depende del último valor observado. Por tanto, si el valor de <span class="math inline">\(X^2_t\)</span> es alto, la varianza <span class="math inline">\(\sigma^2_t\)</span> de la siguiente observación condicionada a este valor será también alta. Esto producirá correlación entre los cuadrados de la serie, provocando rachas de valores de magnitud
-relativamente elevada o con mayor varianza. Pero como la media marginal y la condicionada vale cero, aunque la varianza condicionada sea alta, siempre es posible que aparezca un valor pequeño de <span class="math inline">\(X^2_t\)</span>, que disminuirá la varianza condicionada de la
-observación siguiente y facilitará que la siguiente observación sea pequeña en valor absoluto. De manera que la serie puede presentar rachas de valores altos, pero globalmente será estacionaria.</p>
-<p>El modelo anterior puede generalizarse permitiendo una dependencia de la varianza condicional con q retardos. De manera que el modelo será <span class="math inline">\(ARCH(q)\)</span>, el cual se define como:</p>
+relativamente elevada o con mayor varianza. Pero como la media marginal y la media condicionada valen cero, aunque la varianza condicionada sea alta, siempre es posible que aparezca un valor pequeño de <span class="math inline">\(X^2_t\)</span>, que disminuirá la varianza condicionada de la observación siguiente y facilitará que la siguiente observación sea pequeña en valor absoluto. De manera que la serie puede presentar rachas de valores altos, pero globalmente será estacionaria.</p>
+<p>El modelo anterior puede generalizarse permitiendo una dependencia de la varianza condicional con <span class="math inline">\(q\)</span> retardos. De manera que el modelo será <span class="math inline">\(ARCH(q)\)</span>, el cual se define como:</p>
 <p>Un proceso estacionario <span class="math inline">\(X_t\)</span> sigue un modelo <span class="math inline">\(ARCH(q)\)</span> si y sólo si
 <span class="math display">\[
 X_t=\sigma_t\epsilon_t
@@ -254,9 +258,9 @@ donde <span class="math inline">\(\epsilon_t\)</span> es ruido blanco y</p>
 \]</span>
 Donde <span class="math inline">\(\alpha_0&gt;0\)</span> y <span class="math inline">\(\alpha_i\ge0, i=1,...,q\)</span>. Para garantizar que el proceso <span class="math inline">\(\sigma^2_t\)</span> sea estacionario se requiere que <span class="math inline">\(\sum_{i=1}^q\alpha_i&lt;1\)</span>.</p>
 <p>A continuación se muestran las simulaciones de un modelo <span class="math inline">\(ARCH(1)\)</span> con la varianza modelada de la siguiente forma: <span class="math inline">\(\sigma^2_{t}=0.05+ 0.8X_{t-1}\)</span></p>
-<p><img src="_main_files/figure-html/unnamed-chunk-28-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>A continuación se muestran las simulaciones de un modelo <span class="math inline">\(ARCH(3)\)</span> con la varianza modelada de la siguiente forma: <span class="math inline">\(\sigma^2_{t}=0.05+ 0.6X_{t-1}+0.2X_{t-2}+0.1X_{t-3}\)</span>
-<img src="_main_files/figure-html/unnamed-chunk-29-1.png" width="672" style="display: block; margin: auto;" /></p>
+<img src="_main_files/figure-html/unnamed-chunk-28-1.png" width="672" style="display: block; margin: auto;" /></p>
 
 </div>
             </section>

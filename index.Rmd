@@ -133,9 +133,3 @@ permissions necessary for your intended use. For example, other rights
 such as publicity, privacy, or moral rights may limit how you use the
 material.
 
-```{r include = FALSE}
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'ggplot2'
-), 'packages.bib')
-```

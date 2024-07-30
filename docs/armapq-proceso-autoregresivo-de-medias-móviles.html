@@ -185,6 +185,11 @@ div.csl-indent {
 <li class="chapter" data-level="13" data-path="introducción-1.html"><a href="introducción-1.html"><i class="fa fa-check"></i><b>13</b> Introducción</a></li>
 <li class="chapter" data-level="14" data-path="archq-proceso-autoregresivo-con-heterocedasticidad-condicional.html"><a href="archq-proceso-autoregresivo-con-heterocedasticidad-condicional.html"><i class="fa fa-check"></i><b>14</b> <span class="math inline">\(ARCH(q)\)</span>: Proceso Autoregresivo con Heterocedasticidad Condicional</a></li>
 <li class="chapter" data-level="15" data-path="garchpq-proceso-autoregresivo-generalizado-con-heterocedasticidad-condicional.html"><a href="garchpq-proceso-autoregresivo-generalizado-con-heterocedasticidad-condicional.html"><i class="fa fa-check"></i><b>15</b> <span class="math inline">\(GARCH(p,q)\)</span>: Proceso Autoregresivo Generalizado con Heterocedasticidad Condicional</a></li>
+<li class="part"><span><b>VI Tareas</b></span></li>
+<li class="chapter" data-level="" data-path="tarea-1.html"><a href="tarea-1.html"><i class="fa fa-check"></i>Tarea 1</a></li>
+<li class="chapter" data-level="" data-path="tarea-2.html"><a href="tarea-2.html"><i class="fa fa-check"></i>Tarea 2</a></li>
+<li class="chapter" data-level="" data-path="tarea-3.html"><a href="tarea-3.html"><i class="fa fa-check"></i>Tarea 3</a></li>
+<li class="chapter" data-level="" data-path="bibliografía.html"><a href="bibliografía.html"><i class="fa fa-check"></i>Bibliografía</a></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="_blank">Hecho con bookdown</a></li>
 
@@ -209,7 +214,7 @@ div.csl-indent {
 <h1><span class="header-section-number">Capítulo 8</span> <span class="math inline">\(ARMA(p,q)\)</span>: Proceso Autoregresivo de Medias Móviles<a href="armapq-proceso-autoregresivo-de-medias-móviles.html#armapq-proceso-autoregresivo-de-medias-móviles" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Es muy probable que una serie de tiempo <span class="math inline">\(X_t\)</span>, tenga características de un proceso <span class="math inline">\(AR\)</span> y de un proceso <span class="math inline">\(MA\)</span> al mismo tiempo, por lo que será un proceso <span class="math inline">\(ARMA\)</span>. Así, <span class="math inline">\(X_t\)</span> sigue un proceso <span class="math inline">\(ARMA(p,q)\)</span>, y en este proceso habrá <span class="math inline">\(p\)</span> términos autoregresivos y <span class="math inline">\(q\)</span> términos de media móvil. Este se verá de la siguiente forma:</p>
 <p><span class="math display">\[
-X_t=c+ \phi_1X_{t-1}+...+\phi_pX_{t-p}+-\theta_1\epsilon_{t-1}-\theta_2\epsilon_{t-2}-...-\theta_q\epsilon_{t-q}+\epsilon_t
+X_t=c+ \phi_1X_{t-1}+...+\phi_pX_{t-p}-\theta_1\epsilon_{t-1}-\theta_2\epsilon_{t-2}-...-\theta_q\epsilon_{t-q}+\epsilon_t
 \]</span></p>
 <p>donde <span class="math inline">\(\epsilon_t\)</span> es un proceso de ruido blanco, y <span class="math inline">\(\phi_1,...,\phi_p,\theta_1,...,\theta_q\)</span> son los parámetros del modelo.</p>
 <p>Para un proceso <span class="math inline">\(ARMA(p,q)\)</span> una condición de estacionariedad es la misma que para un proceso <span class="math inline">\(AR(p)\)</span>, y una condición de invertivilidad es la misma que para el proceso <span class="math inline">\(MA(q)\)</span>.</p>
@@ -221,9 +226,11 @@ X_t=c+ \phi_1X_{t-1}+...+\phi_pX_{t-p}+-\theta_1\epsilon_{t-1}-\theta_2\epsilon_
 \implies \phi_p(B)X_t=\theta_q(B)\epsilon_t
 \end{array}
 \]</span></p>
-<p>Donde
-+ <span class="math inline">\(\phi_p(B)\)</span> es el polinomio autoregresivo
-+ <span class="math inline">\(\theta_q(B)\)</span> es el polinomio de medias móviles.</p>
+<p>Donde:</p>
+<ul>
+<li><span class="math inline">\(\phi_p(B)\)</span> es el polinomio autoregresivo</li>
+<li><span class="math inline">\(\theta_q(B)\)</span> es el polinomio de medias móviles.</li>
+</ul>
 <p>Hay que observar lo siguiente:</p>
 <p><span class="math display">\[
 \begin{array}{lr}
@@ -240,7 +247,7 @@ X_t = \frac{\theta_q(B)}{\phi_p(B)}\epsilon_t &amp; \longleftarrow MA(\infty)\\
 </ul>
 <p><strong>Ejemplo</strong></p>
 <p>Sea <span class="math inline">\(Y_t: ARMA(2,1)\)</span> con <span class="math inline">\(\epsilon_t\sim N(0,1)\)</span> tal que <span class="math inline">\(Y_t = 1.5Y_{t-1}-0.9Y_{t-2}-0.4\epsilon_{t-1}+\epsilon_t\)</span>.</p>
-<p>Sabemos que es invertible por que <span class="math inline">\(|\theta| = |-0,4|&lt;1\)</span> y es estacionario por lo siguiente:</p>
+<p>Sabemos que es invertible por que <span class="math inline">\(|\theta| = |-0.4|&lt;1\)</span> y es estacionario por lo siguiente:</p>
 <p><span class="math display">\[
 \begin{split}
 &amp;\phi_2(B) = (1-1.5B+0.9B^2)\\
@@ -262,18 +269,23 @@ X_t=c+ \phi_1X_{t-1}+\epsilon_t-\theta_1\epsilon_{t-1}
 \mathbb{E}(X_t)=\mathbb{E}(c+ \phi_1X_{t-1}+\epsilon_t-\theta_1\epsilon_{t-1})=c+ \phi_1\mathbb{E}(X_{t-1})\\
 \end{array}
 \]</span></p>
-<p>Por lo que Suponiendo estacionariedad <span class="math inline">\(\mathbb{E}(X_t) = \frac{c}{1-\theta_1}\)</span>.</p>
+<p>Por lo que Suponiendo estacionariedad <span class="math inline">\(\mathbb{E}(X_t) = \frac{c}{1-\phi_1}\)</span>.</p>
 </div>
 <div id="covarianzas" class="section level3 hasAnchor" number="8.1.2">
 <h3><span class="header-section-number">8.1.2</span> Covarianzas<a href="armapq-proceso-autoregresivo-de-medias-móviles.html#covarianzas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Recordando que <span class="math inline">\(\mathbb{E}(X_t) = c+ \phi_1\mathbb{E}(X_{t-1}) \implies X_t-\mathbb{E}(X_t) = \phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\epsilon_t+\theta_1\epsilon_{t-1}\)</span></p>
 <p><span class="math display">\[
 \begin{split}
-\gamma_0 &amp;=\mathbb{E}\left[(X_t-\mathbb{E}(X_t))^2\right]=\phi_1^2Var(X_{t-1})+\theta_1^2\sigma^2+\sigma^2+\phi_1\theta_1Cov(X_{t-1}, \epsilon_{t-1})\\
-\Longleftrightarrow &amp; (1-\phi_1^2)Var(X_t) = \sigma^2(1+\theta_1^2)+\phi_1\theta_1\sigma^2\\
+\gamma_0 &amp;=\mathbb{E}\left[(X_t-\mathbb{E}(X_t))^2\right]\\
+&amp;=\mathbb{E}\left[(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\epsilon_t+\theta_1\epsilon_{t-1})^2\right]\\
+&amp;=\mathbb{E}\left[(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1})))^2+2(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1})))(\epsilon_t+\theta_1\epsilon_{t-1})+(\epsilon_t+\theta_1\epsilon_{t-1})^2\right]\\
+&amp;=\phi_1^2\mathbb{E}\left[(X_{t-1}-\mathbb{E}(X_{t-1}))^2\right]+2\phi_1\theta_1\mathbb{E}\left[X_{t-1}\epsilon_{t-1}\right]+\mathbb{E}\left[(\epsilon_t+\theta_1\epsilon_{t-1})^2\right]\\
+&amp;=\phi_1^2Var(X_{t-1})+2\phi_1\theta_1\mathbb{E}\left[X_{t-1}\epsilon_{t-1}\right]+\mathbb{E}[\epsilon_t^2]+2\theta_1\mathbb{E}[\epsilon_t\epsilon_{t-1}]+\mathbb{E}[\theta_1^2\epsilon_{t-1}^2]\\
+&amp;=\phi_1^2Var(X_{t-1})+2\phi_1\theta_1\sigma^2+\sigma^2+\theta_1^2\sigma^2\\
+\Longleftrightarrow &amp; (1-\phi_1^2)Var(X_t) = \sigma^2(1+\theta_1^2+2\phi_1\theta_1)\\
 \implies &amp; Var(X_t) = \gamma_0 = \frac{\sigma^2(1+\theta_1^2+2\phi_1\theta_1)}{1-\phi_1^2}
 \end{split}
-\]</span>
-Recordando que <span class="math inline">\(\mathbb{E}(X_t) = c+ \phi_1\mathbb{E}(X_{t-1}) \implies X_t-\mathbb{E}(X_t) = \phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\epsilon_t+\theta\epsilon_{t-1}\)</span></p>
+\]</span></p>
 <p><span class="math display">\[
 \begin{split}
 \gamma_1 &amp; =\mathbb{E}[(X_t-\mathbb{E}(X_t))(X_{t-1}-\mathbb{E}(X_{t-1}))]\\
@@ -290,8 +302,8 @@ Recordando que <span class="math inline">\(\mathbb{E}(X_t) = c+ \phi_1\mathbb{E}
 \gamma_2 &amp; =\mathbb{E}[(X_t-\mathbb{E}(X_t))(X_{t-2}-\mathbb{E}(X_{t-2}))]\\
 &amp; = \mathbb{E}\left[(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\epsilon_t+\theta_1\epsilon_{t-1})(X_{t-2}-\mathbb{E}(X_{t-2}))\right]\\
 &amp; = \mathbb{E}\left[(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))(X_{t-2}-\mathbb{E}(X_{t-2}))+\epsilon_t(X_{t-2}-\mathbb{E}(X_{t-2}))+\theta_1\epsilon_{t-1}(X_{t-2}-\mathbb{E}(X_{t-2}))\right]\\
-&amp;= \mathbb{E}[\phi_1(X_{t-1}X_{t-2}-X_{t-1}\mathbb{E}(X_{t-2})-X_{t-2}\mathbb{E}(X_{t-1})+\mathbb{E}(X_{t-1})\mathbb{E}(X_{t-2}))\\
-&amp; \ \ \ \ \ + \epsilon_tX_{t-2}-\epsilon_t\mathbb{E}(X_{t-2})+\theta_1\epsilon_{t-1}X_{t-2}-\theta_1\epsilon_{t-1}\mathbb{E}(X_{t-2})]\\
+&amp;= \mathbb{E}\left[(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))(X_{t-2}-\mathbb{E}(X_{t-2}))\right]\\
+&amp; \ \ \ \ \ + \mathbb{E}[\epsilon_tX_{t-2}]-\mathbb{E}[\epsilon_t\mathbb{E}(X_{t-2})]+\theta_1\mathbb{E}[\epsilon_{t-1}X_{t-2}]-\theta_1\mathbb{E}[\epsilon_{t-1}\mathbb{E}(X_{t-2})]\\
 &amp;= \phi_1\gamma_1
 \end{split}
 \]</span></p>
@@ -314,9 +326,9 @@ Y la <strong>función de autocorrelación</strong> de un proceso <span class="ma
 \end{cases}       
 \]</span>
 A continuación se muestran los resultados para un modelo <span class="math inline">\(ARMA(1,1)\)</span> de la siguiente forma <span class="math inline">\(X_t=0.65X_{t-1}+.30\epsilon_{t-1}\)</span></p>
-<p><img src="_main_files/figure-html/unnamed-chunk-19-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-18-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Además de las gráficas de Autocorrelación simple y parcial.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-20-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-19-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="ejericios-1" class="section level2 hasAnchor" number="8.2">
@@ -332,8 +344,6 @@ A continuación se muestran los resultados para un modelo <span class="math inli
 </ol>
 <ol start="2" style="list-style-type: decimal">
 <li>En un modelo definido por <span class="math inline">\(X_t=0.65X_{t-1}+\epsilon_t+0.30\epsilon_{t-1}\)</span> con <span class="math inline">\(\epsilon_t\sim N(0,1)\)</span>, calcular <span class="math inline">\(\rho_2\)</span></li>
-</ol>
-<ol start="3" style="list-style-type: decimal">
 <li>Suponga que el correlograma de una serie de tiempo con 100 observaciones tiene: <span class="math inline">\(\hat\rho_1\)</span> = 0.31, <span class="math inline">\(\hat\rho_2\)</span> = 0.07, <span class="math inline">\(\hat\rho_3\)</span> = −0.05, <span class="math inline">\(\hat\rho_4\)</span>= 0.06, <span class="math inline">\(\hat\rho_5\)</span> = −0.03, <span class="math inline">\(\hat\rho_6\)</span> = 0.27, <span class="math inline">\(\hat\rho_7\)</span> = 0.08, <span class="math inline">\(\hat\rho_8\)</span>= 0.05, <span class="math inline">\(\hat\rho_9\)</span> = 0.02, <span class="math inline">\(\hat\rho_10\)</span>= −0.01.¿Qué modelo ARMA es
 apropiado?</li>
 </ol>

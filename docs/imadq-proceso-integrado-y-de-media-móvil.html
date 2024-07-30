@@ -185,6 +185,11 @@ div.csl-indent {
 <li class="chapter" data-level="13" data-path="introducción-1.html"><a href="introducción-1.html"><i class="fa fa-check"></i><b>13</b> Introducción</a></li>
 <li class="chapter" data-level="14" data-path="archq-proceso-autoregresivo-con-heterocedasticidad-condicional.html"><a href="archq-proceso-autoregresivo-con-heterocedasticidad-condicional.html"><i class="fa fa-check"></i><b>14</b> <span class="math inline">\(ARCH(q)\)</span>: Proceso Autoregresivo con Heterocedasticidad Condicional</a></li>
 <li class="chapter" data-level="15" data-path="garchpq-proceso-autoregresivo-generalizado-con-heterocedasticidad-condicional.html"><a href="garchpq-proceso-autoregresivo-generalizado-con-heterocedasticidad-condicional.html"><i class="fa fa-check"></i><b>15</b> <span class="math inline">\(GARCH(p,q)\)</span>: Proceso Autoregresivo Generalizado con Heterocedasticidad Condicional</a></li>
+<li class="part"><span><b>VI Tareas</b></span></li>
+<li class="chapter" data-level="" data-path="tarea-1.html"><a href="tarea-1.html"><i class="fa fa-check"></i>Tarea 1</a></li>
+<li class="chapter" data-level="" data-path="tarea-2.html"><a href="tarea-2.html"><i class="fa fa-check"></i>Tarea 2</a></li>
+<li class="chapter" data-level="" data-path="tarea-3.html"><a href="tarea-3.html"><i class="fa fa-check"></i>Tarea 3</a></li>
+<li class="chapter" data-level="" data-path="bibliografía.html"><a href="bibliografía.html"><i class="fa fa-check"></i>Bibliografía</a></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="_blank">Hecho con bookdown</a></li>
 
@@ -221,18 +226,18 @@ Y_4=Z_5-Z_4
 <p>Y la serie diferenciada de orden dos será:</p>
 <p><span class="math display">\[
 \begin{split}
-X_1=Y_2+Y_1=Z_3-Z_2+Z_2-Z_1=Z_3-Z_1\\
-X_2=Y_3+Y_2=Z_4-Z_2\\
-X_3=Y_4+Y_3=Z_5-Z_3
+X_1=Y_2-Y_1=Z_3-Z_2-Z_2+Z_1=Z_3-2Z_2+Z_1\\
+X_2=Y_3-Y_2=...=Z_4-2Z_3+Z_2\\
+X_3=Y_4-Y_3=...=Z_5-2Z_4+Z_3
 \end{split}
 \]</span>
-Por lo tanto al hacer diferencia de orden 2 a la serie de tiempo original <span class="math inline">\(Z_t\)</span>, se obtiene una serie de tiempo <span class="math inline">\(X_1, X_2, X_3\)</span> que ya es estacionaria y a esta se la aplicaría un modelo de medias móviles <span class="math inline">\(MA(q)\)</span>, por ejemplo si <span class="math inline">\(q=1\)</span> se ajustaría un modelo <span class="math inline">\(X_t=X_{t-1}+\epsilon_t\)</span>, donde <span class="math inline">\(\epsilon_t\)</span> es ruido blanco.</p>
+Por lo tanto al hacer diferencia de orden 2 a la serie de tiempo original <span class="math inline">\(Z_t\)</span>, se obtiene una serie de tiempo <span class="math inline">\(X_1, X_2, X_3\)</span> que ya es estacionaria y a esta se le aplicaría un modelo de medias móviles <span class="math inline">\(MA(q)\)</span>, por ejemplo si <span class="math inline">\(q=1\)</span> se ajustaría un modelo <span class="math inline">\(X_t=X_{t-1}+\epsilon_t\)</span>, donde <span class="math inline">\(\epsilon_t\)</span> es ruido blanco.</p>
 <p>A continuación se modelan los datos de un modelo <span class="math inline">\(MA(3)\)</span> de la siguiente forma <span class="math inline">\(X_t=0.80\epsilon_{t-1}+0.20\epsilon_{t-2}+0.50\epsilon_{t-3}\)</span></p>
-<p><img src="_main_files/figure-html/unnamed-chunk-25-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-24-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Además de las gráficas de Autocorrelación simple y parcial.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-25-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Ahora veamos como queda la serie si le incluimos un proceso integrado (una diferencia) de orden 1.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Haga la prueba aumentando el orden de las diferencias, ¿cuál es el efecto en la serie de tiempo?</p>
 
 </div>

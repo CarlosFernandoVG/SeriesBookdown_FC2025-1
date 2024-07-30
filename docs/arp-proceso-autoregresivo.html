@@ -185,6 +185,11 @@ div.csl-indent {
 <li class="chapter" data-level="13" data-path="introducción-1.html"><a href="introducción-1.html"><i class="fa fa-check"></i><b>13</b> Introducción</a></li>
 <li class="chapter" data-level="14" data-path="archq-proceso-autoregresivo-con-heterocedasticidad-condicional.html"><a href="archq-proceso-autoregresivo-con-heterocedasticidad-condicional.html"><i class="fa fa-check"></i><b>14</b> <span class="math inline">\(ARCH(q)\)</span>: Proceso Autoregresivo con Heterocedasticidad Condicional</a></li>
 <li class="chapter" data-level="15" data-path="garchpq-proceso-autoregresivo-generalizado-con-heterocedasticidad-condicional.html"><a href="garchpq-proceso-autoregresivo-generalizado-con-heterocedasticidad-condicional.html"><i class="fa fa-check"></i><b>15</b> <span class="math inline">\(GARCH(p,q)\)</span>: Proceso Autoregresivo Generalizado con Heterocedasticidad Condicional</a></li>
+<li class="part"><span><b>VI Tareas</b></span></li>
+<li class="chapter" data-level="" data-path="tarea-1.html"><a href="tarea-1.html"><i class="fa fa-check"></i>Tarea 1</a></li>
+<li class="chapter" data-level="" data-path="tarea-2.html"><a href="tarea-2.html"><i class="fa fa-check"></i>Tarea 2</a></li>
+<li class="chapter" data-level="" data-path="tarea-3.html"><a href="tarea-3.html"><i class="fa fa-check"></i>Tarea 3</a></li>
+<li class="chapter" data-level="" data-path="bibliografía.html"><a href="bibliografía.html"><i class="fa fa-check"></i>Bibliografía</a></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="_blank">Hecho con bookdown</a></li>
 
@@ -211,21 +216,25 @@ div.csl-indent {
 <p>El modelo autoregresivo de orden <span class="math inline">\(p\)</span> está dado por:</p>
 <p><span class="math display">\[
 X_t=\phi_0+\phi_1X_{t-1}+\phi_2X_{t-2}+...+\phi_pX_{t-p}+\epsilon_t
-\]</span></p>
-<p>Expresado en términos del operador de retardos</p>
-<p><span class="math display">\[
+\]</span>
+Reacomodando en ambos lados de la igualdad, obtenemos
+<span class="math display">\[
 X_t-\phi_0-\phi_1X_{t-1}-\phi_2X_{t-2}-...-\phi_pX_{t-p}=\epsilon_t
-\\-\phi_0+(1-\phi_1B-\phi_2B^2-\phi_3B^3-...-\phi_pB^p)X_t=\epsilon_t
+\]</span>
+Expresado en términos del operador de retardos para que quede todo en función de <span class="math inline">\(X_t\)</span>:
+<span class="math display">\[
+-\phi_0+(1-\phi_1B-\phi_2B^2-\phi_3B^3-...-\phi_pB^p)X_t=\epsilon_t
 \\\phi_p(B)X_t=\epsilon_t+\phi_0
 \]</span></p>
 <p>donde <span class="math inline">\(\epsilon_t\)</span> es un proceso de ruido blanco y <span class="math inline">\(\phi_0,\phi_1,\phi_2,...\phi_p\)</span> son parámetros del modelo.</p>
+<p>En las siguientes secciones se verán los casos particualres de p=1 y p=2. En la práctica por interpretabilidad y reducción de los modelos se busca que los datos ajusten a modelos autoregresivos con valores pequeños del parámetro <span class="math inline">\(p\)</span>.</p>
 <div id="proceso-autoregresivo-de-orden-1-ar1" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> Proceso Autoregresivo de orden 1: <span class="math inline">\(AR(1)\)</span><a href="arp-proceso-autoregresivo.html#proceso-autoregresivo-de-orden-1-ar1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>En los procesos <span class="math inline">\(AR(1)\)</span> la variable <span class="math inline">\(X_t\)</span> está determinada únicamente por el valor pasado, esto es <span class="math inline">\(X_{t-1}\)</span>.</p>
 <p><span class="math display">\[
 X_t=\phi_0+\phi_1X_{t-1}+\epsilon_t
 \]</span></p>
-<p>Donde <span class="math inline">\(\epsilon_t\)</span> es un ruido blanco con media <span class="math inline">\(0\)</span> y con varianza <span class="math inline">\(\sigma^2\)</span> e independiente de <span class="math inline">\(X_t\)</span>. Para verificar que sea estacionario (débilmente) se debe verificar la estacionalidad en media y covarianza.</p>
+<p>Donde <span class="math inline">\(\epsilon_t\)</span> es un ruido blanco con media <span class="math inline">\(0\)</span> y con varianza <span class="math inline">\(\sigma^2\)</span> e independiente de <span class="math inline">\(X_t\)</span>. Para verificar que sea estacionario (débilmente) se debe verificar la estacionariedad en media y covarianza.</p>
 <div id="estacionario-en-media" class="section level3 hasAnchor" number="6.1.1">
 <h3><span class="header-section-number">6.1.1</span> Estacionario en Media<a href="arp-proceso-autoregresivo.html#estacionario-en-media" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><span class="math display">\[
@@ -249,8 +258,8 @@ por lo tanto <span class="math inline">\(E(X_t)=\frac {\phi_0}{1-\phi_1}\)</span
 \gamma_0 &amp;= Var(X_t)=\mathbb{E} \left[(X_t -\mathbb{E}(X_t))^{2}\right]\\
 &amp;= \mathbb{E}\left[(\phi_0+\phi_1X_{t-1}+\epsilon_t-\phi_0-\phi_1\mathbb{E}(X_{t-1}))^2\right]\\
 &amp; = \mathbb{E}\left[(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\epsilon_t)^2\right]\\
-&amp; = \mathbb{E}\left[\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))^2+2\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))\epsilon_t+\epsilon_t^2\right]\\
-&amp; = \phi^2 \mathbb{E}\left[(X_{t-1}-\mathbb{E}(X_{t-1}))^2\right] +2\phi_1\mathbb{E}\left[X_{t-1}-\mathbb{E}(X_{t-1})\right]\mathbb{E}(\epsilon_t)+\mathbb{E}[\epsilon_t^2]\\
+&amp; = \mathbb{E}\left[(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1})))^2+2\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))\epsilon_t+\epsilon_t^2\right]\\
+&amp; = \phi_1^2 \mathbb{E}\left[(X_{t-1}-\mathbb{E}(X_{t-1}))^2\right] +2\phi_1\mathbb{E}\left[X_{t-1}-\mathbb{E}(X_{t-1})\right]\mathbb{E}(\epsilon_t)+\mathbb{E}[\epsilon_t^2]\\
 &amp;= \phi_1^2 Var(X_{t-1})+ \sigma^2
 \end{split}
 \]</span></p>
@@ -264,8 +273,8 @@ por lo tanto <span class="math inline">\(E(X_t)=\frac {\phi_0}{1-\phi_1}\)</span
 \end{split}
 \]</span></p>
 <p>Véase que para que sea estacionario, con varianza constante y finita es necesario que <span class="math inline">\(| \phi_1|&lt; 1\)</span>. En resumen</p>
-<p><span class="math display">\[Var(X_t)= \gamma_0 = \frac{\sigma^2}{1-\phi^2}\]</span></p>
-<p>Respecto a la covarianza <span class="math inline">\(Cov(X_t,X_{t-k})\)</span> para <span class="math inline">\(K=1,...\)</span>, se tiene lo siguiente</p>
+<p><span class="math display">\[Var(X_t)= \gamma_0 = \frac{\sigma^2}{1-\phi_1^2}\]</span></p>
+<p>Respecto a la covarianza <span class="math inline">\(Cov(X_t,X_{t-k})\)</span> para <span class="math inline">\(k=1,...\)</span>, se tiene lo siguiente</p>
 <p><span class="math display">\[
 \begin{split}
 Cov(X_t,X_{t-k})&amp;=\gamma_k = \mathbb{E}\left[(X_t-\mathbb{E}(X_t))(X_{t-k}-\mathbb{E}(X_{t-k}))\right]\\
@@ -273,15 +282,16 @@ Cov(X_t,X_{t-k})&amp;=\gamma_k = \mathbb{E}\left[(X_t-\mathbb{E}(X_t))(X_{t-k}-\
 &amp; = \mathbb{E}\left[(\phi_0 + \phi_1X_{t-1}+\epsilon_t-\phi_0-\phi_1\mathbb{E}(X_{t-1}))(X_{t-k}-\mathbb{E}(X_{t-k}))\right]\\
 &amp; = \mathbb{E}\left[(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\epsilon_t)(X_{t-k}-\mathbb{E}(X_{t-k}))\right]\\
 &amp; = \mathbb{E}\left[\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))(X_{t-k}-\mathbb{E}(X_{t-k}))\right] + \mathbb{E}\left[\epsilon_t(X_{t-k}-\mathbb{E}(X_{t-k}))\right]\\
-&amp; = \phi_1\mathbb{E}\left[(X_{t-1}-\mathbb{E}(X_{t-1}))(X_{t-k}-\mathbb{E}(X_{t-k}))\right] = \phi_1\gamma_{k-1}
+&amp; = \phi_1\mathbb{E}\left[(X_{t-1}-\mathbb{E}(X_{t-1}))(X_{t-k}-\mathbb{E}(X_{t-k}))\right]+ \mathbb{E}\left[X_{t-k}-\mathbb{E}(X_{t-k})\right]\mathbb{E}\left[\epsilon_t\right] \\
+&amp;= \phi_1\gamma_{k-1}+\gamma_00=\phi_1\gamma_{k-1}
 \end{split}
 \]</span></p>
 <p><span class="math display">\[
 \begin{array}{lc}
 \mbox{Entonces: } &amp;
 \begin{array}{c}
-\gamma_1= \gamma_0 \phi\\
-\gamma_2 =\gamma_1\phi\\
+\gamma_1= \gamma_0 \phi_1\\
+\gamma_2 =\gamma_1\phi_1\\
 \vdots
 \end{array}
 \end{array}
@@ -339,9 +349,9 @@ Cov(X_t,X_{t-k})&amp;=\gamma_k = \mathbb{E}\left[(X_t-\mathbb{E}(X_t))(X_{t-k}-\
 <li>Caso particular: <span class="math inline">\(AR(1): X_t = \phi_1X_{t-1}+\epsilon_t\)</span>, es decir que <span class="math inline">\(\phi_0 = 0\)</span>. Para este caso se tiene <span class="math inline">\(\mathbb{E}(X_t) = \phi_1\mathbb{E}(X_{t-1})\implies(1-\phi_1)\mathbb{E}(X_t) = 0\implies\mathbb{E}(X_t) = \frac{0}{(1-\phi_1)} = 0\)</span>.</li>
 </ul>
 <p>A continuación se muestran los resultados para un modelo <span class="math inline">\(AR(1)\)</span> de la siguiente forma <span class="math inline">\(X_t=0.35X_{t-1}+\epsilon_t\)</span></p>
-<p><img src="_main_files/figure-html/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Además de las gráficas de Autocorrelación simple y parcial.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="proceso-autoregresivo-de-orden-2-ar2" class="section level2 hasAnchor" number="6.2">
@@ -369,9 +379,13 @@ X_t=\phi_0 + \phi_1 X_{t-1}+\phi_2 X_{t-2}+\epsilon_t
 \begin{split}
 \gamma_0 &amp;= \mathbb{E}\left[(X_t-\mathbb{E}(X_t))^2\right]\\
 &amp; = \mathbb{E}\left[(\phi_0+\phi_1 X_{t-1}+\phi_2 X_{t-2}+\epsilon_t-\phi_0 -\phi_1\mathbb{E}(X_{t-1})-\phi_2 \mathbb{E}(X_{t-2}))^2\right]\\
-&amp; = \mathbb{E}\left[(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\phi_2(X_{t-2}-\mathbb{E}(X_{t-2}))+\epsilon_0)^2\right]\\
+&amp; = \mathbb{E}\left[(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\phi_2(X_{t-2}-\mathbb{E}(X_{t-2}))+\epsilon_t)^2\right]\\
+&amp; = \mathbb{E}[[\phi_1(X_{t-1}-\mathbb{E}(X_{t-1})) +\phi_2(X_{t-2}-\mathbb{E}(X_{t-2}))]^2 \\
+&amp; \ \ \ \ \ \ \ \ + 2\epsilon_t[\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\phi_2(X_{t-2}-\mathbb{E}(X_{t-2}))]+\epsilon_t^2]\\
 &amp; = \mathbb{E}[\phi_1^2(X_{t-1}-\mathbb{E}(X_{t-1}))^2 + 2\phi_1\phi_2(X_{t-1}-\mathbb{E}(X_{t-1}))(X_{t-2}-\mathbb{E}(X_{t-2}))\\
-&amp; \ \ \ \ \ \ \ \ + \phi_2^2(X_{t-2}-\mathbb{E}(X_{t-2}))^2+\epsilon_0^2+\cdots]\\
+&amp; \ \ \ \ \ \ \ \ + \phi_2^2(X_{t-2}-\mathbb{E}(X_{t-2}))^2+2\epsilon_t[\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\phi_2(X_{t-2}-\mathbb{E}(X_{t-2}))]+\epsilon_t^2]\\
+&amp; = \mathbb{E}[\phi_1^2(X_{t-1}-\mathbb{E}(X_{t-1}))^2] + 2\phi_1\phi_2\mathbb{E}[(X_{t-1}-\mathbb{E}(X_{t-1}))(X_{t-2}-\mathbb{E}(X_{t-2}))]\\
+&amp; \ \ \ \ \ \ \ \ + \phi_2^2\mathbb{E}[(X_{t-2}-\mathbb{E}(X_{t-2}))^2]+2\mathbb{E}[\epsilon_t]\mathbb{E}[\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\phi_2(X_{t-2}-\mathbb{E}(X_{t-2}))]+\mathbb{E}[\epsilon_t^2]\\
 &amp; = \phi_1^2\gamma_0+2\phi_1\phi_2\gamma_1+\phi_2^2\gamma_0+\sigma^2
 \end{split}
 \]</span></p>
@@ -380,7 +394,7 @@ X_t=\phi_0 + \phi_1 X_{t-1}+\phi_2 X_{t-2}+\epsilon_t
 \begin{split}
 \gamma_1 &amp;= \mathbb{E}\left[(X_{t}-\mathbb{E}(X_{t}))(X_{t-1}-\mathbb{E}(X_{t-1}))\right]\\
 &amp;=\mathbb{E}\left[(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\phi_2(X_{t-2}-\mathbb{E}(X_{t-2}))+\epsilon_t)(X_{t-1}-\mathbb{E}(X_{t-1}))\right]\\
-&amp;= \mathbb{E}\left[\phi_1(X_{t-1}-\mathbb{E}(X_{t-2}))^2+\phi_2(X_{t-1}-\mathbb{E}(X_{t-1}))(X_{t-2}-\mathbb{E}(X_{t-2}))+\epsilon_t(X_{t-1}-\mathbb{E}(X_{t-1}))\right]\\
+&amp;= \mathbb{E}\left[\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))^2+\phi_2(X_{t-1}-\mathbb{E}(X_{t-1}))(X_{t-2}-\mathbb{E}(X_{t-2}))+\epsilon_t(X_{t-1}-\mathbb{E}(X_{t-1}))\right]\\
 &amp;=\phi_1\gamma_0+\phi_2\gamma_1\\
 \implies &amp;\gamma_1 = \frac{\phi_1}{(1-\phi_2)}\gamma_0 = \phi_1\gamma_0+\phi_2\gamma_1
 \end{split}
@@ -388,9 +402,10 @@ X_t=\phi_0 + \phi_1 X_{t-1}+\phi_2 X_{t-2}+\epsilon_t
 <p>En general la autocovarianza de orden <span class="math inline">\(k\)</span>, para <span class="math inline">\(k&gt;1\)</span> será:</p>
 <p><span class="math display">\[
 \begin{split}
-\gamma_k &amp;= \mathbb{E}\left[(X_{t}-\mathbb{E}(X_{t})(X_{t-k}-\mathbb{E}(X_{t-k})\right]\\
-&amp; = \mathbb{E}\left[(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\phi_2(X_{t-2}-\mathbb{E}(X_{t-2}))+\epsilon_t)(X_{t-k}-\mathbb{E}(X_{t-k})\right]\\
-&amp;=\mathbb{E}\left\{[\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))][(X_{t-k}-\mathbb{E}(X_{t-k}))]\right\} + \mathbb{E}\left\{[\phi_2(X_{t-2}-\mathbb{E}(X_{t-2}))][(X_{t-k}-\mathbb{E}(X_{t-k}))]\right\} \\
+\gamma_k &amp;= \mathbb{E}\left[(X_{t}-\mathbb{E}(X_{t}))(X_{t-k}-\mathbb{E}(X_{t-k}))\right]\\
+&amp; = \mathbb{E}\left[(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\phi_2(X_{t-2}-\mathbb{E}(X_{t-2}))+\epsilon_t)(X_{t-k}-\mathbb{E}(X_{t-k}))\right]\\
+&amp;=\mathbb{E}\left\{\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))(X_{t-k}-\mathbb{E}(X_{t-k}))\right\} + \mathbb{E}\left\{\phi_2(X_{t-2}-\mathbb{E}(X_{t-2}))(X_{t-k}-\mathbb{E}(X_{t-k}))\right\} \\
+&amp; \ \ \ \ \ \ \ \ + \mathbb{E}\left\{\epsilon_t(X_{t-k}-\mathbb{E}(X_{t-k}))\right\}\\
 &amp; = \phi_1\gamma_{k-1}+\phi_2\gamma_{k-2}
 \end{split}
 \]</span></p>
@@ -415,9 +430,9 @@ Y la correspondiente <strong>función de autocorrelación</strong> de un modelo 
 \right.
 \]</span></p>
 <p>A continuación se da un ejemplo de un modelo <span class="math inline">\(AR(2)\)</span> de la siguiente forma <span class="math inline">\(X_t=0.8X_{t-1}-0.4X_{t-2}+\epsilon_t\)</span></p>
-<p><img src="_main_files/figure-html/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Y al igual que para el ejemplo del modelo <span class="math inline">\(AR(1)\)</span>, se agregan las gráficas de autocorrelación simple y parcial.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Algo interesante de tener los procesos en términos de operadores de retardos es que podemos obtener las condiciones de estacionariedad en <span class="math inline">\(AR\)</span> por las raíces del polinomio que se deriva de esta notación:</p>
 <p><span class="math display">\[
 \begin{split}
@@ -439,15 +454,13 @@ AR(2):&amp; X_t = \phi_1X_{t-1}+\phi_2X_{t-2}+\epsilon_t\\
 <div id="ejercicios-4" class="section level2 hasAnchor" number="6.3">
 <h2><span class="header-section-number">6.3</span> Ejercicios<a href="arp-proceso-autoregresivo.html#ejercicios-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
-<li>Encuentre la función de covarianza <span class="math inline">\(\gamma_k\)</span> para el modelo AR(1) en la sección 6.1, definido como <span class="math inline">\(X_t=0.35X_{t-1}+\epsilon_t\)</span> donde <span class="math inline">\(\epsilon_t\sim N(0,1)\)</span></li>
-<li>Los modelos AR(p) se pueden aplicar a procesos no estacionarios</li>
+<li><p>Encuentre la función de covarianza <span class="math inline">\(\gamma_k\)</span> para el modelo AR(1) en la sección 6.1, definido como <span class="math inline">\(X_t=0.35X_{t-1}+\epsilon_t\)</span> donde <span class="math inline">\(\epsilon_t\sim N(0,1)\)</span></p></li>
+<li><p>En el modelo <span class="math inline">\(Y_t=0.3-0.5Y_{t-1}+0.2\epsilon_t\)</span> con <span class="math inline">\(\epsilon_t\sim N(0,1)\)</span> la <span class="math inline">\(COV(Y_t,Y_{t-1})\)</span> es cero, es decir <span class="math inline">\(\gamma_2=0\)</span> (el valor de la variable al tiempo <span class="math inline">\(t\)</span> no esta afectada por el valor que tomó la variable 2 tiempos atrás)</p></li>
+<li><p>Con los datos seleccionados para las prácticas</p></li>
 </ol>
-<ol style="list-style-type: lower-alpha">
-<li>Cierto</li>
-<li>Falso</li>
-</ol>
-<ol start="3" style="list-style-type: decimal">
-<li>En el modelo <span class="math inline">\(Y_t=0.3-0.5Y_{t-1}+0.2\epsilon_t\)</span> con <span class="math inline">\(\epsilon_t\sim N(0,1)\)</span> la <span class="math inline">\(COV(Y_t,Y_{t-1})\)</span> es cero, es decir <span class="math inline">\(\gamma_2=0\)</span> (el valor de la variable al tiempo <span class="math inline">\(t\)</span> no esta afectada por el valor que tomó la variable 2 tiempos atrás)</li>
+<ol start="5" style="list-style-type: lower-alpha">
+<li>Grafique la serie de las diferencias de los logaritmos de los datos. ¿El gráfico sugiere que un modelo estacionario podría ser apropiado para las diferencias de los logaritmos? Explique brevemente.</li>
+<li>Utilice la función ACF para las diferencias de los logaritmos de los datos para determinar si los datos transformados siguen un modelo de caminata aleatoria. Sí/No ¿por qué?</li>
 </ol>
 
 </div>

@@ -185,6 +185,11 @@ div.csl-indent {
 <li class="chapter" data-level="13" data-path="introducción-1.html"><a href="introducción-1.html"><i class="fa fa-check"></i><b>13</b> Introducción</a></li>
 <li class="chapter" data-level="14" data-path="archq-proceso-autoregresivo-con-heterocedasticidad-condicional.html"><a href="archq-proceso-autoregresivo-con-heterocedasticidad-condicional.html"><i class="fa fa-check"></i><b>14</b> <span class="math inline">\(ARCH(q)\)</span>: Proceso Autoregresivo con Heterocedasticidad Condicional</a></li>
 <li class="chapter" data-level="15" data-path="garchpq-proceso-autoregresivo-generalizado-con-heterocedasticidad-condicional.html"><a href="garchpq-proceso-autoregresivo-generalizado-con-heterocedasticidad-condicional.html"><i class="fa fa-check"></i><b>15</b> <span class="math inline">\(GARCH(p,q)\)</span>: Proceso Autoregresivo Generalizado con Heterocedasticidad Condicional</a></li>
+<li class="part"><span><b>VI Tareas</b></span></li>
+<li class="chapter" data-level="" data-path="tarea-1.html"><a href="tarea-1.html"><i class="fa fa-check"></i>Tarea 1</a></li>
+<li class="chapter" data-level="" data-path="tarea-2.html"><a href="tarea-2.html"><i class="fa fa-check"></i>Tarea 2</a></li>
+<li class="chapter" data-level="" data-path="tarea-3.html"><a href="tarea-3.html"><i class="fa fa-check"></i>Tarea 3</a></li>
+<li class="chapter" data-level="" data-path="bibliografía.html"><a href="bibliografía.html"><i class="fa fa-check"></i>Bibliografía</a></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="_blank">Hecho con bookdown</a></li>
 
@@ -223,41 +228,50 @@ variaciones de la propia serie, que se consideran consecuencias de fuerzas persi
 </ol>
 <p>Se puede observar que de los tres componentes, los dos primeros son determinísticos, mientras que la última es aleatoria.</p>
 <p>Adicionalemte, la asociación de estos componentes en una serie temporal puede ser de tipo aditivo, multiplicativo o combinación de los dos anteriores</p>
-<p>Entonces la serie se tiempo en un esquema aditivo se puede expresar como:</p>
+<p>Entonces la serie de tiempo en un esquema aditivo se puede expresar como:</p>
 <p><span class="math display">\[X_{t}=T_{t}+E_{t}+I_{t}\]</span>
-Mientras que la serie se tiempo en un esquema multiplicativo se expresaría como:</p>
+Mientras que la serie de tiempo en un esquema multiplicativo se expresaría como:</p>
 <p><span class="math display">\[X_{t}=T_{t}*E_{t}*I_{t}\]</span>
 Y un ejemplo de combinación se expresaría como:</p>
 <p><span class="math display">\[X_{t}=(T_{t}+E_{t})*I_{t}\]</span>
 donde <span class="math inline">\(T_{t}\)</span> es el componente de <strong>tendencia</strong>, <span class="math inline">\(E_{t}\)</span> el componente de <strong>estacionalidad</strong> y <span class="math inline">\(I_{t}\)</span> la componente <strong>aleatoria</strong>.</p>
-<p>Las siguientes gráficas son sólo otro ejemplo basado en el conjunto de datos <code>nottem</code>, en el cual se tienen las temperaturas mensuales promedio en Nottingham entre 1920 y 1939. Esta serie de tiempo tiene el siguiente comportamiento a través de los años.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" />
+<p>Las siguientes gráficas son un ejemplo basado en el conjunto de datos <code>nottem</code>, en el cual se tienen las temperaturas mensuales promedio en Nottingham entre 1920 y 1939. Esta serie de tiempo tiene el siguiente comportamiento a través de los años.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" />
 En la gráfica se puede observar que los datos parecen tener un comportamiento cíclico, lo cual es esperado ya que los datos corresponden a temperaturas mensuales. Así mismo el gráfico no muestra que exista una tendencia en los datos es decir no podemos decir que las temperaturas incrementan o decrementan al pasar del tiempo.</p>
 <p>La función R “decompose”, obtiene las componentes de tendencia, estacionalidad y aleatoria de una serie temporal a través de medias móviles, y además permite obtener los componentes en base a un esquema aditivo ó multiplicativo. Es una función generica de R, lo que significa que no requiere de la instalación de ninguna librería.</p>
 <p>La forma de utlizar esta función es la siguiente:</p>
 <p><strong>decompose(x, type = c(“additive”, “multiplicative”),filter = NULL)</strong></p>
 <p>La función calcula el componente de tendencia utilizando medias móviles, (si filter = NULL, se utilizan medias móviles simétricas), los índices de estacionalidad son promedios de los indices de estacionalidad que se obtienen al desestacionalizar la serie por el modelo elegido, por último, el componente irregular se obtiene eliminando la tendencia y estacionalidad de la serie temporal.</p>
-<p>Nota inportante es que la función requiere que los datos tengan forma de serie temporal.</p>
+<p>Nota importante es que la función requiere que los datos tengan forma de serie temporal.</p>
 <p>Ahora aplicaremos la función decompose a la serie de tiempo graficada anteriormente. Las siguientes gráficas representan las componentes antes mencionadas de la serie de tiempo correspondiente a las temperaturas mensuales promedio en Nottingham entre 1920 y 1939.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" />
+<p><img src="_main_files/figure-html/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" />
 La descomposición nos corrobora la presencia de una estacionalidad en los datos y detecta una ligera tendencia a la alza, aunque la escala en el gráfico de la tendencia es muy pequeña muestra que al pasar el tiempo las temperaturas promedio parecen estarse incrementando. En cuanto al gráfico de aleatoriedad la descomposición efectivamente lo presenta como una serie de datos aleatorios.</p>
 <div id="ejercicios" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Ejercicios<a href="descomposición-temporal.html#ejercicios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
-<li>Una serie de tiempo se puede descomponer en: (Seleccione la opción correcta)</li>
+<li><p>¿Qué carterísticas debe tener un conjunto de datos para considerarse una serie de tiempo?</p></li>
+<li><p>Una serie de tiempo se puede descomponer en: (Seleccione la opción correcta)</p></li>
 </ol>
 <ol style="list-style-type: lower-alpha">
 <li>Parte Multiplicativa, Parte Aditiva y Parte Aleatoria</li>
 <li>Tendencia, Estacionalidad y Parte Aleatoria</li>
 <li>Parte Univariante y Parte Multivariante</li>
 </ol>
-<ol start="2" style="list-style-type: decimal">
+<ol start="3" style="list-style-type: decimal">
 <li>Utilizar los datos en el objeto “AirPassengers” que corresponden a 144 mediciones del número de pasajeros mensuales en líneas aereas y:</li>
 </ol>
 <ol style="list-style-type: lower-alpha">
 <li>Grafique la serie de tiempo y describa que patrón observa. Comente su código.</li>
 <li>Aplique la función decompose a los datos y describa los hallazgos. ¿Qué puede concluír además de los hallazgos técnicos?</li>
 <li>Grafique la serie de los logarítmos de los datos y describa el cambio observado respecto a lo visto en el inciso a)</li>
+</ol>
+<ol start="4" style="list-style-type: decimal">
+<li>Seleccione un conjunto de datos de algún tema de su interes, plantee un problema/pregunta que quiera responder con sus datos utilizando análisis de series de tiempo.<br />
+</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Limpie, prepare y transforme los datos a formato de series de tiempo.</li>
+<li>Grafique la serie de tiempo y describa que patrón observa.</li>
 </ol>
 
 </div>

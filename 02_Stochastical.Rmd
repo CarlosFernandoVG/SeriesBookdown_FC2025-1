@@ -50,7 +50,7 @@ whitenoise <- tibble(x = 1:100, y = rnorm(100, mean = 0, sd = 1))
 # plot(ts(whitenoise$y, start = 1, end = 100))
 ```
 
-La segunda gráfica lleva el nombre de **correlograma**, la cual esta creada con los valores de autocorrelación, los cuales se ven en el siguiente capítulo.
+La segunda gráfica lleva el nombre de **correlograma**, la cual esta creada con los valores de autocorrelación, los cuales se verán en el siguiente capítulo.
 
 ## Caminata aleatoria
 

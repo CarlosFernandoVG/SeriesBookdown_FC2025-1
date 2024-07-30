@@ -2,7 +2,7 @@
 
 # Introducción
 
-El objetivo en esta parte será responder preguntas como: *¿Cuál será el precio de las acciones de Facebook para el último bimestre del 2024?, ¿Cuál será el nivel de partículas contaminantes en la CDMX para abril de 2024?, ¿Cuál será la capacidad de un procesador intel para el año 2025?*, puede parecer, en primera instancia, una tarea complicada. Si bien no tenemos una "bola mágica" con la que podamos adivinar el futuro, disponemos de ciertos procesos estocásticos llamados *Series de Tiempo*, cuyo objetivo principal es el *pronóstico*.
+El objetivo en esta parte será responder preguntas como: *¿Cuál será el precio de las acciones de Facebook para el último bimestre del 2024?, ¿Cuál será el nivel de partículas contaminantes en la CDMX para noviembre de 2024?, ¿Cuál será la capacidad de un procesador intel para el año 2025?*, puede parecer, en primera instancia, una tarea complicada. Si bien no tenemos una "bola mágica" con la que podamos adivinar el futuro, disponemos de ciertos procesos estocásticos llamados *Series de Tiempo*, cuyo objetivo principal es el *pronóstico*.
 
 Una serie tiempo es una secuencia de observaciones, medidos en determinados momentos del tiempo, ordenados cronológicamente y espaciados entre sí de manera uniforme (diario, semanal, semestral, anual, entre otros). Por esta razón, los datos usualmente son dependientes entre sí.  El principal objetivo de una serie de tiempo (denotada por $X_{t}$, donde $t=1,2,...,n$) es realizar un análisis de los datos para conocer su comportamiento a través del tiempo  y, a partir de dicho conocimiento, y asumiendo que mantendrá un comportamiento similar al observado, poder realizar predicciones en uno o más períodos de tiempo situados en el futuro. 
 
@@ -46,10 +46,10 @@ Se puede observar que de los tres componentes, los dos primeros son determiníst
 
 Adicionalemte, la asociación de estos componentes en una serie temporal puede ser de tipo aditivo, multiplicativo o combinación de los dos anteriores
 
-Entonces la serie se tiempo en un esquema aditivo se puede expresar como:
+Entonces la serie de tiempo en un esquema aditivo se puede expresar como:
 
 $$X_{t}=T_{t}+E_{t}+I_{t}$$
-Mientras que la serie se tiempo en un esquema multiplicativo se expresaría como:
+Mientras que la serie de tiempo en un esquema multiplicativo se expresaría como:
 
 $$X_{t}=T_{t}*E_{t}*I_{t}$$
 Y un ejemplo de combinación se expresaría como:
@@ -57,7 +57,7 @@ Y un ejemplo de combinación se expresaría como:
 $$X_{t}=(T_{t}+E_{t})*I_{t}$$
 donde $T_{t}$ es el componente de **tendencia**, $E_{t}$ el componente de **estacionalidad** y $I_{t}$ la componente **aleatoria**.
 
-Las siguientes gráficas son sólo otro ejemplo basado en el conjunto de datos `nottem`, en el cual se tienen las temperaturas mensuales promedio en Nottingham entre 1920 y 1939. Esta serie de tiempo tiene el siguiente comportamiento a través de los años.
+Las siguientes gráficas son un ejemplo basado en el conjunto de datos `nottem`, en el cual se tienen las temperaturas mensuales promedio en Nottingham entre 1920 y 1939. Esta serie de tiempo tiene el siguiente comportamiento a través de los años.
 
 ```{r}
 autoplot(nottem, colour = "#0A63E9") +
@@ -75,7 +75,7 @@ La forma de utlizar esta función es la siguiente:
 
 La función calcula el componente de tendencia utilizando medias móviles, (si filter = NULL, se utilizan medias móviles simétricas), los índices de estacionalidad son promedios de los indices de estacionalidad que se obtienen al desestacionalizar la serie por el modelo elegido, por último, el componente irregular se obtiene eliminando la tendencia y estacionalidad de la serie temporal.
 
-Nota inportante es que la función requiere que los datos tengan forma de serie temporal.
+Nota importante es que la función requiere que los datos tengan forma de serie temporal.
 
 Ahora aplicaremos la función decompose a la serie de tiempo graficada anteriormente. Las siguientes gráficas representan las componentes antes mencionadas de la serie de tiempo correspondiente a las temperaturas mensuales promedio en Nottingham entre 1920 y 1939.
 
@@ -90,15 +90,22 @@ j$time.series %>%
 La descomposición nos corrobora la presencia de una estacionalidad en los datos y detecta una ligera tendencia a la alza, aunque la escala en el gráfico de la tendencia es muy pequeña muestra que al pasar el tiempo las temperaturas promedio parecen estarse incrementando. En cuanto al gráfico de aleatoriedad la descomposición efectivamente lo presenta como una serie de datos aleatorios. 
 
 ## Ejercicios
-1. Una serie de tiempo se puede descomponer en: (Seleccione la opción correcta)
+1. ¿Qué carterísticas debe tener un conjunto de datos para considerarse una serie de tiempo?
+
+2. Una serie de tiempo se puede descomponer en: (Seleccione la opción correcta)
 a) Parte Multiplicativa, Parte Aditiva y Parte Aleatoria
 b) Tendencia, Estacionalidad y Parte Aleatoria
 c) Parte Univariante y Parte Multivariante
 
-2. Utilizar los datos en el objeto "AirPassengers" que corresponden a 144 mediciones del número de pasajeros mensuales en líneas aereas y:
+3. Utilizar los datos en el objeto "AirPassengers" que corresponden a 144 mediciones del número de pasajeros mensuales en líneas aereas y:
 a) Grafique la serie de tiempo y describa que patrón observa. Comente su código.
 b) Aplique la función decompose a los datos y describa los hallazgos. ¿Qué puede concluír además de los hallazgos técnicos?
 c) Grafique la serie de los logarítmos de los datos y describa el cambio observado respecto a lo visto en el inciso a)
+
+4. Seleccione un conjunto de datos de algún tema de su interes, plantee un problema/pregunta que quiera responder con sus datos utilizando análisis de series de tiempo.  
+a. Limpie, prepare y transforme los datos a formato de series de tiempo.
+b. Grafique la serie de tiempo y describa que patrón observa. 
+
 
 
 

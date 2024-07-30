@@ -14,17 +14,17 @@ Para trabajar con estas series de tiempo lo que se hace es calcular las diferenc
 La expresión algebraica del proceso $ARIMA(p,d,q)$ es:
 
 $$
-X_t^d=c+\phi_1X_{t-1}^d+...+\phi_pX_{t-p}^d-\theta_1\epsilon_{t-1}^d-\theta_2\epsilon_{t-2}^d-...-\theta_q\epsilon_{t-q}^d+\epsilon_t^d
+X_t^d=c+\phi_1X_{t-1}^d+...+\phi_pX_{t-p}^d-\theta_1\epsilon_{t-1}-\theta_2\epsilon_{t-2}-...-\theta_q\epsilon_{t-q}+\epsilon_t
 $$
 
-donde $X_t^d$ es la serie de las diferencias de orden $d$, $\epsilon_t^d$ es un proceso de ruido blanco, y $\phi_1,...,\phi_p,\theta_1,...,\theta_q$ son los parámetros del modelo.
+donde $X_t^d$ es la serie de las diferencias de orden $d$, $\epsilon_t$ es un proceso de ruido blanco, y $\phi_1,...,\phi_p,\theta_1,...,\theta_q$ son los parámetros del modelo.
 
 El modelo $ARIMA(p,d,q)$ se puede escribir en términos de los operadores de retardo de la siguiente manera:
 
 $$
 \begin{array}{c}
-(1-\phi_1B-\phi_2B^2-...-\phi_pB^p)X_t^d=c+(1-\theta_1B-\theta_2B^2-...-\theta_qB^q)\epsilon_t^d\\
-\phi_p(B)(1-B)^dX_t=c+\theta_q(B)\epsilon_t^d
+(1-\phi_1B-\phi_2B^2-...-\phi_pB^p)X_t^d=c+(1-\theta_1B-\theta_2B^2-...-\theta_qB^q)\epsilon_t\\
+\phi_p(B)(1-B)^dX_t=c+\theta_q(B)\epsilon_t
 \end{array}
 $$
 Los modelos integrados se usan para reducir la **NO** estacionariedad de la serie al usar las diferencias y en la mayoría de las aplicaciones $d=1$ y hasta $d=2$ es suficiente para volver la serie estacionaria, pero en algunas ocasiones, aplicar transformaciones a los datos tienen mejor resultado para lograr la estacionariedad en comparación con las diferencias. Por ejemplo, en las series de tiempo económicas, la variabilidad aumenta cuando el nivel promedio del proceso aumenta. Sin embargo el porcentaje de cambio en las observaciones es relativamente independiente del nivel, entonces aplicar una transformación logarítmica puede ser más eficiente para lograr la estacionariedad de la serie.
@@ -111,3 +111,5 @@ Además de las gráficas de Autocorrelación simple y parcial.
 1) 57 mediciones consecutivas de una máquina están en el objeto $deere3$ del paquete TSA:
 a. Grafique la serie de tiempo. ¿Qué patrón observa?, ¿Un modelo estacionario podría ser adecuado a ese gráfico?
 b. Usando herramientas como ACF y PACF especifique el modelo tentativo (AR(p); MA(q); ARMA(p,q)).Justifique.
+2) Con los datos seleccionados para las prácticas
+g. Apliqué un autoarima y comparé respecto a lo que esperaba derivado del análisis de los correlogramas realizados en la práctica 3

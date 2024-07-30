@@ -9,16 +9,19 @@ El modelo autoregresivo de orden $p$ está dado por:
 $$
 X_t=\phi_0+\phi_1X_{t-1}+\phi_2X_{t-2}+...+\phi_pX_{t-p}+\epsilon_t
 $$
-
-Expresado en términos del operador de retardos
-
+Reacomodando en ambos lados de la igualdad, obtenemos
 $$
 X_t-\phi_0-\phi_1X_{t-1}-\phi_2X_{t-2}-...-\phi_pX_{t-p}=\epsilon_t
-\\-\phi_0+(1-\phi_1B-\phi_2B^2-\phi_3B^3-...-\phi_pB^p)X_t=\epsilon_t
+$$
+Expresado en términos del operador de retardos para que quede todo en función de $X_t$:
+$$
+-\phi_0+(1-\phi_1B-\phi_2B^2-\phi_3B^3-...-\phi_pB^p)X_t=\epsilon_t
 \\\phi_p(B)X_t=\epsilon_t+\phi_0
 $$
 
 donde $\epsilon_t$ es un proceso de ruido blanco y $\phi_0,\phi_1,\phi_2,...\phi_p$ son parámetros del modelo.
+
+En las siguientes secciones se verán los casos particualres de p=1 y p=2. En la práctica por interpretabilidad y reducción de los modelos se busca que los datos ajusten a modelos autoregresivos con valores pequeños del parámetro $p$.
 
 ## Proceso Autoregresivo de orden 1: $AR(1)$
 
@@ -28,7 +31,7 @@ $$
 X_t=\phi_0+\phi_1X_{t-1}+\epsilon_t
 $$
 
-Donde $\epsilon_t$ es un ruido blanco con media $0$ y con varianza $\sigma^2$  e independiente de $X_t$. Para verificar que sea estacionario (débilmente) se debe verificar la estacionalidad en media y covarianza.
+Donde $\epsilon_t$ es un ruido blanco con media $0$ y con varianza $\sigma^2$  e independiente de $X_t$. Para verificar que sea estacionario (débilmente) se debe verificar la estacionariedad en media y covarianza.
 
 ### Estacionario en Media
  
@@ -56,8 +59,8 @@ $$
 \gamma_0 &= Var(X_t)=\mathbb{E} \left[(X_t -\mathbb{E}(X_t))^{2}\right]\\
 &= \mathbb{E}\left[(\phi_0+\phi_1X_{t-1}+\epsilon_t-\phi_0-\phi_1\mathbb{E}(X_{t-1}))^2\right]\\
 & = \mathbb{E}\left[(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\epsilon_t)^2\right]\\
-& = \mathbb{E}\left[\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))^2+2\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))\epsilon_t+\epsilon_t^2\right]\\
-& = \phi^2 \mathbb{E}\left[(X_{t-1}-\mathbb{E}(X_{t-1}))^2\right] +2\phi_1\mathbb{E}\left[X_{t-1}-\mathbb{E}(X_{t-1})\right]\mathbb{E}(\epsilon_t)+\mathbb{E}[\epsilon_t^2]\\
+& = \mathbb{E}\left[(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1})))^2+2\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))\epsilon_t+\epsilon_t^2\right]\\
+& = \phi_1^2 \mathbb{E}\left[(X_{t-1}-\mathbb{E}(X_{t-1}))^2\right] +2\phi_1\mathbb{E}\left[X_{t-1}-\mathbb{E}(X_{t-1})\right]\mathbb{E}(\epsilon_t)+\mathbb{E}[\epsilon_t^2]\\
 &= \phi_1^2 Var(X_{t-1})+ \sigma^2
 \end{split}
 $$
@@ -75,9 +78,9 @@ $$
 
 Véase que para que sea estacionario, con varianza constante y finita es necesario que $| \phi_1|< 1$. En resumen
 
-$$Var(X_t)= \gamma_0 = \frac{\sigma^2}{1-\phi^2}$$
+$$Var(X_t)= \gamma_0 = \frac{\sigma^2}{1-\phi_1^2}$$
 
-Respecto a la covarianza $Cov(X_t,X_{t-k})$ para $K=1,...$, se tiene lo siguiente
+Respecto a la covarianza $Cov(X_t,X_{t-k})$ para $k=1,...$, se tiene lo siguiente
 
 $$
 \begin{split}
@@ -86,7 +89,8 @@ Cov(X_t,X_{t-k})&=\gamma_k = \mathbb{E}\left[(X_t-\mathbb{E}(X_t))(X_{t-k}-\math
 & = \mathbb{E}\left[(\phi_0 + \phi_1X_{t-1}+\epsilon_t-\phi_0-\phi_1\mathbb{E}(X_{t-1}))(X_{t-k}-\mathbb{E}(X_{t-k}))\right]\\
 & = \mathbb{E}\left[(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\epsilon_t)(X_{t-k}-\mathbb{E}(X_{t-k}))\right]\\
 & = \mathbb{E}\left[\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))(X_{t-k}-\mathbb{E}(X_{t-k}))\right] + \mathbb{E}\left[\epsilon_t(X_{t-k}-\mathbb{E}(X_{t-k}))\right]\\
-& = \phi_1\mathbb{E}\left[(X_{t-1}-\mathbb{E}(X_{t-1}))(X_{t-k}-\mathbb{E}(X_{t-k}))\right] = \phi_1\gamma_{k-1}
+& = \phi_1\mathbb{E}\left[(X_{t-1}-\mathbb{E}(X_{t-1}))(X_{t-k}-\mathbb{E}(X_{t-k}))\right]+ \mathbb{E}\left[X_{t-k}-\mathbb{E}(X_{t-k})\right]\mathbb{E}\left[\epsilon_t\right] \\
+&= \phi_1\gamma_{k-1}+\gamma_00=\phi_1\gamma_{k-1}
 \end{split}
 $$
 
@@ -94,8 +98,8 @@ $$
 \begin{array}{lc}
 \mbox{Entonces: } & 
 \begin{array}{c}
-\gamma_1= \gamma_0 \phi\\
-\gamma_2 =\gamma_1\phi\\
+\gamma_1= \gamma_0 \phi_1\\
+\gamma_2 =\gamma_1\phi_1\\
 \vdots
 \end{array}
 \end{array}
@@ -221,9 +225,13 @@ $$
 \begin{split}
 \gamma_0 &= \mathbb{E}\left[(X_t-\mathbb{E}(X_t))^2\right]\\
 & = \mathbb{E}\left[(\phi_0+\phi_1 X_{t-1}+\phi_2 X_{t-2}+\epsilon_t-\phi_0 -\phi_1\mathbb{E}(X_{t-1})-\phi_2 \mathbb{E}(X_{t-2}))^2\right]\\
-& = \mathbb{E}\left[(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\phi_2(X_{t-2}-\mathbb{E}(X_{t-2}))+\epsilon_0)^2\right]\\
+& = \mathbb{E}\left[(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\phi_2(X_{t-2}-\mathbb{E}(X_{t-2}))+\epsilon_t)^2\right]\\
+& = \mathbb{E}[[\phi_1(X_{t-1}-\mathbb{E}(X_{t-1})) +\phi_2(X_{t-2}-\mathbb{E}(X_{t-2}))]^2 \\ 
+& \ \ \ \ \ \ \ \ + 2\epsilon_t[\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\phi_2(X_{t-2}-\mathbb{E}(X_{t-2}))]+\epsilon_t^2]\\
 & = \mathbb{E}[\phi_1^2(X_{t-1}-\mathbb{E}(X_{t-1}))^2 + 2\phi_1\phi_2(X_{t-1}-\mathbb{E}(X_{t-1}))(X_{t-2}-\mathbb{E}(X_{t-2}))\\ 
-& \ \ \ \ \ \ \ \ + \phi_2^2(X_{t-2}-\mathbb{E}(X_{t-2}))^2+\epsilon_0^2+\cdots]\\
+& \ \ \ \ \ \ \ \ + \phi_2^2(X_{t-2}-\mathbb{E}(X_{t-2}))^2+2\epsilon_t[\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\phi_2(X_{t-2}-\mathbb{E}(X_{t-2}))]+\epsilon_t^2]\\
+& = \mathbb{E}[\phi_1^2(X_{t-1}-\mathbb{E}(X_{t-1}))^2] + 2\phi_1\phi_2\mathbb{E}[(X_{t-1}-\mathbb{E}(X_{t-1}))(X_{t-2}-\mathbb{E}(X_{t-2}))]\\ 
+& \ \ \ \ \ \ \ \ + \phi_2^2\mathbb{E}[(X_{t-2}-\mathbb{E}(X_{t-2}))^2]+2\mathbb{E}[\epsilon_t]\mathbb{E}[\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\phi_2(X_{t-2}-\mathbb{E}(X_{t-2}))]+\mathbb{E}[\epsilon_t^2]\\
 & = \phi_1^2\gamma_0+2\phi_1\phi_2\gamma_1+\phi_2^2\gamma_0+\sigma^2
 \end{split}
 $$
@@ -234,7 +242,7 @@ $$
 \begin{split}
 \gamma_1 &= \mathbb{E}\left[(X_{t}-\mathbb{E}(X_{t}))(X_{t-1}-\mathbb{E}(X_{t-1}))\right]\\
 &=\mathbb{E}\left[(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\phi_2(X_{t-2}-\mathbb{E}(X_{t-2}))+\epsilon_t)(X_{t-1}-\mathbb{E}(X_{t-1}))\right]\\
-&= \mathbb{E}\left[\phi_1(X_{t-1}-\mathbb{E}(X_{t-2}))^2+\phi_2(X_{t-1}-\mathbb{E}(X_{t-1}))(X_{t-2}-\mathbb{E}(X_{t-2}))+\epsilon_t(X_{t-1}-\mathbb{E}(X_{t-1}))\right]\\
+&= \mathbb{E}\left[\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))^2+\phi_2(X_{t-1}-\mathbb{E}(X_{t-1}))(X_{t-2}-\mathbb{E}(X_{t-2}))+\epsilon_t(X_{t-1}-\mathbb{E}(X_{t-1}))\right]\\
 &=\phi_1\gamma_0+\phi_2\gamma_1\\
 \implies &\gamma_1 = \frac{\phi_1}{(1-\phi_2)}\gamma_0 = \phi_1\gamma_0+\phi_2\gamma_1
 \end{split}
@@ -244,9 +252,10 @@ En general la autocovarianza de orden $k$, para $k>1$ será:
 
 $$
 \begin{split}
-\gamma_k &= \mathbb{E}\left[(X_{t}-\mathbb{E}(X_{t})(X_{t-k}-\mathbb{E}(X_{t-k})\right]\\
-& = \mathbb{E}\left[(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\phi_2(X_{t-2}-\mathbb{E}(X_{t-2}))+\epsilon_t)(X_{t-k}-\mathbb{E}(X_{t-k})\right]\\
-&=\mathbb{E}\left\{[\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))][(X_{t-k}-\mathbb{E}(X_{t-k}))]\right\} + \mathbb{E}\left\{[\phi_2(X_{t-2}-\mathbb{E}(X_{t-2}))][(X_{t-k}-\mathbb{E}(X_{t-k}))]\right\} \\
+\gamma_k &= \mathbb{E}\left[(X_{t}-\mathbb{E}(X_{t}))(X_{t-k}-\mathbb{E}(X_{t-k}))\right]\\
+& = \mathbb{E}\left[(\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))+\phi_2(X_{t-2}-\mathbb{E}(X_{t-2}))+\epsilon_t)(X_{t-k}-\mathbb{E}(X_{t-k}))\right]\\
+&=\mathbb{E}\left\{\phi_1(X_{t-1}-\mathbb{E}(X_{t-1}))(X_{t-k}-\mathbb{E}(X_{t-k}))\right\} + \mathbb{E}\left\{\phi_2(X_{t-2}-\mathbb{E}(X_{t-2}))(X_{t-k}-\mathbb{E}(X_{t-k}))\right\} \\
+& \ \ \ \ \ \ \ \ + \mathbb{E}\left\{\epsilon_t(X_{t-k}-\mathbb{E}(X_{t-k}))\right\}\\
 & = \phi_1\gamma_{k-1}+\phi_2\gamma_{k-2} 
 \end{split}
 $$
@@ -327,8 +336,10 @@ Por lo que las raíces del polinomio $(1-\phi_1B-\phi_2B^2)$ serán $B^1, B^2 = 
 Y gracias a todo esto, podemos interpretar que para que los procesos sean estacionarios, se solicita que las raíces estén fuera del círculo unitario, es decir: $|B^1|>1$ y $|B^2|>1$.
 
 ## Ejercicios
-1) Encuentre la función de covarianza $\gamma_k$ para el modelo AR(1) en la sección 6.1, definido como $X_t=0.35X_{t-1}+\epsilon_t$ donde $\epsilon_t\sim N(0,1)$
-2) Los modelos AR(p) se pueden aplicar a procesos no estacionarios
-a. Cierto
-b. Falso
-3) En el modelo $Y_t=0.3-0.5Y_{t-1}+0.2\epsilon_t$ con $\epsilon_t\sim N(0,1)$ la $COV(Y_t,Y_{t-1})$ es cero, es decir $\gamma_2=0$ (el valor de la variable al tiempo $t$ no esta afectada por el valor que tomó la variable 2 tiempos atrás) 
+1. Encuentre la función de covarianza $\gamma_k$ para el modelo AR(1) en la sección 6.1, definido como $X_t=0.35X_{t-1}+\epsilon_t$ donde $\epsilon_t\sim N(0,1)$
+
+2. En el modelo $Y_t=0.3-0.5Y_{t-1}+0.2\epsilon_t$ con $\epsilon_t\sim N(0,1)$ la $COV(Y_t,Y_{t-1})$ es cero, es decir $\gamma_2=0$ (el valor de la variable al tiempo $t$ no esta afectada por el valor que tomó la variable 2 tiempos atrás)
+
+3. Con los datos seleccionados para las prácticas
+e. Grafique la serie de las diferencias de los logaritmos de los datos. ¿El gráfico sugiere que un modelo estacionario podría ser apropiado para las diferencias de los logaritmos? Explique brevemente.
+f. Utilice la función ACF para las diferencias de los logaritmos de los datos para determinar si los datos transformados siguen un modelo de caminata aleatoria. Sí/No ¿por qué?

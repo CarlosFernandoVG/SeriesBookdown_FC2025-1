@@ -1,0 +1,49 @@
+# (PART) Tareas {-}
+
+# Tarea 1 {-}
+Documento ejecutivo sobre la serie de tiempo seleccionado a analizar. Debe incluir como mínimo: 
+
+1) Introducción sobre las características y/o el tipo de datos seleccionados y definición del problema a resolver con el análisis 
+
+2) Gráfico de los datos con interpretación  
+
+3) Hallazgos de la descomposición de la serie 
+
+4) Hallazgos de transformaciones aplicadas a la serie 
+
+# Tarea 2 {-}
+Resolver los siguientes ejercicios. Estos provienen de las secciones de ejercicios de los capítulos 6, 7, 8 y 11 del libro.
+
+6.3.1 Encuentre la función de covarianza $\gamma_k$ para el modelo AR(1) en la sección 6.1, definido como $X_t=0.35X_{t-1}+\epsilon_t$ donde $\epsilon_t\sim N(0,1)$
+
+7.3.1 Sea $Z_t\sim N(0,1)$. Calcular la función de autocovarianza $\gamma_k$ para el modelo $X_t=0.3+0.1Z_t-0.2Z_{t-1}$
+
+7.3.2 Muestre que los procesos MA(1) siguientes
+a. $Z_t=a_t+\theta a_{t-1}$
+b. $Y_t=a_t+\frac{1}{\theta} a_{t-1}$
+donde 0<|$\theta$|<1 y $a_t\sim N(0,1)$, tienen las mismas funciones de autocorrelación
+
+8.2.2 En un modelo definido por $X_t=0.65X_{t-1}+\epsilon_t+0.30\epsilon_{t-1}$ con $\epsilon_t\sim N(0,1)$, calcular $\rho_2$
+
+11.1.2 Sean $X_1$, $X_2$, $X_3$, $X_4$ obs. de un modelo $MA(2)$ de la forma $X_t = Z_t-0.25Z_{t-2}$. Encontrar el predictor lineal para $X_5$ en términos de $X_3$ y $X_4$. $Z_t\sim N(0,1)$.
+
+11.1.3 Sean $X_1$, $X_2$ obs. de un modelo $AR(1)$ de la forma $X_t = 0.35X_{t-1}+Z_{t}$. Encontrar el predictor lineal para $X_3$ en términos de $X_1$ y $X_2$. $Z_t\sim N(0,1)$ 
+
+# Tarea 3 {-}
+Documento ejecutivo sobre la serie de tiempo seleccionado a analizar. Al documento de la tarea 1 agregarle como mínimo: 
+
+5) Análisis de los correlogramas
+
+6) Análisis e interpretación del ajuste de un ARIMA 
+
+7) Predicciones 
+
+8) Conclusión ligada con el problema que se planeó resolver 
+
+# Bibliografía {-}
+```{r include = FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'ggplot2'
+), 'packages.bib')
+```

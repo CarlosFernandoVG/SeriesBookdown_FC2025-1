@@ -28,7 +28,7 @@ AR(2): X_t = \phi_0+\phi_1X_{t-1}+\phi_2X_{t-2}+\epsilon_t\\
 \end{array}
 $$
 
-Sin olvidar que las condiciones de estacionalidad para un proceso $AR(1)$ y $AR(2)$ son $|\phi_1|<1$ y $|1-\phi_1-\phi_2|>0$ respectivamente[^6.1]. 
+Sin olvidar que las condiciones de estacionariedad para un proceso $AR(1)$ y $AR(2)$ son $|\phi_1|<1$ y $|1-\phi_1-\phi_2|>0$ respectivamente[^6.1]. 
 
 ## Proceso de Medias Móviles de orden 1: $MA(1)$
 
@@ -52,6 +52,7 @@ $$
 \begin{split}
 \gamma_0 &= \mathbb{E}\left[(X_{t}-\mathbb{E}(X_{t}))^2\right]=\mathbb{E}\left[(\mu-\theta_1\epsilon_{t-1}-\epsilon_t-\mu)^2\right]\\
 & = \mathbb{E}\left[\theta_1^2\epsilon_{t-1}^2+2\theta_1\epsilon_{t-1}\epsilon_{t}+\epsilon_t^2\right]\\
+& = \mathbb{E}\left[\theta_1^2\epsilon_{t-1}^2\right]+2\theta_1\mathbb{E}\left[\epsilon_{t-1}\epsilon_{t}\right]+\mathbb{E}\left[\epsilon_t^2\right]\\
 & = \theta_1^2\sigma^2+\sigma^2\\
 & =(1+\theta_1^2)\sigma^2\\
 \\
@@ -71,7 +72,7 @@ Entonces la **función de autocovarianza** de un modelo $MA(1)$ es:
 $$
 \gamma_k = \left\{
 \begin{array}{lr}
-(1+\theta^2)\sigma^2 &   \mbox{ si } k=0\\
+(1+\theta_1^2)\sigma^2 &   \mbox{ si } k=0\\
 \theta_1 \sigma^2 & \mbox{ si } k=1\\
 0 &    \mbox{ si } k>1\\
 \end{array}
@@ -141,7 +142,7 @@ $$
 \\
 \gamma_1 & = \mathbb{E}\left[(X_{t}-\mathbb{E}(X_{t}))(X_{t-1}-\mathbb{E}(X_{t-1}))\right]\\
 & = \mathbb{E}\left[(-\epsilon_t-\theta_1\epsilon_{t-1}-\theta_2\epsilon_{t-2})(-\epsilon_{t-1}-\theta_1\epsilon_{t-2}-\theta_2\epsilon_{t-3})\right]\\
-& = \mathbb{E}\left[\theta_1\epsilon_{t-1}^2+\theta_1\theta_2\epsilon_{t-2}^2\right]\\
+& = \theta_1\mathbb{E}\left[\epsilon_{t-1}^2\right]+\theta_1\theta_2\mathbb{E}\left[\epsilon_{t-2}^2\right]\\
 & = \theta_1\left(1+\theta_2\right)\sigma^2\\
 \\
 \gamma_2 & = \mathbb{E}\left[(X_{t}-\mathbb{E}(X_{t}))(X_{t-2}-\mathbb{E}(X_{t-2}))\right]\\

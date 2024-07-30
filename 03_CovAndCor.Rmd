@@ -27,7 +27,7 @@ $$
 r_k=\frac{\sum\limits_{t = k+1}^n (X_t-\bar{X})(X_{t-k}-\bar{X})}{\sum\limits_{t = 1}^n(X_t-\bar{X})^2}
 $$
 
-Para $k = 1, 2, \dots$ y donde $\bar{X}$  es la media de las observaciones.
+Para $k = 1, 2, \dots$ y donde $\bar{X}$  es la media de las observaciones. Se aprecia que los elementos de la suma en el denominador corresponden a las covarianzas entre todas las observaciones que tienen un rezago de $k$ unidades.
 
 ## Función de autocorrelación parcial 
 
@@ -46,7 +46,7 @@ donde $\pi_{j, k} = \pi_{j-1, k}-\pi_{j}\pi_{j-1, j-k}$ para $k = 1,2, \dots, j-
 
 ## Correlograma
 
-Una vez calculadas las funciones de autocorrelación y autocorrelación parcial, se grafican contra los diferentes rezagos para obtener los correlogramas. Estos son serán de gran utilidad para la identificación del modelo, tal como se menciona en el capítulo \@ref(modelacion-univariada) y en el complemento a este material [SeriesTCode](https://rpubs.com/CarlosFVG/SeriesTCode2023). Como ejemplo, se presentan los gráficos correspondientes a los datos de `nottem`.
+Una vez calculadas las funciones de autocorrelación y autocorrelación parcial, se grafican contra los diferentes rezagos para obtener los correlogramas. Estos nos serán de gran utilidad para la identificación del modelo, tal como se menciona en el capítulo \@ref(modelacion-univariada) y en el complemento a este material [SeriesTCode](https://rpubs.com/CarlosFVG/SeriesTCode2024). Como ejemplo, se presentan los gráficos correspondientes a los datos de `nottem`.
 
 ```{r}
 (autoplot(nottem, colour = "#0A63E9") +
@@ -84,14 +84,15 @@ distintos.
 (c) Dependencia cuadráatica entre dos puntos de una misma serie observada a tiempo distintos.
 (d) Dependencia lineal entre dos puntos de series distintas observadas al mismo tiempo.
 
-2. El precio diario de oro durante 252 días de trading en 2005 están en el objeto gold del paquete TSA.
+2. Suponga que el correlograma de una serie de tiempo con 100 observaciones tiene: $\hat\rho_1$ = 0.31, $\hat\rho_2$ = 0.07,$\hat\rho_3$ = −0.05, $\hat\rho_4$= 0.06, $\hat\rho_5$ = −0.03, $\hat\rho_6$ = 0.27, $\hat\rho_7$ = 0.08,$\hat\rho_8$= 0.05,$\hat\rho_9$ = 0.02, $\hat\rho_10$= −0.01. ¿Dada
+esta información que se debería tener en cuenta al proponer un modelo de predicción para esta serie?
+
+3. El precio diario de oro durante 252 días de trading en 2005 están en el objeto gold del paquete TSA.
 (a) Grafique la serie de tiempo. ¿Que patrón se observa?
 (b) Grafique la serie de las diferencias de los logaritmos de los datos. ¿El gráfico sugiere que un modelo
 estacionario podría ser apropiado para las diferencias de los logaritmos? Explique brevemente.
 (c) Utilice la función ACF para las diferencias de los logaritmos de los datos. ¿Es evidencia suficiente
 de que los log-precios del oro siguen un modelo de caminata aleatoria?, ¿por qué?
 
-3. Suponga que el correlograma de una serie de tiempo con 100 observaciones tiene: $\hat\rho_1$ = 0.31, $\hat\rho_2$ = 0.07,$\hat\rho_3$ = −0.05, $\hat\rho_4$= 0.06, $\hat\rho_5$ = −0.03, $\hat\rho_6$ = 0.27, $\hat\rho_7$ = 0.08,$\hat\rho_8$= 0.05,$\hat\rho_9$ = 0.02, $\hat\rho_10$= −0.01. ¿Dada
-esta información que se debería tener en cuenta al proponer un modelo de predicción para esta serie?
 
 [^2.1]: Originalmente la prueba esta diseñada para comprobar estadísticamente si las observaciones son independientes entre sí, bajo esta hipótesis, los coeficientes de correlación serán cero y el estadístico $LB$ será cercano a cero. Esta prueba es de gran ayuda para ver la calidad del modelo que se aplique y para validar las hipótesis que se puedan requerir en la construcción de intervalos de predicción. Se hablará más de su uso en el capítulo \@ref(modelacion-univariada).

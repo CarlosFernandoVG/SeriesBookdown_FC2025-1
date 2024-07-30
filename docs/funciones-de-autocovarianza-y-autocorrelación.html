@@ -185,6 +185,11 @@ div.csl-indent {
 <li class="chapter" data-level="13" data-path="introducción-1.html"><a href="introducción-1.html"><i class="fa fa-check"></i><b>13</b> Introducción</a></li>
 <li class="chapter" data-level="14" data-path="archq-proceso-autoregresivo-con-heterocedasticidad-condicional.html"><a href="archq-proceso-autoregresivo-con-heterocedasticidad-condicional.html"><i class="fa fa-check"></i><b>14</b> <span class="math inline">\(ARCH(q)\)</span>: Proceso Autoregresivo con Heterocedasticidad Condicional</a></li>
 <li class="chapter" data-level="15" data-path="garchpq-proceso-autoregresivo-generalizado-con-heterocedasticidad-condicional.html"><a href="garchpq-proceso-autoregresivo-generalizado-con-heterocedasticidad-condicional.html"><i class="fa fa-check"></i><b>15</b> <span class="math inline">\(GARCH(p,q)\)</span>: Proceso Autoregresivo Generalizado con Heterocedasticidad Condicional</a></li>
+<li class="part"><span><b>VI Tareas</b></span></li>
+<li class="chapter" data-level="" data-path="tarea-1.html"><a href="tarea-1.html"><i class="fa fa-check"></i>Tarea 1</a></li>
+<li class="chapter" data-level="" data-path="tarea-2.html"><a href="tarea-2.html"><i class="fa fa-check"></i>Tarea 2</a></li>
+<li class="chapter" data-level="" data-path="tarea-3.html"><a href="tarea-3.html"><i class="fa fa-check"></i>Tarea 3</a></li>
+<li class="chapter" data-level="" data-path="bibliografía.html"><a href="bibliografía.html"><i class="fa fa-check"></i>Bibliografía</a></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="_blank">Hecho con bookdown</a></li>
 
@@ -227,7 +232,7 @@ div.csl-indent {
 <p><span class="math display">\[
 r_k=\frac{\sum\limits_{t = k+1}^n (X_t-\bar{X})(X_{t-k}-\bar{X})}{\sum\limits_{t = 1}^n(X_t-\bar{X})^2}
 \]</span></p>
-<p>Para <span class="math inline">\(k = 1, 2, \dots\)</span> y donde <span class="math inline">\(\bar{X}\)</span> es la media de las observaciones.</p>
+<p>Para <span class="math inline">\(k = 1, 2, \dots\)</span> y donde <span class="math inline">\(\bar{X}\)</span> es la media de las observaciones. Se aprecia que los elementos de la suma en el denominador corresponden a las covarianzas entre todas las observaciones que tienen un rezago de <span class="math inline">\(k\)</span> unidades.</p>
 <div id="función-de-autocorrelación-parcial" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Función de autocorrelación parcial<a href="funciones-de-autocovarianza-y-autocorrelación.html#función-de-autocorrelación-parcial" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>La función de correlación parcial estima la correlación entre una observación <span class="math inline">\(k\)</span> tiempos después de la observación actual removiendo los efectos de las correlaciones de las observaciones intermedias; es decir:</p>
@@ -242,8 +247,8 @@ donde <span class="math inline">\(\pi_{j, k} = \pi_{j-1, k}-\pi_{j}\pi_{j-1, j-k
 </div>
 <div id="correlograma" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> Correlograma<a href="funciones-de-autocovarianza-y-autocorrelación.html#correlograma" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Una vez calculadas las funciones de autocorrelación y autocorrelación parcial, se grafican contra los diferentes rezagos para obtener los correlogramas. Estos son serán de gran utilidad para la identificación del modelo, tal como se menciona en el capítulo <a href="modelacion-univariada.html#modelacion-univariada">12</a> y en el complemento a este material <a href="https://rpubs.com/CarlosFVG/SeriesTCode2023">SeriesTCode</a>. Como ejemplo, se presentan los gráficos correspondientes a los datos de <code>nottem</code>.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Una vez calculadas las funciones de autocorrelación y autocorrelación parcial, se grafican contra los diferentes rezagos para obtener los correlogramas. Estos nos serán de gran utilidad para la identificación del modelo, tal como se menciona en el capítulo <a href="modelacion-univariada.html#modelacion-univariada">12</a> y en el complemento a este material <a href="https://rpubs.com/CarlosFVG/SeriesTCode2024">SeriesTCode</a>. Como ejemplo, se presentan los gráficos correspondientes a los datos de <code>nottem</code>.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="prueba-de-ljung-box" class="section level2 hasAnchor" number="4.3">
 <h2><span class="header-section-number">4.3</span> Prueba de Ljung-Box<a href="funciones-de-autocovarianza-y-autocorrelación.html#prueba-de-ljung-box" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -274,7 +279,9 @@ distintos.</li>
 <li>Dependencia lineal entre dos puntos de series distintas observadas al mismo tiempo.</li>
 </ol>
 <ol start="2" style="list-style-type: decimal">
-<li>El precio diario de oro durante 252 días de trading en 2005 están en el objeto gold del paquete TSA.</li>
+<li><p>Suponga que el correlograma de una serie de tiempo con 100 observaciones tiene: <span class="math inline">\(\hat\rho_1\)</span> = 0.31, <span class="math inline">\(\hat\rho_2\)</span> = 0.07,<span class="math inline">\(\hat\rho_3\)</span> = −0.05, <span class="math inline">\(\hat\rho_4\)</span>= 0.06, <span class="math inline">\(\hat\rho_5\)</span> = −0.03, <span class="math inline">\(\hat\rho_6\)</span> = 0.27, <span class="math inline">\(\hat\rho_7\)</span> = 0.08,<span class="math inline">\(\hat\rho_8\)</span>= 0.05,<span class="math inline">\(\hat\rho_9\)</span> = 0.02, <span class="math inline">\(\hat\rho_10\)</span>= −0.01. ¿Dada
+esta información que se debería tener en cuenta al proponer un modelo de predicción para esta serie?</p></li>
+<li><p>El precio diario de oro durante 252 días de trading en 2005 están en el objeto gold del paquete TSA.</p></li>
 </ol>
 <ol style="list-style-type: lower-alpha">
 <li>Grafique la serie de tiempo. ¿Que patrón se observa?</li>
@@ -283,14 +290,10 @@ estacionario podría ser apropiado para las diferencias de los logaritmos? Expli
 <li>Utilice la función ACF para las diferencias de los logaritmos de los datos. ¿Es evidencia suficiente
 de que los log-precios del oro siguen un modelo de caminata aleatoria?, ¿por qué?</li>
 </ol>
-<ol start="3" style="list-style-type: decimal">
-<li>Suponga que el correlograma de una serie de tiempo con 100 observaciones tiene: <span class="math inline">\(\hat\rho_1\)</span> = 0.31, <span class="math inline">\(\hat\rho_2\)</span> = 0.07,<span class="math inline">\(\hat\rho_3\)</span> = −0.05, <span class="math inline">\(\hat\rho_4\)</span>= 0.06, <span class="math inline">\(\hat\rho_5\)</span> = −0.03, <span class="math inline">\(\hat\rho_6\)</span> = 0.27, <span class="math inline">\(\hat\rho_7\)</span> = 0.08,<span class="math inline">\(\hat\rho_8\)</span>= 0.05,<span class="math inline">\(\hat\rho_9\)</span> = 0.02, <span class="math inline">\(\hat\rho_10\)</span>= −0.01. ¿Dada
-esta información que se debería tener en cuenta al proponer un modelo de predicción para esta serie?</li>
-</ol>
 
 </div>
 </div>
-<h3>References</h3>
+<h3>Bibliografía<a href="bibliografía.html#bibliografía" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-cryer2008time" class="csl-entry">
 Cryer, Jonathan D, and Kung-Sik Chan. 2008. <em>Time Series Analysis: With Applications in r</em>. Springer Science &amp; Business Media.

@@ -185,6 +185,11 @@ div.csl-indent {
 <li class="chapter" data-level="13" data-path="introducción-1.html"><a href="introducción-1.html"><i class="fa fa-check"></i><b>13</b> Introducción</a></li>
 <li class="chapter" data-level="14" data-path="archq-proceso-autoregresivo-con-heterocedasticidad-condicional.html"><a href="archq-proceso-autoregresivo-con-heterocedasticidad-condicional.html"><i class="fa fa-check"></i><b>14</b> <span class="math inline">\(ARCH(q)\)</span>: Proceso Autoregresivo con Heterocedasticidad Condicional</a></li>
 <li class="chapter" data-level="15" data-path="garchpq-proceso-autoregresivo-generalizado-con-heterocedasticidad-condicional.html"><a href="garchpq-proceso-autoregresivo-generalizado-con-heterocedasticidad-condicional.html"><i class="fa fa-check"></i><b>15</b> <span class="math inline">\(GARCH(p,q)\)</span>: Proceso Autoregresivo Generalizado con Heterocedasticidad Condicional</a></li>
+<li class="part"><span><b>VI Tareas</b></span></li>
+<li class="chapter" data-level="" data-path="tarea-1.html"><a href="tarea-1.html"><i class="fa fa-check"></i>Tarea 1</a></li>
+<li class="chapter" data-level="" data-path="tarea-2.html"><a href="tarea-2.html"><i class="fa fa-check"></i>Tarea 2</a></li>
+<li class="chapter" data-level="" data-path="tarea-3.html"><a href="tarea-3.html"><i class="fa fa-check"></i>Tarea 3</a></li>
+<li class="chapter" data-level="" data-path="bibliografía.html"><a href="bibliografía.html"><i class="fa fa-check"></i>Bibliografía</a></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="_blank">Hecho con bookdown</a></li>
 
@@ -253,7 +258,7 @@ a_n\\
 \gamma_2  \\
     \vdots\\
 \gamma_{n}\\
-\end{bmatrix} = \gamma
+\end{bmatrix} = \underline{\gamma}
 \]</span>
 En general si deseamos predecir <span class="math inline">\(X_{n+h}\)</span> dado <span class="math inline">\({X_1,X_2,...,X_n}\)</span>, el predictor lineal será</p>
 <p><span class="math display">\[
@@ -281,7 +286,7 @@ a_n\\
 \gamma_{h+n}  \\
 \end{bmatrix}
 \]</span>
-<span class="math display">\[\Gamma \underline{a}=\gamma\]</span>
+<span class="math display">\[\Gamma \underline{a}=\underline{\gamma}\]</span>
 <strong>Ejemplo</strong> ¿Cuál es el predictor lineal de <span class="math inline">\(X_3\)</span> dado <span class="math inline">\(X_1, X_2\)</span>?</p>
 <p><span class="math display">\[
 \begin{bmatrix}
@@ -314,15 +319,17 @@ a_2
 \implies
 \begin{array}{l}
 a_1+\rho_1a_2 = \rho_1\\
-a1\rho_1+a_2 = \rho_2
+a_1\rho_1+a_2 = \rho_2
 \end{array}
 \]</span>
-Y en general: <span class="math inline">\(\hat{X}_{n+h} = a_1X_n+a_2X_{n-1}+\cdots+a_nX_1\)</span>.</p>
+Y habría que resolver el sistema de ecuaciones para encontrar los valores <span class="math inline">\(a_1\)</span> y <span class="math inline">\(a_2\)</span>.</p>
+<p>En general: <span class="math inline">\(\hat{X}_{n+h} = a_1X_n+a_2X_{n-1}+\cdots+a_nX_1\)</span>.</p>
 <div id="ejercicios-6" class="section level2 hasAnchor" number="11.1">
 <h2><span class="header-section-number">11.1</span> Ejercicios<a href="predictores-lineales.html#ejercicios-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
-<li>Sean <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(X_4\)</span>, <span class="math inline">\(X_5\)</span> obs. de un modelo <span class="math inline">\(MA(2)\)</span> de la forma <span class="math inline">\(X_t = Z_t+0.5Z_{t-1}+0.25Z_{t-2}\)</span>. Encontrar el mejor estimador para <span class="math inline">\(X_3\)</span> en términos de <span class="math inline">\(X_1\)</span> y <span class="math inline">\(X_2\)</span>. <span class="math inline">\(Z_t\sim N(0,1)\)</span>.</li>
-<li>Sean <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(X_4\)</span>, <span class="math inline">\(X_5\)</span> obs. de un modelo <span class="math inline">\(MA(2)\)</span> de la forma <span class="math inline">\(X_t = Z_t-0.25Z_{t-2}\)</span>. Encontrar el mejor estimador para <span class="math inline">\(X_3\)</span> en términos de <span class="math inline">\(X_2\)</span> y <span class="math inline">\(X_4\)</span>. <span class="math inline">\(Z_t\sim N(0,1)\)</span>.</li>
+<li>Sean <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(X_4\)</span>, <span class="math inline">\(X_5\)</span> obs. de un modelo <span class="math inline">\(MA(2)\)</span> de la forma <span class="math inline">\(X_t = Z_t+0.5Z_{t-1}+0.25Z_{t-2}\)</span>. Encontrar el predictor lineal para <span class="math inline">\(X_3\)</span> en términos de <span class="math inline">\(X_1\)</span> y <span class="math inline">\(X_2\)</span>. <span class="math inline">\(Z_t\sim N(0,1)\)</span>.</li>
+<li>Sean <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(X_3\)</span>, <span class="math inline">\(X_4\)</span> obs. de un modelo <span class="math inline">\(MA(2)\)</span> de la forma <span class="math inline">\(X_t = Z_t-0.25Z_{t-2}\)</span>. Encontrar el predictor lineal para <span class="math inline">\(X_5\)</span> en términos de <span class="math inline">\(X_3\)</span> y <span class="math inline">\(X_4\)</span>. <span class="math inline">\(Z_t\sim N(0,1)\)</span>.</li>
+<li>Sean <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span> obs. de un modelo <span class="math inline">\(AR(1)\)</span> de la forma <span class="math inline">\(X_t = 0.35X_{t-1}+Z_{t}\)</span>. Encontrar el predictor lineal para <span class="math inline">\(X_3\)</span> en términos de <span class="math inline">\(X_1\)</span> y <span class="math inline">\(X_2\)</span>. <span class="math inline">\(Z_t\sim N(0,1)\)</span></li>
 </ol>
 
 </div>

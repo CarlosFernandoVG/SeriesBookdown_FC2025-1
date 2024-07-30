@@ -19,6 +19,5 @@ A continuación se muestran las simulaciones de un modelo $GARCH(1,1)$ con la va
 ```{r}
 set.seed(30)
 x1 <- garch.sim(alpha = c(.05,.4),beta = c(.55),n=500)
-# plot.ts(x)
 tibble(x = 1:500, y = x1) %>% ggplot(aes(x = x, y = y)) + geom_line() + general_theme + labs(x = "Tiempo", y = NULL)
 ```

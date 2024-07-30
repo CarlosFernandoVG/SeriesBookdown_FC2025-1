@@ -185,6 +185,11 @@ div.csl-indent {
 <li class="chapter" data-level="13" data-path="introducción-1.html"><a href="introducción-1.html"><i class="fa fa-check"></i><b>13</b> Introducción</a></li>
 <li class="chapter" data-level="14" data-path="archq-proceso-autoregresivo-con-heterocedasticidad-condicional.html"><a href="archq-proceso-autoregresivo-con-heterocedasticidad-condicional.html"><i class="fa fa-check"></i><b>14</b> <span class="math inline">\(ARCH(q)\)</span>: Proceso Autoregresivo con Heterocedasticidad Condicional</a></li>
 <li class="chapter" data-level="15" data-path="garchpq-proceso-autoregresivo-generalizado-con-heterocedasticidad-condicional.html"><a href="garchpq-proceso-autoregresivo-generalizado-con-heterocedasticidad-condicional.html"><i class="fa fa-check"></i><b>15</b> <span class="math inline">\(GARCH(p,q)\)</span>: Proceso Autoregresivo Generalizado con Heterocedasticidad Condicional</a></li>
+<li class="part"><span><b>VI Tareas</b></span></li>
+<li class="chapter" data-level="" data-path="tarea-1.html"><a href="tarea-1.html"><i class="fa fa-check"></i>Tarea 1</a></li>
+<li class="chapter" data-level="" data-path="tarea-2.html"><a href="tarea-2.html"><i class="fa fa-check"></i>Tarea 2</a></li>
+<li class="chapter" data-level="" data-path="tarea-3.html"><a href="tarea-3.html"><i class="fa fa-check"></i>Tarea 3</a></li>
+<li class="chapter" data-level="" data-path="bibliografía.html"><a href="bibliografía.html"><i class="fa fa-check"></i>Bibliografía</a></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="_blank">Hecho con bookdown</a></li>
 
@@ -211,14 +216,14 @@ div.csl-indent {
 <p>Para trabajar con estas series de tiempo lo que se hace es calcular las diferencias de la serie de tiempo <span class="math inline">\(d\)</span> veces para hacerla estacionaria y posteriormente aplicar a la serie diferenciada un modelo <span class="math inline">\(ARMA(p,q)\)</span>, en este caso se diría que la serie original es un proceso <span class="math inline">\(ARIMA(p,d,q)\)</span>, donde <span class="math inline">\(p\)</span> es el número de términos autoregresivos, <span class="math inline">\(d\)</span> el número de veces que la serie debe ser diferenciada para hacerla estacionaria y <span class="math inline">\(q\)</span> el número de términos de la media móvil.</p>
 <p>La expresión algebraica del proceso <span class="math inline">\(ARIMA(p,d,q)\)</span> es:</p>
 <p><span class="math display">\[
-X_t^d=c+\phi_1X_{t-1}^d+...+\phi_pX_{t-p}^d-\theta_1\epsilon_{t-1}^d-\theta_2\epsilon_{t-2}^d-...-\theta_q\epsilon_{t-q}^d+\epsilon_t^d
+X_t^d=c+\phi_1X_{t-1}^d+...+\phi_pX_{t-p}^d-\theta_1\epsilon_{t-1}-\theta_2\epsilon_{t-2}-...-\theta_q\epsilon_{t-q}+\epsilon_t
 \]</span></p>
-<p>donde <span class="math inline">\(X_t^d\)</span> es la serie de las diferencias de orden <span class="math inline">\(d\)</span>, <span class="math inline">\(\epsilon_t^d\)</span> es un proceso de ruido blanco, y <span class="math inline">\(\phi_1,...,\phi_p,\theta_1,...,\theta_q\)</span> son los parámetros del modelo.</p>
+<p>donde <span class="math inline">\(X_t^d\)</span> es la serie de las diferencias de orden <span class="math inline">\(d\)</span>, <span class="math inline">\(\epsilon_t\)</span> es un proceso de ruido blanco, y <span class="math inline">\(\phi_1,...,\phi_p,\theta_1,...,\theta_q\)</span> son los parámetros del modelo.</p>
 <p>El modelo <span class="math inline">\(ARIMA(p,d,q)\)</span> se puede escribir en términos de los operadores de retardo de la siguiente manera:</p>
 <p><span class="math display">\[
 \begin{array}{c}
-(1-\phi_1B-\phi_2B^2-...-\phi_pB^p)X_t^d=c+(1-\theta_1B-\theta_2B^2-...-\theta_qB^q)\epsilon_t^d\\
-\phi_p(B)(1-B)^dX_t=c+\theta_q(B)\epsilon_t^d
+(1-\phi_1B-\phi_2B^2-...-\phi_pB^p)X_t^d=c+(1-\theta_1B-\theta_2B^2-...-\theta_qB^q)\epsilon_t\\
+\phi_p(B)(1-B)^dX_t=c+\theta_q(B)\epsilon_t
 \end{array}
 \]</span>
 Los modelos integrados se usan para reducir la <strong>NO</strong> estacionariedad de la serie al usar las diferencias y en la mayoría de las aplicaciones <span class="math inline">\(d=1\)</span> y hasta <span class="math inline">\(d=2\)</span> es suficiente para volver la serie estacionaria, pero en algunas ocasiones, aplicar transformaciones a los datos tienen mejor resultado para lograr la estacionariedad en comparación con las diferencias. Por ejemplo, en las series de tiempo económicas, la variabilidad aumenta cuando el nivel promedio del proceso aumenta. Sin embargo el porcentaje de cambio en las observaciones es relativamente independiente del nivel, entonces aplicar una transformación logarítmica puede ser más eficiente para lograr la estacionariedad de la serie.</p>
@@ -233,13 +238,13 @@ X_t -X_{t-1} &amp;= \mu_t+Z_t-\mu_{t-1}-Z_{t-1}\\
 \]</span></p>
 <p>El cual ya no depende de <span class="math inline">\(t\)</span>.</p>
 <p>A continuación se muestran los resultados para un modelo <span class="math inline">\(ARIMA(2,1,1)\)</span> de la siguiente forma <span class="math inline">\(X_t=0.85X_{t-1}-0.45X_{t-2}+.30\epsilon_{t-1}\)</span></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-20-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Además de las gráficas de Autocorrelación simple y parcial.</p>
 <p><img src="_main_files/figure-html/unnamed-chunk-21-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Además de las gráficas de Autocorrelación simple y parcial.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-22-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>A continuación se muestran los resultados para un modelo <span class="math inline">\(ARIMA(2,2,1)\)</span> de la siguiente forma <span class="math inline">\(X_t=0.85X_{t-1}-0.45X_{t-2}+.30\epsilon_{t-1}\)</span></p>
-<p><img src="_main_files/figure-html/unnamed-chunk-23-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-22-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Además de las gráficas de Autocorrelación simple y parcial.</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-24-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-23-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>¿Qué se puede decir del efecto que tiene el parámetro <span class="math inline">\(d\)</span> al comparar las gráficas de ambas series?</p>
 <div id="ejercicios-5" class="section level2 hasAnchor" number="9.1">
 <h2><span class="header-section-number">9.1</span> Ejercicios<a href="arimapdq-proceso-autoregresivo-integrado-y-de-medias-móviles.html#ejercicios-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -249,6 +254,12 @@ X_t -X_{t-1} &amp;= \mu_t+Z_t-\mu_{t-1}-Z_{t-1}\\
 <ol style="list-style-type: lower-alpha">
 <li>Grafique la serie de tiempo. ¿Qué patrón observa?, ¿Un modelo estacionario podría ser adecuado a ese gráfico?</li>
 <li>Usando herramientas como ACF y PACF especifique el modelo tentativo (AR(p); MA(q); ARMA(p,q)).Justifique.</li>
+</ol>
+<ol start="2" style="list-style-type: decimal">
+<li>Con los datos seleccionados para las prácticas</li>
+</ol>
+<ol start="7" style="list-style-type: lower-alpha">
+<li>Apliqué un autoarima y comparé respecto a lo que esperaba derivado del análisis de los correlogramas realizados en la práctica 3</li>
 </ol>
 
 </div>

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 12 Construcción de modelos para series de tiempo univariadas | Análisis de Series de Tiempo</title>
+  <title>Tarea 3 | Análisis de Series de Tiempo</title>
   <meta name="description" content="Material para el curso Análisis de Supervivencia y Series de Tiempo en la Facultad de Ciencias, Universidad Nacional Autónoma de México" />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 12 Construcción de modelos para series de tiempo univariadas | Análisis de Series de Tiempo" />
+  <meta property="og:title" content="Tarea 3 | Análisis de Series de Tiempo" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Material para el curso Análisis de Supervivencia y Series de Tiempo en la Facultad de Ciencias, Universidad Nacional Autónoma de México" />
   <meta name="github-repo" content="CarlosFernandoVG/SeriesBookdown_FC2024-2" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 12 Construcción de modelos para series de tiempo univariadas | Análisis de Series de Tiempo" />
+  <meta name="twitter:title" content="Tarea 3 | Análisis de Series de Tiempo" />
   
   <meta name="twitter:description" content="Material para el curso Análisis de Supervivencia y Series de Tiempo en la Facultad de Ciencias, Universidad Nacional Autónoma de México" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="predictores-lineales.html"/>
-<link rel="next" href="introducción-1.html"/>
+<link rel="prev" href="tarea-2.html"/>
+<link rel="next" href="bibliografía.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -210,43 +210,23 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="modelacion-univariada" class="section level1 hasAnchor" number="12">
-<h1><span class="header-section-number">Capítulo 12</span> Construcción de modelos para series de tiempo univariadas<a href="modelacion-univariada.html#modelacion-univariada" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Para construir un modelo <span class="math inline">\(ARIMA\)</span> que ajuste a una serie tiempo dada, se debe seguir un proceso iterativo de tres etapas. Primero identificar un modelo <span class="math inline">\(ARIMA(p,d,q)\)</span> tentativo, segundo, estimar los parámetros desconocidos del modelo. Tercero, mediante el análisis de residuales verificar si el modelo propuesto es el adecuado.</p>
-<ul>
-<li><strong>Identificación</strong>: Utilizando los datos ordenados cronológicamente haciendo uso de gráficos (correlograma, diagrama de dispersión, otros) se seleccionan los modelos <span class="math inline">\(ARIMA(p,d,q)\)</span> que valga la pena investigar. En esta etapa es posible identificar más de un modelo candidato que describa la serie.
-Observando las gráficas del ACF y PACF de la serie transformada podemos hacernos una idea del modelo que describe nuestra serie, o al menos de cuáles son los primeros candidatos que debemos probar.</li>
-<li><strong>Estimación</strong>: Considerando el modelo o modelos apropiados seleccionados en el paso anterior, se procede a realizar inferencia sobre los parámetros del modelo. Algunos paquetes permiten la selección del método de estimación (verosimilitud, momentos, mínimos cuadrados) que mejor se ajuste a las especificaciones del problema.</li>
-<li><strong>Verificación</strong>: Si el modelo es el adecuado, es decir los valores de <span class="math inline">\(p\)</span> y <span class="math inline">\(q\)</span> han sido correctamente especificados, entonces el modelo deberá ajustar bien a los datos y los residuales (la diferencia entre lo observado y lo estimado con el modelo) deberán comportarse como ruido blanco y no tener ninguna estructura. Esto significa que hay que probar que los residuales son estacionarios y no autocorrelacionados.</li>
-</ul>
-<p>Para verificar la no autocorrelación se puede usar la prueba de Ljung-Box vista en el capítulo 4, pero también la prueba Box-Pierce que es una versión simplificada de la prueba Ljung-Box sirve para evaluar si la serie de tiempo está autocorrelacionada.</p>
-<p>Sea n = longitud(<span class="math inline">\(X_t\)</span>), <span class="math inline">\(\rho_i\)</span> = autocorrelación de <span class="math inline">\(X\)</span> en el retraso <span class="math inline">\(i\)</span>, entonces el estadístico de la prueba de Ljung-Box es <span class="math inline">\(n*(n+2)*(\frac{\rho_1^2}{n-1} + \frac{\rho_2^2}{n-2} + ... + \frac{\rho_k^2}{n-k})\)</span>. Y el estadístico de la prueba Box-Pierce es <span class="math inline">\(n*(\rho_1^2 + \rho_2^2 + ... + \rho_k^2)\)</span>. Bajo la hipótesis nula definida como que no existe autocorrelación, las estadísticas de prueba tienen una distribución Chi-cuadrado con grados de libertad los rezagos(<span class="math inline">\(k\)</span>).</p>
-<p>Asimismo, la prueba Durbin-Watson también puede utilizarse para probar autocorrelación en las series de tiempo.</p>
-<p>La prueba aumentada de Dickey Fuller (prueba ADF) es una prueba estadística comúnmente utilizada en series de tiempo para probar la estacionariedad de la serie. Recordemos que para el ajuste de modelos tipo ARIMA, el primer paso es determinar el número de diferenciaciones necesarias para que la serie sea estacionaria. Por lo tanto, pruebas como la Dickey Fuller Aumentada (ADF), la KPSS y la Phillips-Perron se utilizan para determinar la estacionariedad de una serie en los modelos autoregresivos. La prueba ADF es fundamentalmente una prueba de hipótesis en donde se plantea una hipótesis nula y una alternativa y a partir del estadístico de prueba y el valor p que se puede inferir si una serie de tiempo es estacionaria o no.</p>
-<p>Si se ajustan varios modelos candidatos <span class="math inline">\(ARIMA(p,d,q)\)</span>, un buen modelo será aquel que tenga los residuales semejantes al de un ruido blanco, además que tenga los valores del AIC (Criterio de Información de Akaike) y BIC (Criterio de Información Bayesiana) menores con relación al resto de los modelos candidatos.</p>
-<div id="ejercicios-7" class="section level2 hasAnchor" number="12.1">
-<h2><span class="header-section-number">12.1</span> Ejercicios<a href="modelacion-univariada.html#ejercicios-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ol style="list-style-type: decimal">
-<li>Con los datos seleccionados para las prácticas</li>
+<div id="tarea-3" class="section level1 unnumbered hasAnchor">
+<h1>Tarea 3<a href="tarea-3.html#tarea-3" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Documento ejecutivo sobre la serie de tiempo seleccionado a analizar. Al documento de la tarea 1 agregarle como mínimo:</p>
+<ol start="5" style="list-style-type: decimal">
+<li><p>Análisis de los correlogramas</p></li>
+<li><p>Análisis e interpretación del ajuste de un ARIMA</p></li>
+<li><p>Predicciones</p></li>
+<li><p>Conclusión ligada con el problema que se planeó resolver</p></li>
 </ol>
-<ol start="8" style="list-style-type: lower-alpha">
-<li>Definir el modelo de serie de tiempo que mejor ajusta a los datos. ¿Tiene alguna limitación?</li>
-<li>Realizar las predicciones con base en el modelo propuesto. ¿Cuáles son las consideraciones que habría que tener?
-En este ejercicio pondrás en práctica todos tus conocimientos adquiridos además de tu creatividad para generar resultados interesantes.</li>
-</ol>
-
 </div>
-</div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="predictores-lineales.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="introducción-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tarea-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bibliografía.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

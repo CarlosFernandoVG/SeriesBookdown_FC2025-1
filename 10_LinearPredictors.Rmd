@@ -52,7 +52,7 @@ a_n\\
 \gamma_2  \\
     \vdots\\
 \gamma_{n}\\
-\end{bmatrix} = \gamma
+\end{bmatrix} = \underline{\gamma}
 $$
 En general si deseamos predecir $X_{n+h}$ dado ${X_1,X_2,...,X_n}$, el predictor lineal será
 
@@ -83,7 +83,7 @@ a_n\\
 \gamma_{h+n}  \\
 \end{bmatrix}
 $$
-$$\Gamma \underline{a}=\gamma$$
+$$\Gamma \underline{a}=\underline{\gamma}$$
 **Ejemplo** ¿Cuál es el predictor lineal de $X_3$ dado $X_1, X_2$?
 
 $$
@@ -119,15 +119,16 @@ a_2
 \implies
 \begin{array}{l}
 a_1+\rho_1a_2 = \rho_1\\
-a1\rho_1+a_2 = \rho_2
+a_1\rho_1+a_2 = \rho_2
 \end{array}
 $$
-Y en general: $\hat{X}_{n+h} = a_1X_n+a_2X_{n-1}+\cdots+a_nX_1$.
+Y habría que resolver el sistema de ecuaciones para encontrar los valores $a_1$ y $a_2$.
+
+En general: $\hat{X}_{n+h} = a_1X_n+a_2X_{n-1}+\cdots+a_nX_1$.
 
 
 ## Ejercicios
 
-1) Sean $X_1$, $X_2$, $X_4$, $X_5$ obs. de un modelo $MA(2)$ de la forma $X_t = Z_t+0.5Z_{t-1}+0.25Z_{t-2}$. Encontrar el mejor estimador para $X_3$ en términos de $X_1$ y $X_2$. $Z_t\sim N(0,1)$.
-2) Sean $X_1$, $X_2$, $X_4$, $X_5$ obs. de un modelo $MA(2)$ de la forma $X_t = Z_t-0.25Z_{t-2}$. Encontrar el mejor estimador para $X_3$ en términos de $X_2$ y $X_4$. $Z_t\sim N(0,1)$.
-
-
+1) Sean $X_1$, $X_2$, $X_4$, $X_5$ obs. de un modelo $MA(2)$ de la forma $X_t = Z_t+0.5Z_{t-1}+0.25Z_{t-2}$. Encontrar el predictor lineal para $X_3$ en términos de $X_1$ y $X_2$. $Z_t\sim N(0,1)$.
+2) Sean $X_1$, $X_2$, $X_3$, $X_4$ obs. de un modelo $MA(2)$ de la forma $X_t = Z_t-0.25Z_{t-2}$. Encontrar el predictor lineal para $X_5$ en términos de $X_3$ y $X_4$. $Z_t\sim N(0,1)$.
+3) Sean $X_1$, $X_2$ obs. de un modelo $AR(1)$ de la forma $X_t = 0.35X_{t-1}+Z_{t}$. Encontrar el predictor lineal para $X_3$ en términos de $X_1$ y $X_2$. $Z_t\sim N(0,1)$ 
