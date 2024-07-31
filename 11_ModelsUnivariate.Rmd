@@ -5,7 +5,7 @@ Para construir un modelo $ARIMA$ que ajuste a una serie tiempo dada, se debe seg
 + **Identificación**: Utilizando los datos ordenados cronológicamente haciendo uso de gráficos (correlograma, diagrama de dispersión, otros) se seleccionan los modelos $ARIMA(p,d,q)$ que valga la pena investigar. En esta etapa es posible identificar más de un modelo candidato que describa la serie.
 Observando las gráficas del ACF y PACF de la serie transformada podemos hacernos una idea del modelo que describe nuestra serie, o al menos de cuáles son los primeros candidatos que debemos probar.
 + **Estimación**: Considerando el modelo o modelos apropiados seleccionados en el paso anterior, se procede a realizar inferencia sobre los parámetros del modelo. Algunos paquetes permiten la selección del método de estimación (verosimilitud, momentos, mínimos cuadrados) que mejor se ajuste a las especificaciones del problema.
-+ **Verificación**: Si el modelo es el adecuado, es decir los valores de $p$ y $q$ han sido correctamente especificados, entonces el modelo deberá ajustar bien a los datos y los residuales (la diferencia entre lo observado y lo estimado con el modelo) deberán comportarse como ruido blanco y no tener ninguna estructura. Esto significa que hay que probar que los residuales son estacionarios y no autocorrelacionados. 
++ **Verificación**: Si el modelo es el adecuado, es decir los valores de $p$ y $q$ han sido correctamente especificados, entonces el modelo deberá ajustar bien a los datos y los residuales (la diferencia entre lo observado y lo estimado con el modelo) deberán comportarse como ruido blanco y no tener ninguna estructura. Esto significa que hay que probar que los residuales son estacionarios y no relacionados. 
 
 Para verificar la no autocorrelación se puede usar la prueba de Ljung-Box vista en el capítulo 4, pero también la prueba Box-Pierce que es una versión simplificada de la prueba Ljung-Box sirve para evaluar si la serie de tiempo está autocorrelacionada. 
 
@@ -16,6 +16,14 @@ Asimismo, la prueba Durbin-Watson también puede utilizarse para probar autocorr
 La prueba aumentada de Dickey Fuller (prueba ADF) es una prueba estadística comúnmente utilizada en series de tiempo para probar la estacionariedad de la serie. Recordemos que para el ajuste de modelos tipo ARIMA, el primer paso es determinar el número de diferenciaciones necesarias para que la serie sea estacionaria. Por lo tanto, pruebas como la Dickey Fuller Aumentada (ADF), la KPSS y la Phillips-Perron se utilizan para determinar la estacionariedad de una serie en los modelos autoregresivos. La prueba ADF es fundamentalmente una prueba de hipótesis en donde se plantea una hipótesis nula y una alternativa y a partir del estadístico de prueba y el valor p que se puede inferir si una serie de tiempo es estacionaria o no.
 
 Si se ajustan varios modelos candidatos $ARIMA(p,d,q)$, un buen modelo será aquel que tenga los residuales semejantes al de un ruido blanco, además que tenga los valores del AIC (Criterio de Información de Akaike) y BIC (Criterio de Información Bayesiana) menores con relación al resto de los modelos candidatos.
+
+A manera de guía de aplicación (la cual regularmente es cíclica) se recomienda revisar o repasar los temas para el ajuste de modelos univariados de series de tiempo:
+
++ [Autocorrelación](https://rstudio-pubs-static.s3.amazonaws.com/1071417_80a972e9e36f4e95b54e444ac18a89d3.html#autocorrelaci%C3%B3n)
++ [Transformaciones](https://rstudio-pubs-static.s3.amazonaws.com/1071417_80a972e9e36f4e95b54e444ac18a89d3.html#transformaciones)
++ [ARIMA](https://rstudio-pubs-static.s3.amazonaws.com/1071417_80a972e9e36f4e95b54e444ac18a89d3.html#arimapdq)
++ [Evaluación y pruebas de hipótesis](https://rstudio-pubs-static.s3.amazonaws.com/1071417_80a972e9e36f4e95b54e444ac18a89d3.html#evaluaci%C3%B3n-y-pruebas-de-hip%C3%B3tesis)
++ [Predicción](https://rstudio-pubs-static.s3.amazonaws.com/1071417_80a972e9e36f4e95b54e444ac18a89d3.html#predicci%C3%B3n)
 
 
 ## Ejercicios

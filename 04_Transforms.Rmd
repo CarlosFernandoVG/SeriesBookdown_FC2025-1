@@ -15,7 +15,7 @@ $$
 \hat T_t=(2q+1)^{-1}\sum_{j=-q}^q X_{t-j},\space q+1\leq t\leq n-q
 $$
 
-Este es uno de mucho filtros lineales que podrían aplicarse ($\hat T_t=\sum_{j=-\infty}^\infty a_jX_{t-j}$). Obsérvese que para valores grandes de $q$, $(2q+1)^{-1}\sum_{j=-q}^q [X_{t-j}-\hat T_t]\approx 0$, lo cual no sólo atenua el ruido, también permite que la tendencia lineal $T_t=c_0+c_1t$ pase sin distorsión. Sin embargo hay que tener cuidado en la selección de $q$, ya que valores muy grandes, si $T_t$ no es lineal, entonces se suavizará la serie pero la estimación de la tendencia será mala.
+Este es uno de mucho filtros lineales que podrían aplicarse ($\hat T_t=\sum_{j=-\infty}^\infty a_jX_{t-j}$). Obsérvese que para valores grandes de $q$, $(2q+1)^{-1}\sum_{j=-q}^q [X_{t-j}-\hat T_t]\approx 0$, lo cual no sólo atenúa el ruido, también permite que la tendencia lineal $T_t=c_0+c_1t$ pase sin distorsión. Sin embargo hay que tener cuidado en la selección de $q$, ya que valores muy grandes, si $T_t$ no es lineal, entonces se suavizará la serie pero la estimación de la tendencia será mala.
 
 ## Suavizamiento por polinomios ajustados
 
@@ -67,6 +67,8 @@ $$
 \nabla^k=(1-B)^k; & \nabla^kX_t=\sum_{j=0}^k\frac{k!}{j!(k-j)!}(-1)^jX_{t-j}
 \end{array}
 $$
+
+Ejemplos del uso de estas y otras transformaciones se puede ver en el la sección [Transformaciones](https://rstudio-pubs-static.s3.amazonaws.com/1071417_80a972e9e36f4e95b54e444ac18a89d3.html#transformaciones) del blog, aunque se recomienda su lectura después de estudiar los modelos ARIMA. En el capítulo 9 se hará mención de este contenido nuevamente.
 
 ## Ejercicios
 

@@ -29,6 +29,16 @@ Dentro de los métodos de predicción cuantitativos, se pueden distinguir dos gr
 
 En este curso nos centraremos en el análisis univariante de las series de tiempo.
 
+En la mayoría de capítulos se adjuntarán al final diferentes enlaces al Post [SeriesTCode](https://rpubs.com/CarlosFVG/SeriesTCode2024) de Rpubs, en el cual se da un enfoque aplicado a cada tema. Se recomienda que al final de cada capítulo se revise el contenido correspondiente para obtener un panorama completo del tema. En este caso en particular se solicita estudiar la sección [Datos](https://rstudio-pubs-static.s3.amazonaws.com/1071417_80a972e9e36f4e95b54e444ac18a89d3.html#datos) para conocer los objetos `ts` de R.
+
+En caso de necesitar un repaso u obtener conocimiento del lenguaje de programación R, se recomienda revisar el siguiente [post](https://rpubs.com/CarlosFVG/basicr) y si se desea obtener un conocimiento del lenguaje intermedio-avanzado se recomienda leer el post [EfficientR](https://rpubs.com/CarlosFVG/CourseTidyveR). 
+
+También se dejan los siguientes enlaces relacionados al aprendizaje de este lenguaje de programación:
+
++ [Programación en R](https://carlosfernandovg.github.io/RBookdown/)
++ [R for Data Science (2e)](https://r4ds.hadley.nz/)
++ [Advanced R](https://adv-r.hadley.nz/)
+
 # Descomposición temporal
 
 El análisis clásico de las series temporales se basa en la suposición de que los valores que toma la variable de observación es la consecuencia de tres componentes, cuya actuación conjunta da como resultado los valores medidos.
@@ -66,18 +76,18 @@ autoplot(nottem, colour = "#0A63E9") +
 ```
 En la gráfica se puede observar que los datos parecen tener un comportamiento cíclico, lo cual es esperado ya que los datos corresponden a temperaturas mensuales. Así mismo el gráfico no muestra que exista una tendencia en los datos es decir no podemos decir que las temperaturas incrementan o decrementan al pasar del tiempo.  
 
-La función R “decompose”, obtiene las componentes de tendencia, estacionalidad y aleatoria de una serie temporal a través de medias móviles, y además permite obtener los componentes en base a un esquema aditivo ó multiplicativo. Es una función generica de R, lo que significa que no requiere de la instalación de ninguna librería. 
+La función R `decompose()`, obtiene las componentes de tendencia, estacionalidad y aleatoria de una serie temporal a través de medias móviles, y además permite obtener los componentes en base a un esquema aditivo ó multiplicativo. Es una función genérica de R, lo que significa que no requiere de la instalación de ninguna librería. 
 
 La forma de utlizar esta función es la siguiente:
 
-**decompose(x, type = c(“additive”, “multiplicative”),filter = NULL)**
+**`decompose(x, type = c(“additive”, “multiplicative”),filter = NULL)`**
 
 
-La función calcula el componente de tendencia utilizando medias móviles, (si filter = NULL, se utilizan medias móviles simétricas), los índices de estacionalidad son promedios de los indices de estacionalidad que se obtienen al desestacionalizar la serie por el modelo elegido, por último, el componente irregular se obtiene eliminando la tendencia y estacionalidad de la serie temporal.
+La función calcula el componente de tendencia utilizando medias móviles, (si `filter = NULL`, se utilizan medias móviles simétricas), los índices de estacionalidad son promedios de los indices de estacionalidad que se obtienen al desestacionalizar la serie por el modelo elegido, por último, el componente irregular se obtiene eliminando la tendencia y estacionalidad de la serie temporal.
 
 Nota importante es que la función requiere que los datos tengan forma de serie temporal.
 
-Ahora aplicaremos la función decompose a la serie de tiempo graficada anteriormente. Las siguientes gráficas representan las componentes antes mencionadas de la serie de tiempo correspondiente a las temperaturas mensuales promedio en Nottingham entre 1920 y 1939.
+Ahora aplicaremos la función `decompose()` a la serie de tiempo graficada anteriormente. Las siguientes gráficas representan las componentes antes mencionadas de la serie de tiempo correspondiente a las temperaturas mensuales promedio en Nottingham entre 1920 y 1939.
 
 ```{r}
 j <- stl(nottem, s.window = 7, t.window = 50, t.jump = 1)
@@ -87,28 +97,23 @@ j$time.series %>%
   labs(x = "Tiempo") +
   general_theme
 ```
-La descomposición nos corrobora la presencia de una estacionalidad en los datos y detecta una ligera tendencia a la alza, aunque la escala en el gráfico de la tendencia es muy pequeña muestra que al pasar el tiempo las temperaturas promedio parecen estarse incrementando. En cuanto al gráfico de aleatoriedad la descomposición efectivamente lo presenta como una serie de datos aleatorios. 
+La descomposición nos corrobora la presencia de una estacionalidad en los datos y detecta una ligera tendencia a la alza, aunque la escala en el gráfico de la tendencia es muy pequeña muestra que al pasar el tiempo las temperaturas promedio parecen estarse incrementando. En cuanto al gráfico de aleatoriedad la descomposición efectivamente lo presenta como una serie de datos aleatorios.
+
+Se recomienda la lectura de la sección [Descomposición](https://rstudio-pubs-static.s3.amazonaws.com/1071417_80a972e9e36f4e95b54e444ac18a89d3.html#descomposici%C3%B3n) para ver un ejemplo aplicado de la descomposición de series de tiempo, ya sea con la función `decompose()`, o la famosa función `stl()`. Además, pueden existir casos en que no se tenga suficiente información para descomponer una serie, por lo que se pueden utilizar otras alternativas como la mostrada en el apartado [Un caso curioso](https://rstudio-pubs-static.s3.amazonaws.com/1071417_80a972e9e36f4e95b54e444ac18a89d3.html#un-caso-curioso) del mismo blog, en donde se utilizan las transformaciones de Fourier para obtener una descomposición temporal.
 
 ## Ejercicios
-1. ¿Qué carterísticas debe tener un conjunto de datos para considerarse una serie de tiempo?
+1. ¿Qué características debe tener un conjunto de datos para considerarse una serie de tiempo?
 
 2. Una serie de tiempo se puede descomponer en: (Seleccione la opción correcta)
 a) Parte Multiplicativa, Parte Aditiva y Parte Aleatoria
 b) Tendencia, Estacionalidad y Parte Aleatoria
 c) Parte Univariante y Parte Multivariante
 
-3. Utilizar los datos en el objeto "AirPassengers" que corresponden a 144 mediciones del número de pasajeros mensuales en líneas aereas y:
+3. Utilizar los datos en el objeto "AirPassengers" que corresponden a 144 mediciones del número de pasajeros mensuales en líneas aéreas y:
 a) Grafique la serie de tiempo y describa que patrón observa. Comente su código.
-b) Aplique la función decompose a los datos y describa los hallazgos. ¿Qué puede concluír además de los hallazgos técnicos?
-c) Grafique la serie de los logarítmos de los datos y describa el cambio observado respecto a lo visto en el inciso a)
+b) Aplique la función `decompose()` a los datos y describa los hallazgos. ¿Qué puede concluir además de los hallazgos técnicos?
+c) Grafique la serie de los logaritmos de los datos y describa el cambio observado respecto a lo visto en el inciso a)
 
-4. Seleccione un conjunto de datos de algún tema de su interes, plantee un problema/pregunta que quiera responder con sus datos utilizando análisis de series de tiempo.  
+4. Seleccione un conjunto de datos de algún tema de su interés, plantee un problema/pregunta que quiera responder con sus datos utilizando análisis de series de tiempo.  
 a. Limpie, prepare y transforme los datos a formato de series de tiempo.
 b. Grafique la serie de tiempo y describa que patrón observa. 
-
-
-
-
-
-
-

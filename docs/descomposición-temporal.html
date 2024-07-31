@@ -238,18 +238,19 @@ donde <span class="math inline">\(T_{t}\)</span> es el componente de <strong>ten
 <p>Las siguientes gráficas son un ejemplo basado en el conjunto de datos <code>nottem</code>, en el cual se tienen las temperaturas mensuales promedio en Nottingham entre 1920 y 1939. Esta serie de tiempo tiene el siguiente comportamiento a través de los años.</p>
 <p><img src="_main_files/figure-html/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" />
 En la gráfica se puede observar que los datos parecen tener un comportamiento cíclico, lo cual es esperado ya que los datos corresponden a temperaturas mensuales. Así mismo el gráfico no muestra que exista una tendencia en los datos es decir no podemos decir que las temperaturas incrementan o decrementan al pasar del tiempo.</p>
-<p>La función R “decompose”, obtiene las componentes de tendencia, estacionalidad y aleatoria de una serie temporal a través de medias móviles, y además permite obtener los componentes en base a un esquema aditivo ó multiplicativo. Es una función generica de R, lo que significa que no requiere de la instalación de ninguna librería.</p>
+<p>La función R <code>decompose()</code>, obtiene las componentes de tendencia, estacionalidad y aleatoria de una serie temporal a través de medias móviles, y además permite obtener los componentes en base a un esquema aditivo ó multiplicativo. Es una función genérica de R, lo que significa que no requiere de la instalación de ninguna librería.</p>
 <p>La forma de utlizar esta función es la siguiente:</p>
-<p><strong>decompose(x, type = c(“additive”, “multiplicative”),filter = NULL)</strong></p>
-<p>La función calcula el componente de tendencia utilizando medias móviles, (si filter = NULL, se utilizan medias móviles simétricas), los índices de estacionalidad son promedios de los indices de estacionalidad que se obtienen al desestacionalizar la serie por el modelo elegido, por último, el componente irregular se obtiene eliminando la tendencia y estacionalidad de la serie temporal.</p>
+<p><strong><code>decompose(x, type = c(“additive”, “multiplicative”),filter = NULL)</code></strong></p>
+<p>La función calcula el componente de tendencia utilizando medias móviles, (si <code>filter = NULL</code>, se utilizan medias móviles simétricas), los índices de estacionalidad son promedios de los indices de estacionalidad que se obtienen al desestacionalizar la serie por el modelo elegido, por último, el componente irregular se obtiene eliminando la tendencia y estacionalidad de la serie temporal.</p>
 <p>Nota importante es que la función requiere que los datos tengan forma de serie temporal.</p>
-<p>Ahora aplicaremos la función decompose a la serie de tiempo graficada anteriormente. Las siguientes gráficas representan las componentes antes mencionadas de la serie de tiempo correspondiente a las temperaturas mensuales promedio en Nottingham entre 1920 y 1939.</p>
+<p>Ahora aplicaremos la función <code>decompose()</code> a la serie de tiempo graficada anteriormente. Las siguientes gráficas representan las componentes antes mencionadas de la serie de tiempo correspondiente a las temperaturas mensuales promedio en Nottingham entre 1920 y 1939.</p>
 <p><img src="_main_files/figure-html/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" />
 La descomposición nos corrobora la presencia de una estacionalidad en los datos y detecta una ligera tendencia a la alza, aunque la escala en el gráfico de la tendencia es muy pequeña muestra que al pasar el tiempo las temperaturas promedio parecen estarse incrementando. En cuanto al gráfico de aleatoriedad la descomposición efectivamente lo presenta como una serie de datos aleatorios.</p>
+<p>Se recomienda la lectura de la sección <a href="https://rstudio-pubs-static.s3.amazonaws.com/1071417_80a972e9e36f4e95b54e444ac18a89d3.html#descomposici%C3%B3n">Descomposición</a> para ver un ejemplo aplicado de la descomposición de series de tiempo, ya sea con la función <code>decompose()</code>, o la famosa función <code>stl()</code>. Además, pueden existir casos en que no se tenga suficiente información para descomponer una serie, por lo que se pueden utilizar otras alternativas como la mostrada en el apartado <a href="https://rstudio-pubs-static.s3.amazonaws.com/1071417_80a972e9e36f4e95b54e444ac18a89d3.html#un-caso-curioso">Un caso curioso</a> del mismo blog, en donde se utilizan las transformaciones de Fourier para obtener una descomposición temporal.</p>
 <div id="ejercicios" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Ejercicios<a href="descomposición-temporal.html#ejercicios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
-<li><p>¿Qué carterísticas debe tener un conjunto de datos para considerarse una serie de tiempo?</p></li>
+<li><p>¿Qué características debe tener un conjunto de datos para considerarse una serie de tiempo?</p></li>
 <li><p>Una serie de tiempo se puede descomponer en: (Seleccione la opción correcta)</p></li>
 </ol>
 <ol style="list-style-type: lower-alpha">
@@ -258,15 +259,15 @@ La descomposición nos corrobora la presencia de una estacionalidad en los datos
 <li>Parte Univariante y Parte Multivariante</li>
 </ol>
 <ol start="3" style="list-style-type: decimal">
-<li>Utilizar los datos en el objeto “AirPassengers” que corresponden a 144 mediciones del número de pasajeros mensuales en líneas aereas y:</li>
+<li>Utilizar los datos en el objeto “AirPassengers” que corresponden a 144 mediciones del número de pasajeros mensuales en líneas aéreas y:</li>
 </ol>
 <ol style="list-style-type: lower-alpha">
 <li>Grafique la serie de tiempo y describa que patrón observa. Comente su código.</li>
-<li>Aplique la función decompose a los datos y describa los hallazgos. ¿Qué puede concluír además de los hallazgos técnicos?</li>
-<li>Grafique la serie de los logarítmos de los datos y describa el cambio observado respecto a lo visto en el inciso a)</li>
+<li>Aplique la función <code>decompose()</code> a los datos y describa los hallazgos. ¿Qué puede concluir además de los hallazgos técnicos?</li>
+<li>Grafique la serie de los logaritmos de los datos y describa el cambio observado respecto a lo visto en el inciso a)</li>
 </ol>
 <ol start="4" style="list-style-type: decimal">
-<li>Seleccione un conjunto de datos de algún tema de su interes, plantee un problema/pregunta que quiera responder con sus datos utilizando análisis de series de tiempo.<br />
+<li>Seleccione un conjunto de datos de algún tema de su interés, plantee un problema/pregunta que quiera responder con sus datos utilizando análisis de series de tiempo.<br />
 </li>
 </ol>
 <ol style="list-style-type: lower-alpha">

@@ -219,7 +219,7 @@ div.csl-indent {
 <p><span class="math display">\[
 \hat T_t=(2q+1)^{-1}\sum_{j=-q}^q X_{t-j},\space q+1\leq t\leq n-q
 \]</span></p>
-<p>Este es uno de mucho filtros lineales que podrían aplicarse (<span class="math inline">\(\hat T_t=\sum_{j=-\infty}^\infty a_jX_{t-j}\)</span>). Obsérvese que para valores grandes de <span class="math inline">\(q\)</span>, <span class="math inline">\((2q+1)^{-1}\sum_{j=-q}^q [X_{t-j}-\hat T_t]\approx 0\)</span>, lo cual no sólo atenua el ruido, también permite que la tendencia lineal <span class="math inline">\(T_t=c_0+c_1t\)</span> pase sin distorsión. Sin embargo hay que tener cuidado en la selección de <span class="math inline">\(q\)</span>, ya que valores muy grandes, si <span class="math inline">\(T_t\)</span> no es lineal, entonces se suavizará la serie pero la estimación de la tendencia será mala.</p>
+<p>Este es uno de mucho filtros lineales que podrían aplicarse (<span class="math inline">\(\hat T_t=\sum_{j=-\infty}^\infty a_jX_{t-j}\)</span>). Obsérvese que para valores grandes de <span class="math inline">\(q\)</span>, <span class="math inline">\((2q+1)^{-1}\sum_{j=-q}^q [X_{t-j}-\hat T_t]\approx 0\)</span>, lo cual no sólo atenúa el ruido, también permite que la tendencia lineal <span class="math inline">\(T_t=c_0+c_1t\)</span> pase sin distorsión. Sin embargo hay que tener cuidado en la selección de <span class="math inline">\(q\)</span>, ya que valores muy grandes, si <span class="math inline">\(T_t\)</span> no es lineal, entonces se suavizará la serie pero la estimación de la tendencia será mala.</p>
 </div>
 <div id="suavizamiento-por-polinomios-ajustados" class="section level2 hasAnchor" number="5.2">
 <h2><span class="header-section-number">5.2</span> Suavizamiento por polinomios ajustados<a href="transformaciones.html#suavizamiento-por-polinomios-ajustados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -257,6 +257,7 @@ Teniendo que <span class="math inline">\(\nabla=(1-B)\)</span></p>
 \nabla^k=(1-B)^k; &amp; \nabla^kX_t=\sum_{j=0}^k\frac{k!}{j!(k-j)!}(-1)^jX_{t-j}
 \end{array}
 \]</span></p>
+<p>Ejemplos del uso de estas y otras transformaciones se puede ver en el la sección <a href="https://rstudio-pubs-static.s3.amazonaws.com/1071417_80a972e9e36f4e95b54e444ac18a89d3.html#transformaciones">Transformaciones</a> del blog, aunque se recomienda su lectura después de estudiar los modelos ARIMA. En el capítulo 9 se hará mención de este contenido nuevamente.</p>
 </div>
 <div id="ejercicios-3" class="section level2 hasAnchor" number="5.4">
 <h2><span class="header-section-number">5.4</span> Ejercicios<a href="transformaciones.html#ejercicios-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>

@@ -178,6 +178,8 @@ $$
 \right.
 $$
 
+La sección especializada a este tema en el blog es el apartado [MA](https://rstudio-pubs-static.s3.amazonaws.com/1071417_80a972e9e36f4e95b54e444ac18a89d3.html#maq).
+
 ## Ejericios
 1) Sea $Z_t\sim N(0,1)$. Calcular la función de autocovarianza $\gamma_k$ para el modelo $X_t=0.3+0.1Z_t-0.2Z_{t-1}$
 2) Muestre que los procesos MA(1) siguientes

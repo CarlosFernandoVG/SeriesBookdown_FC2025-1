@@ -126,6 +126,7 @@ Y habría que resolver el sistema de ecuaciones para encontrar los valores $a_1$
 
 En general: $\hat{X}_{n+h} = a_1X_n+a_2X_{n-1}+\cdots+a_nX_1$.
 
+Para este tema, se tiene preparado el material del tema [Evaluación y pruebas de hipótesis](https://rstudio-pubs-static.s3.amazonaws.com/1071417_80a972e9e36f4e95b54e444ac18a89d3.html#predicci%C3%B3n).
 
 ## Ejercicios
 

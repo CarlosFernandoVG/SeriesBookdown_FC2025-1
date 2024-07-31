@@ -162,12 +162,14 @@ vnctc <- tibble(x = 0:(length(datos)-1), y = datos) %>%
 
 vctnc + vnttnc + vnctc 
 ```
+
 En resumen, si una serie es estacionaria, su media, su varianza y su autocovarianza (en diferentes rezagos) permanecen iguales sin importar el momento en el cual se midan; es decir, son invariantes respecto al tiempo.
 
 ## Ejercicios
 1. Reproducir la caminata aleatoria con semilla (123) mostrada en la gráfica anterior. Ver ¿qué sucede al aumentar el número de simulaciones $(n=1000)$? ¿Por qué sucede este nuevo comportamiento?
 
 2. Un proceso es estacionario débil en orden 2 si tiene media y varianzas constantes (Seleccione la opción correcta)
+
 a) Cierto
 b) Falso
 
