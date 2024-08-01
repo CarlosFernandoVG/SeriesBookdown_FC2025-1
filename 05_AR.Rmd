@@ -335,7 +335,7 @@ Por lo que las raíces del polinomio $(1-\phi_1B-\phi_2B^2)$ serán $B^1, B^2 = 
 
 Y gracias a todo esto, podemos interpretar que para que los procesos sean estacionarios, se solicita que las raíces estén fuera del círculo unitario, es decir: $|B^1|>1$ y $|B^2|>1$.
 
-En la sección [Identificación y modelación lineal](https://rstudio-pubs-static.s3.amazonaws.com/1071417_80a972e9e36f4e95b54e444ac18a89d3.html#identificaci%C3%B3n-y-modelaci%C3%B3n-lineal) se muestra el uso de R para la creación de modelos de lineales en series de tiempo y en particular en el apartado [AR](https://rstudio-pubs-static.s3.amazonaws.com/1071417_80a972e9e36f4e95b54e444ac18a89d3.html#arp) se estudia el comportamiento del proceso autoregresivo.
+En la sección [Identificación y modelación lineal](https://rstudio-pubs-static.s3.amazonaws.com/1071417_43ae3ecf24b84bd2ad6a0d0f9a05d019.html#identificaci%C3%B3n-y-modelaci%C3%B3n-lineal) se muestra el uso de R para la creación de modelos de lineales en series de tiempo y en particular en el apartado [AR](https://rstudio-pubs-static.s3.amazonaws.com/1071417_43ae3ecf24b84bd2ad6a0d0f9a05d019.html#arp) se estudia el comportamiento del proceso autoregresivo.
 
 ## Ejercicios
 1. Encuentre la función de covarianza $\gamma_k$ para el modelo AR(1) en la sección 6.1, definido como $X_t=0.35X_{t-1}+\epsilon_t$ donde $\epsilon_t\sim N(0,1)$

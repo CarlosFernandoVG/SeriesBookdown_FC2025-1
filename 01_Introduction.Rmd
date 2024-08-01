@@ -29,7 +29,7 @@ Dentro de los métodos de predicción cuantitativos, se pueden distinguir dos gr
 
 En este curso nos centraremos en el análisis univariante de las series de tiempo.
 
-En la mayoría de capítulos se adjuntarán al final diferentes enlaces al Post [SeriesTCode](https://rpubs.com/CarlosFVG/SeriesTCode2024) de Rpubs, en el cual se da un enfoque aplicado a cada tema. Se recomienda que al final de cada capítulo se revise el contenido correspondiente para obtener un panorama completo del tema. En este caso en particular se solicita estudiar la sección [Datos](https://rstudio-pubs-static.s3.amazonaws.com/1071417_80a972e9e36f4e95b54e444ac18a89d3.html#datos) para conocer los objetos `ts` de R.
+En la mayoría de capítulos se adjuntarán al final diferentes enlaces al Post [SeriesTCode](https://rpubs.com/CarlosFVG/SeriesTCode2024) de Rpubs, en el cual se da un enfoque aplicado a cada tema. Se recomienda que al final de cada capítulo se revise el contenido correspondiente para obtener un panorama completo del tema. En este caso en particular se solicita estudiar la sección [Datos](https://rstudio-pubs-static.s3.amazonaws.com/1071417_43ae3ecf24b84bd2ad6a0d0f9a05d019.html#datos) para conocer los objetos `ts` de R.
 
 En caso de necesitar un repaso u obtener conocimiento del lenguaje de programación R, se recomienda revisar el siguiente [post](https://rpubs.com/CarlosFVG/basicr) y si se desea obtener un conocimiento del lenguaje intermedio-avanzado se recomienda leer el post [EfficientR](https://rpubs.com/CarlosFVG/CourseTidyveR). 
 
@@ -99,7 +99,7 @@ j$time.series %>%
 ```
 La descomposición nos corrobora la presencia de una estacionalidad en los datos y detecta una ligera tendencia a la alza, aunque la escala en el gráfico de la tendencia es muy pequeña muestra que al pasar el tiempo las temperaturas promedio parecen estarse incrementando. En cuanto al gráfico de aleatoriedad la descomposición efectivamente lo presenta como una serie de datos aleatorios.
 
-Se recomienda la lectura de la sección [Descomposición](https://rstudio-pubs-static.s3.amazonaws.com/1071417_80a972e9e36f4e95b54e444ac18a89d3.html#descomposici%C3%B3n) para ver un ejemplo aplicado de la descomposición de series de tiempo, ya sea con la función `decompose()`, o la famosa función `stl()`. Además, pueden existir casos en que no se tenga suficiente información para descomponer una serie, por lo que se pueden utilizar otras alternativas como la mostrada en el apartado [Un caso curioso](https://rstudio-pubs-static.s3.amazonaws.com/1071417_80a972e9e36f4e95b54e444ac18a89d3.html#un-caso-curioso) del mismo blog, en donde se utilizan las transformaciones de Fourier para obtener una descomposición temporal.
+Se recomienda la lectura de la sección [Descomposición](https://rstudio-pubs-static.s3.amazonaws.com/1071417_43ae3ecf24b84bd2ad6a0d0f9a05d019.html#descomposici%C3%B3n) para ver un ejemplo aplicado de la descomposición de series de tiempo, ya sea con la función `decompose()`, o la famosa función `stl()`. Además, pueden existir casos en que no se tenga suficiente información para descomponer una serie, por lo que se pueden utilizar otras alternativas como la mostrada en el apartado [Un caso curioso](https://rstudio-pubs-static.s3.amazonaws.com/1071417_43ae3ecf24b84bd2ad6a0d0f9a05d019.html#un-caso-curioso) del mismo blog, en donde se utilizan las transformaciones de Fourier para obtener una descomposición temporal.
 
 ## Ejercicios
 1. ¿Qué características debe tener un conjunto de datos para considerarse una serie de tiempo?

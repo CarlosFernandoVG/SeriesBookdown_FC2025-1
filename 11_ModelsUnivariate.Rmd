@@ -19,11 +19,11 @@ Si se ajustan varios modelos candidatos $ARIMA(p,d,q)$, un buen modelo será aqu
 
 A manera de guía de aplicación (la cual regularmente es cíclica) se recomienda revisar o repasar los temas para el ajuste de modelos univariados de series de tiempo:
 
-+ [Autocorrelación](https://rstudio-pubs-static.s3.amazonaws.com/1071417_80a972e9e36f4e95b54e444ac18a89d3.html#autocorrelaci%C3%B3n)
-+ [Transformaciones](https://rstudio-pubs-static.s3.amazonaws.com/1071417_80a972e9e36f4e95b54e444ac18a89d3.html#transformaciones)
-+ [ARIMA](https://rstudio-pubs-static.s3.amazonaws.com/1071417_80a972e9e36f4e95b54e444ac18a89d3.html#arimapdq)
-+ [Evaluación y pruebas de hipótesis](https://rstudio-pubs-static.s3.amazonaws.com/1071417_80a972e9e36f4e95b54e444ac18a89d3.html#evaluaci%C3%B3n-y-pruebas-de-hip%C3%B3tesis)
-+ [Predicción](https://rstudio-pubs-static.s3.amazonaws.com/1071417_80a972e9e36f4e95b54e444ac18a89d3.html#predicci%C3%B3n)
++ [Autocorrelación](https://rstudio-pubs-static.s3.amazonaws.com/1071417_43ae3ecf24b84bd2ad6a0d0f9a05d019.html#autocorrelaci%C3%B3n)
++ [Transformaciones](https://rstudio-pubs-static.s3.amazonaws.com/1071417_43ae3ecf24b84bd2ad6a0d0f9a05d019.html#transformaciones)
++ [ARIMA](https://rstudio-pubs-static.s3.amazonaws.com/1071417_43ae3ecf24b84bd2ad6a0d0f9a05d019.html#arimapdq)
++ [Evaluación y pruebas de hipótesis](https://rstudio-pubs-static.s3.amazonaws.com/1071417_43ae3ecf24b84bd2ad6a0d0f9a05d019.html#evaluaci%C3%B3n-y-pruebas-de-hip%C3%B3tesis)
++ [Predicción](https://rstudio-pubs-static.s3.amazonaws.com/1071417_43ae3ecf24b84bd2ad6a0d0f9a05d019.html#predicci%C3%B3n)
 
 
 ## Ejercicios
