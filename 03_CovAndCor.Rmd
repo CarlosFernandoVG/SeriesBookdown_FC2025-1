@@ -76,7 +76,7 @@ $$
 
 Entonces si $LB$ excede el valor crítico de la tabla $Ji$ cuadrada al nivel de significancia seleccionado, no se acepta la hipótesis de que todos los coeficientes de autocorrelación son iguales a cero, por lo tanto al menos algunos de ellos deben ser diferentes de cero[^2.1].
 
-En la sección [Autocorrelación](https://rstudio-pubs-static.s3.amazonaws.com/1071417_43ae3ecf24b84bd2ad6a0d0f9a05d019.html#autocorrelaci%C3%B3n) del blog puedes encontrar gráficas interesantes sobre este tema y aplicaciones directas en R.
+En la sección [Autocorrelación](https://rstudio-pubs-static.s3.amazonaws.com/1071417_253bc2f164f4438b918aaaee3a3da291.html#autocorrelaci%C3%B3n) del blog puedes encontrar gráficas interesantes sobre este tema y aplicaciones directas en R.
 
 ## Ejercicios
 1. ¿Qué mide la auto-correlación? (Seleccione la opción correcta)

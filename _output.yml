@@ -12,6 +12,7 @@ bookdown::gitbook:
       github: yes
       all: ['facebook', 'twitter', 'github', 'linkedin', 'weibo', 'instapaper']
     download: no
+    ga: "G-1PKNTHL5YP"
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex

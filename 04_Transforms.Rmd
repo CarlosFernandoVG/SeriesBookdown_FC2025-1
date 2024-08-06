@@ -68,7 +68,7 @@ $$
 \end{array}
 $$
 
-Ejemplos del uso de estas y otras transformaciones se puede ver en el la sección [Transformaciones](https://rstudio-pubs-static.s3.amazonaws.com/1071417_43ae3ecf24b84bd2ad6a0d0f9a05d019.html#transformaciones) del blog, aunque se recomienda su lectura después de estudiar los modelos ARIMA. En el capítulo 9 se hará mención de este contenido nuevamente.
+Ejemplos del uso de estas y otras transformaciones se puede ver en el la sección [Transformaciones](https://rstudio-pubs-static.s3.amazonaws.com/1071417_253bc2f164f4438b918aaaee3a3da291.html#transformaciones) del blog, aunque se recomienda su lectura después de estudiar los modelos ARIMA. En el capítulo 9 se hará mención de este contenido nuevamente.
 
 ## Ejercicios
 

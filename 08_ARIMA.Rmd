@@ -107,7 +107,7 @@ Además de las gráficas de Autocorrelación simple y parcial.
 
 ¿Qué se puede decir del efecto que tiene el parámetro $d$ al comparar las gráficas de ambas series? 
 
-La sección especializada a este tema en el blog es el apartado [ARIMA](https://rstudio-pubs-static.s3.amazonaws.com/1071417_43ae3ecf24b84bd2ad6a0d0f9a05d019.html#arimapdq)
+La sección especializada a este tema en el blog es el apartado [ARIMA](https://rstudio-pubs-static.s3.amazonaws.com/1071417_253bc2f164f4438b918aaaee3a3da291.html#arimapdq)
 
 ## Ejercicios
 1) 57 mediciones consecutivas de una máquina están en el objeto $deere3$ del paquete TSA:

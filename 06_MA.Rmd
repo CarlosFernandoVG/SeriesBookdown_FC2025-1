@@ -178,7 +178,7 @@ $$
 \right.
 $$
 
-La sección especializada a este tema en el blog es el apartado [MA](https://rstudio-pubs-static.s3.amazonaws.com/1071417_43ae3ecf24b84bd2ad6a0d0f9a05d019.html#maq).
+La sección especializada a este tema en el blog es el apartado [MA](https://rstudio-pubs-static.s3.amazonaws.com/1071417_253bc2f164f4438b918aaaee3a3da291.html#maq).
 
 ## Ejericios
 1) Sea $Z_t\sim N(0,1)$. Calcular la función de autocovarianza $\gamma_k$ para el modelo $X_t=0.3+0.1Z_t-0.2Z_{t-1}$

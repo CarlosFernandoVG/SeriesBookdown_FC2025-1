@@ -167,7 +167,7 @@ Además de las gráficas de Autocorrelación simple y parcial.
   general_theme)
 ```
 
-La sección especializada a este tema en el blog es el apartado [ARMA](https://rstudio-pubs-static.s3.amazonaws.com/1071417_43ae3ecf24b84bd2ad6a0d0f9a05d019.html#armapq).
+La sección especializada a este tema en el blog es el apartado [ARMA](https://rstudio-pubs-static.s3.amazonaws.com/1071417_253bc2f164f4438b918aaaee3a3da291.html#armapq).
 
 ## Ejericios
 1) Los modelos ARMA(p,q) tienen componente autoregresivo y componente de medias móviles
