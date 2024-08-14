@@ -1,3 +1,9 @@
+---
+output:
+  html_document: 
+    includes:
+      in_header: ga.html
+---
 # $ARMA(p,q)$: Proceso Autoregresivo de Medias Móviles
 
 Es muy probable que una serie de tiempo $X_t$, tenga características de un proceso $AR$ y de un proceso $MA$ al mismo tiempo, por lo que será un proceso $ARMA$. Así, $X_t$ sigue un proceso $ARMA(p,q)$, y en este proceso habrá $p$  términos autoregresivos y $q$   términos de media móvil. Este se verá de la siguiente forma: 

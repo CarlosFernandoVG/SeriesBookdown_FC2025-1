@@ -6,7 +6,10 @@ author:
   - "David Alberto Mateos Montes de Oca"
 
 site: bookdown::bookdown_site
-output: bookdown::gitbook
+output: 
+  bookdown::gitbook:
+    includes:
+      in_header: ga.html
 documentclass: book
 geometry: "top=1in, left=1in, right=1in, bottom=1in"
 classoption: [a4paper, oneside, openany]
@@ -14,8 +17,8 @@ bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 css: styles.css
-github-repo: CarlosFernandoVG/SeriesBookdown_FC2024-2
-url: 'https://github.com/CarlosFernandoVG/SeriesBookdown_FC2024-2'
+github-repo: CarlosFernandoVG/SeriesBookdown_FC2025-1
+url: 'https://carlosfernandovg.github.io/SeriesBookdown_FC2025-1/'
 description: "Material para el curso Análisis de Supervivencia y Series de Tiempo en la Facultad de Ciencias, Universidad Nacional Autónoma de México"
 always_allow_html: true
 ---

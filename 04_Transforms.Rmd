@@ -1,7 +1,8 @@
 ---
 output:
-  pdf_document: default
-  html_document: default
+  html_document: 
+    includes:
+      in_header: ga.html
 ---
 # Transformaciones
 

@@ -1,8 +1,10 @@
 ---
 output:
-  html_document: default
-  pdf_document: default
+  html_document: 
+    includes:
+      in_header: ga.html
 ---
+
 # (PART) Procesos lineales no estacionarios {-}
 
 # $ARIMA(p,d,q)$: Proceso Autoregresivo Integrado y de Medias Móviles

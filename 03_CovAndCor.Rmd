@@ -1,3 +1,9 @@
+---
+output:
+  html_document: 
+    includes:
+      in_header: ga.html
+---
 # Funciones de autocovarianza y autocorrelación
 
 Como se mencionó en el apartado anterior, tenemos que para un proceso estacionario $X_t$, su esperanza es $E[X_t] = \mu$ y su varianza $Var[X_t]=E[X_t-\mu]^2=\sigma^2$ las cuales son constantes; así como las covarianzas $Cov(X_t,X_s)$, que son funciones que solamente dependen del tiempo que transcurre entre $t$ y $s$; entonces en este caso podemos escribir la **covarianza** entre $X_t$ y $X_{t+k}$ como:

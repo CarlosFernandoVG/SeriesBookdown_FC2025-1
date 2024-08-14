@@ -1,3 +1,9 @@
+---
+output:
+  html_document: 
+    includes:
+      in_header: ga.html
+---
 # $IMA(d,q)$: Proceso Integrado y de Media Móvil
 
 Este proceso es un caso particular del proceso $ARIMA(p,d,q)$ cuando $p=0$. Se calculan las diferencias de la serie de tiempo $d$ veces para convertir la serie en estacionaria y luego se aplica un modelo $MA(q)$.

@@ -1,3 +1,9 @@
+---
+output:
+  html_document: 
+    includes:
+      in_header: ga.html
+---
 # (PART) Procesos no lineales {-}
 
 # Introducción

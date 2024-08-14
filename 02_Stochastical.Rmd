@@ -1,3 +1,9 @@
+---
+output:
+  html_document: 
+    includes:
+      in_header: ga.html
+---
 # Procesos estocásticos
 
 La palabra estocástico, que tiene origen Griego, era usada bajo el significado de *perteneciente al azar*. En ese sentido un proceso estocástico se define como un conjunto de variables aleatorias ordenadas según el tiempo (o el espacio que corresponda), el cual puede ser continuo o discreto.

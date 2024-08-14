@@ -1,3 +1,9 @@
+---
+output:
+  html_document: 
+    includes:
+      in_header: ga.html
+---
 # $GARCH(p,q)$: Proceso Autoregresivo Generalizado con Heterocedasticidad Condicional
 
 En el modelo $ARCH(1)$ el predictor al tiempo $t + 1$ de la
