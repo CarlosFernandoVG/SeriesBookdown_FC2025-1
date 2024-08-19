@@ -346,7 +346,7 @@ En la sección [Identificación y modelación lineal](https://rstudio-pubs-stati
 ## Ejercicios
 1. Encuentre la función de covarianza $\gamma_k$ para el modelo AR(1) en la sección 6.1, definido como $X_t=0.35X_{t-1}+\epsilon_t$ donde $\epsilon_t\sim N(0,1)$
 
-2. En el modelo $Y_t=0.3-0.5Y_{t-1}+0.2\epsilon_t$ con $\epsilon_t\sim N(0,1)$ la $COV(Y_t,Y_{t-1})$ es cero, es decir $\gamma_2=0$ (el valor de la variable al tiempo $t$ no esta afectada por el valor que tomó la variable 2 tiempos atrás)
+2. En el modelo $Y_t=0.3-0.5Y_{t-1}+0.2\epsilon_t$ con $\epsilon_t\sim N(0,1)$ la $COV(Y_t,Y_{t-1})$ es cero, es decir $\gamma_1=0$ (el valor de la variable al tiempo $t$ no esta afectada por el valor que tomó la variable 2 tiempos atrás)
 
 3. Con los datos seleccionados para las prácticas
 e. Grafique la serie de las diferencias de los logaritmos de los datos. ¿El gráfico sugiere que un modelo estacionario podría ser apropiado para las diferencias de los logaritmos? Explique brevemente.

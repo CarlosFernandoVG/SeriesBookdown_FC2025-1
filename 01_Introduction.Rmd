@@ -35,7 +35,7 @@ Dentro de los métodos de predicción cuantitativos, se pueden distinguir dos gr
 
 En este curso nos centraremos en el análisis univariante de las series de tiempo.
 
-En la mayoría de capítulos se adjuntarán al final diferentes enlaces al Post [SeriesTCode](https://rpubs.com/CarlosFVG/SeriesTCode2024) de Rpubs, en el cual se da un enfoque aplicado a cada tema. Se recomienda que al final de cada capítulo se revise el contenido correspondiente para obtener un panorama completo del tema. En este caso en particular se solicita estudiar la sección [Datos](https://rstudio-pubs-static.s3.amazonaws.com/1071417_43ae3ecf24b84bd2ad6a0d0f9a05d019.html#datos) para conocer los objetos `ts` de R.
+En la mayoría de capítulos se adjuntarán al final diferentes enlaces al Post [SeriesTCode](https://rpubs.com/CarlosFVG/SeriesTCode2024) de Rpubs, en el cual se da un enfoque aplicado a cada tema. Se recomienda que al final de cada capítulo se revise el contenido correspondiente para obtener un panorama completo del tema. En este caso en particular se solicita estudiar la sección [Datos](https://rstudio-pubs-static.s3.amazonaws.com/1071417_253bc2f164f4438b918aaaee3a3da291.html#datos) para conocer los objetos `ts` de R.
 
 En caso de necesitar un repaso u obtener conocimiento del lenguaje de programación R, se recomienda revisar el siguiente [post](https://rpubs.com/CarlosFVG/basicr) y si se desea obtener un conocimiento del lenguaje intermedio-avanzado se recomienda leer el post [EfficientR](https://rpubs.com/CarlosFVG/CourseTidyveR). 
 

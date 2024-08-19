@@ -92,7 +92,7 @@ distintos.
 (c) Dependencia cuadrática entre dos puntos de una misma serie observada a tiempo distintos.
 (d) Dependencia lineal entre dos puntos de series distintas observadas al mismo tiempo.
 
-2. Suponga que el correlograma de una serie de tiempo con 100 observaciones tiene: $\hat\rho_1$ = 0.31, $\hat\rho_2$ = 0.07,$\hat\rho_3$ = −0.05, $\hat\rho_4$= 0.06, $\hat\rho_5$ = −0.03, $\hat\rho_6$ = 0.27, $\hat\rho_7$ = 0.08,$\hat\rho_8$= 0.05,$\hat\rho_9$ = 0.02, $\hat\rho_10$= −0.01. ¿Dada
+2. Suponga que el correlograma de una serie de tiempo con 100 observaciones tiene: $\hat\rho_1 = 0.31$, $\hat\rho_2 = 0.07$,$\hat\rho_3 = -0.05$, $\hat\rho_4= 0.06$, $\hat\rho_5 = -0.03$, $\hat\rho_6 = 0.27$, $\hat\rho_7 = 0.08$,$\hat\rho_8= 0.05$,$\hat\rho_9 = 0.02$, $\hat\rho_{10}= -0.01$. ¿Dada
 esta información que se debería tener en cuenta al proponer un modelo de predicción para esta serie?
 
 3. El precio diario de oro durante 252 días de trading en 2005 están en el objeto gold del paquete TSA.
